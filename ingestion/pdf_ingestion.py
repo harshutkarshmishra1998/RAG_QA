@@ -120,7 +120,7 @@ def ingest_pdf(pdf_path: str) -> IngestionResult:
             units.append(image_unit)
 
             # ---- CLIP semantic interpretation
-            interp = interpret_image(image_path)
+            interp = interpret_image(image_path) #type: ignore
 
             order_index += 1
             units.append(ContentUnit(
