@@ -17,7 +17,7 @@ _model = CLIPModel.from_pretrained(MODEL_NAME, local_files_only=True)
 _processor = CLIPProcessor.from_pretrained(MODEL_NAME, local_files_only=True)
 
 _model.to(_device) #type: ignore
-_model.eval()
+_model.eval() #type: ignore
 
 
 # ============================================================
@@ -64,7 +64,7 @@ def interpret_image(image_path: Path) -> Dict[str, Any]:
     inputs = {k: v.to(_device) for k, v in inputs.items()}
 
     with torch.no_grad():
-        outputs = _model(**inputs)
+        outputs = _model(**inputs) #type: ignore
         probs = outputs.logits_per_image.softmax(dim=1)[0]
 
     idx = int(probs.argmax())
