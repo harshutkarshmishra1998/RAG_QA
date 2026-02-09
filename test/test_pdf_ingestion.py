@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 from collections import Counter
 
-from ingestion.pdf_ingestion import ingest_pdf
+from ingestion_v2.pdf_ingestion import ingest_pdf
 from schema.ingestion_schema import UnitType, ExtractionMethod
 
 
