@@ -1,0 +1,23 @@
+# -------------------------------
+# PDF Ingestion & Processing Library
+# -------------------------------
+
+# Core utilities
+requests==2.31.0
+tqdm==4.66.1
+regex==2023.12.25
+pydantic==2.6.1
+
+# Data validation & schema
+pydantic>=2.5
+
+# PDF processing
+PyMuPDF>=1.23.0          # Native text & image extraction
+pdfplumber>=0.10.0       # Native table extraction
+
+# OCR
+pytesseract>=0.3.10      # OCR text & table extraction
+Pillow>=10.0.0           # Image handling for OCR
+
+# Utilities
+typing-extensions>=4.8.0
