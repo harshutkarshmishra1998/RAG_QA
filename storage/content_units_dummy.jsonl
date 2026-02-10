@@ -1,0 +1,10 @@
+{"unit_id":"u1","doc_id":"d1","content":"The image appears to be a generic image."}
+{"unit_id":"u2","doc_id":"d1","content":"  “Hello   world”  "}
+{"unit_id":"u3","doc_id":"d1","content":"Title\nSubtitle"}
+{"unit_id":"u4","doc_id":"d1","content":"regula-\ntion applies"}
+{"unit_id":"u5","doc_id":"d1","content":"==== SECTION ===="}
+{"unit_id":"u6","doc_id":"d1","content":"hello\u0000world"}
+{"unit_id":"u7","doc_id":"d1","content":"DUPLICATE"}
+{"unit_id":"u8","doc_id":"d1","content":"DUPLICATE"}
+{"unit_id":"u9","doc_id":"d1","content":"DUPLICATE"}
+{"unit_id":"u10","doc_id":"d1","content":["Line 1","Line 2"]}
