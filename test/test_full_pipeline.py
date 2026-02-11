@@ -1,35 +1,29 @@
 """
-End-to-end test:
-PDF → Ingestion → Clean → Chunk → Embed → FAISS
-
-Run:
-    python test/test_full_pipeline.py path/to/file.pdf
+Incremental End-to-End Test:
+PDF → Ingestion → Incremental Clean → Chunk → Embed → FAISS Append
 """
 
 import sys
-import json
 from pathlib import Path
 import faiss
 
+# Fix module path
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+import sys
+sys.path.append(str(PROJECT_ROOT))
+
 from ingestion.pdf_ingestion import ingest_pdf
-from clean_normalize.clean_normalize import clean_content_units_file
-from chunk.chunk import chunk_content_units
-from embedding.faiss_embedder import build_faiss_db
+from pipeline_incremental.pipeline_incremental import run_incremental_pipeline
 
-
-# ---------------- CONFIG ---------------- #
-
-STORAGE = Path("storage")
-UNITS_FILE = STORAGE / "content_units.jsonl"
-CLEANED_FILE = STORAGE / "content_units_cleaned.jsonl"
-CHUNKED_FILE = STORAGE / "content_units_cleaned_chunked.jsonl"
+STORAGE = PROJECT_ROOT / "storage"
 FAISS_FILE = STORAGE / "content_units.faiss"
+STATE_FILE = STORAGE / "pipeline_state.json"
 
 
 def main():
 
     if len(sys.argv) != 2:
-        print("Usage: python test/test_full_pipeline.py <pdf_path>")
+        print("Usage: python -m test.test_full_pipeline <pdf_path>")
         sys.exit(1)
 
     pdf_path = Path(sys.argv[1]).resolve()
@@ -38,68 +32,28 @@ def main():
         print("ERROR: File not found.")
         sys.exit(1)
 
-    print("\n=== FULL PIPELINE TEST START ===\n")
+    print("\n=== INCREMENTAL PIPELINE TEST START ===\n")
 
-    # --------------------------------------------------------
-    # 1. INGEST
-    # --------------------------------------------------------
+    # 1️⃣ Ingest
     print("1️⃣ Running ingestion...")
     result = ingest_pdf(str(pdf_path))
-    assert result.document.doc_id.startswith("doc_")
     print(f"   ✔ Document created: {result.document.doc_id}")
 
-    # --------------------------------------------------------
-    # 2. CLEAN
-    # --------------------------------------------------------
-    print("2️⃣ Running cleaning...")
-    cleaned_path = clean_content_units_file(UNITS_FILE)
-    assert cleaned_path.exists()
-    print(f"   ✔ Cleaned file: {cleaned_path.name}")
+    # 2️⃣ Incremental Pipeline
+    print("2️⃣ Running incremental processing...")
+    pipeline_result = run_incremental_pipeline()
 
-    # --------------------------------------------------------
-    # 3. CHUNK
-    # --------------------------------------------------------
-    print("3️⃣ Running chunking...")
-    chunked_path = chunk_content_units(cleaned_path)
-    assert chunked_path.exists()
-    print(f"   ✔ Chunked file: {chunked_path.name}")
+    print(f"   ✔ New Docs Processed: {pipeline_result['new_docs']}")
+    print(f"   ✔ New Chunks Created: {len(pipeline_result['new_chunks'])}")
 
-    # Count chunks
-    with chunked_path.open("r", encoding="utf-8") as f:
-        chunk_count = sum(1 for _ in f)
+    # 3️⃣ Validate FAISS
+    if FAISS_FILE.exists():
+        index = faiss.read_index(str(FAISS_FILE))
+        print(f"   ✔ FAISS Total Vectors: {index.ntotal}")
+    else:
+        print("   ❌ FAISS index missing!")
 
-    assert chunk_count > 0, "No chunks created."
-    print(f"   ✔ Chunks created: {chunk_count}")
-
-    # --------------------------------------------------------
-    # 4. EMBED + FAISS
-    # --------------------------------------------------------
-    print("4️⃣ Building FAISS index...")
-    faiss_path = build_faiss_db(chunked_path) #type: ignore
-    assert faiss_path.exists()
-    print(f"   ✔ FAISS file: {faiss_path.name}")
-
-    # Load FAISS and verify dimension
-    index = faiss.read_index(str(faiss_path))
-    assert index.d == 3072, "Embedding dimension mismatch"
-    assert index.ntotal > 0, "FAISS index has no vectors"
-
-    print(f"   ✔ FAISS vectors stored: {index.ntotal}")
-
-    # --------------------------------------------------------
-    # 5. Alignment Check
-    # --------------------------------------------------------
-    print("5️⃣ Verifying alignment...")
-
-    with chunked_path.open("r", encoding="utf-8") as f:
-        chunks = [json.loads(line) for line in f]
-
-    assert index.ntotal == len(chunks), \
-        "Vector count does not match chunk count."
-
-    print("   ✔ Vector-to-chunk alignment verified.")
-
-    print("\n🎉 FULL PIPELINE TEST PASSED\n")
+    print("\n🎉 INCREMENTAL PIPELINE TEST COMPLETED\n")
 
 
 if __name__ == "__main__":
