@@ -25,7 +25,6 @@ CONTENT_FILE = STORAGE_PATH / "content_units_cleaned_chunked.jsonl"
 EMBEDDING_MODEL = "text-embedding-3-large"
 EMBEDDING_DIM = 3072
 
-# Use smaller, more stable model for structured generation
 GROQ_MODEL = "llama-3.1-8b-instant"
 
 openai_client = OpenAI()
@@ -49,9 +48,7 @@ def _normalize_query(text: str) -> str:
 
 
 def _strip_think(text: str) -> str:
-    # Remove reasoning blocks defensively
-    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
-    return text.strip()
+    return re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
 
 
 def _safe_json_loads(text: str):
@@ -61,7 +58,18 @@ def _safe_json_loads(text: str):
         return None
 
 
-# ================= LLM CALL WRAPPER ================= #
+def _cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
+    return float(np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2)))
+
+
+def _validate_semantic_drift(original: str, candidate: str, threshold: float = 0.87) -> bool:
+    vec1 = _embed(original)
+    vec2 = _embed(candidate)
+    similarity = _cosine_similarity(vec1, vec2)
+    return similarity >= threshold
+
+
+# ================= LLM WRAPPER ================= #
 
 def _groq_json_call(prompt: str) -> Dict:
 
@@ -93,16 +101,47 @@ If you include anything else, it is an error.
     return parsed
 
 
-# ================= STEP 1: DECOMPOSE ================= #
+# ================= DECOMPOSITION ================= #
+
+def _should_attempt_decomposition(query: str) -> bool:
+    lowered = query.lower()
+
+    triggers = [
+        " and ", " or ", " but ", " yet ",
+        " also ", " additionally ", " moreover ",
+        " furthermore ", " as well as ",
+        " then ", " after that ", " next ",
+        " followed by ",
+        " compare ", " contrast ",
+        " difference between ", " differences between ",
+        " explain and ", " describe and ",
+        " analyze and ", " evaluate and ",
+        " discuss and ",
+    ]
+
+    if query.count("?") > 1:
+        return True
+
+    return any(t in lowered for t in triggers)
+
 
 def _decompose_query(query: str) -> List[str]:
 
-    prompt = f"""
-Split the following query into independent atomic questions.
+    if not _should_attempt_decomposition(query):
+        return [query]
 
-Return EXACTLY this format:
+    prompt = f"""
+Split ONLY if multiple independent questions exist.
+
+STRICT RULES:
+- Do NOT paraphrase.
+- Do NOT expand.
+- Do NOT refine.
+- If single logical question, return unchanged.
+
+Return:
 {{
-"queries": ["question1", "question2"]
+  "queries": ["q1", "q2"]
 }}
 
 Query:
@@ -113,28 +152,41 @@ Query:
         result = _groq_json_call(prompt)
         queries = result.get("queries", [])
 
-        if not isinstance(queries, list) or len(queries) == 0:
+        if not isinstance(queries, list) or len(queries) < 2:
             return [query]
 
-        return queries
+        cleaned = [q.strip() for q in queries if q.strip()]
+
+        # Reject fake splits using semantic similarity
+        similarities = []
+        base_vec = _embed(query)
+
+        for q in cleaned:
+            vec = _embed(q)
+            similarities.append(_cosine_similarity(base_vec, vec))
+
+        # If all splits are extremely similar to original, reject
+        if all(sim > 0.92 for sim in similarities):
+            return [query]
+
+        return cleaned
 
     except Exception:
         return [query]
 
 
-# ================= STEP 2: ENHANCE ================= #
+# ================= ENHANCEMENT ================= #
 
 def _enhance_query(query: str) -> str:
 
     prompt = f"""
-Rewrite the query to improve clarity and retrieval quality.
+Rewrite for clarity and retrieval quality.
 Preserve meaning.
-Do NOT answer.
-Do NOT add new information.
+Do NOT add information.
 
-Return EXACTLY:
+Return:
 {{
-"enhanced": "rewritten query"
+  "enhanced": "rewritten query"
 }}
 
 Query:
@@ -144,7 +196,15 @@ Query:
     try:
         result = _groq_json_call(prompt)
         enhanced = result.get("enhanced", "").strip()
-        return enhanced if enhanced else query
+
+        if not enhanced:
+            return query
+
+        if not _validate_semantic_drift(query, enhanced):
+            return query
+
+        return enhanced
+
     except Exception:
         return query
 
@@ -152,7 +212,6 @@ Query:
 # ================= EMBEDDING ================= #
 
 def _embed(text: str) -> np.ndarray:
-
     r = openai_client.embeddings.create(
         model=EMBEDDING_MODEL,
         input=[text],
@@ -200,17 +259,13 @@ def _generate_multi_queries(enhanced_query: str, context_chunks: List[str]) -> L
     context_preview = "\n\n".join(context_chunks[:3])
 
     prompt = f"""
-Based on the query and context below, generate exactly 3 alternative
-retrieval-optimized queries.
+Generate exactly 3 alternative retrieval queries.
+Preserve meaning.
+Do NOT add concepts.
 
-Rules:
-- Preserve meaning
-- Do NOT introduce new concepts
-- Do NOT answer
-
-Return EXACTLY:
+Return:
 {{
-"queries": ["q1", "q2", "q3"]
+  "queries": ["q1", "q2", "q3"]
 }}
 
 Query:
@@ -222,12 +277,21 @@ Context:
 
     try:
         result = _groq_json_call(prompt)
-        queries = result.get("queries", [])
+        raw = result.get("queries", [])
 
-        if not isinstance(queries, list) or len(queries) != 3:
+        if not isinstance(raw, list) or len(raw) != 3:
             return []
 
-        return queries
+        filtered = []
+
+        for q in raw:
+            if _validate_semantic_drift(enhanced_query, q):
+                filtered.append(q)
+
+        if len(filtered) != 3:
+            return []
+
+        return filtered
 
     except Exception:
         return []
@@ -280,23 +344,22 @@ def process_user_query(user_query: str) -> Dict:
     query_id = _hash_text(normalized)
     memory = _load_memory()
 
-    if not any(q["id"] == query_id for q in memory["queries"]):
-        memory["queries"].append({
-            "id": query_id,
-            "original_query": normalized,
-            "decomposed": processed_subqueries
-        })
-        _save_memory(memory)
-
-    # memory["queries"].append({
-    #     "id": query_id,
-    #     "original_query": normalized,
-    #     "decomposed": processed_subqueries
-    # })
-    # _save_memory(memory)
-
-    return {
+    new_entry = {
         "id": query_id,
         "original_query": normalized,
         "decomposed": processed_subqueries
     }
+
+    existing_index = next(
+        (i for i, q in enumerate(memory["queries"]) if q["id"] == query_id),
+        None
+    )
+
+    if existing_index is not None:
+        memory["queries"][existing_index] = new_entry
+    else:
+        memory["queries"].append(new_entry)
+
+    _save_memory(memory)
+
+    return new_entry

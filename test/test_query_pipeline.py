@@ -1,8 +1,8 @@
-from query.query_pipeline import process_user_query
+from query.query_pipeline_v2 import process_user_query
 
 def test_query_processing():
 
-    query = "What are the high-level process steps performed after a covered institution fails under Part 370?"
+    query = "What are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section?"
 
     result = process_user_query(query)
 
