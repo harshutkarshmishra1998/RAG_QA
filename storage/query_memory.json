@@ -1,27 +1,87 @@
 {
   "queries": [
     {
-      "id": "48a0e9d3996b3c4c567c0e5de62659db45ad83c17b84080114772f527aa40020",
-      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section?",
+      "id": "0c9d9be6acde2541f2e3cec09d6980004255f8ae8a2379cb37da1f1be52910dc",
+      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370 and what is described in the High-Level Process at Failure section? What activities must be completed within 24 hours after a bank failure according to Part 370?",
       "decomposed": [
         {
           "subquery_id": "db2804c6ccc9a4b2b814007d7ab31f6a6f5d0057aa9cdb739a5f4e7e191e8c6d",
           "original_subquery": "What are the high-level process steps performed after a covered institution fails under Part 370?",
-          "enhanced_query": "What are the steps taken after a covered institution fails under Part 370 of the relevant regulations?",
+          "enhanced_query": "What are the high-level process steps that occur after a covered institution fails under Part 370?",
           "multi_queries": [
-            "What are the steps taken after a covered institution fails under Part 370 of the relevant regulations?",
-            "What steps are taken after a covered institution fails under Part 370 of the relevant regulations?",
-            "What happens after a covered institution fails under Part 370 of the relevant regulations?"
+            "What happens after a covered institution fails under Part 370?",
+            "What are the key steps that occur following a covered institution's failure under Part 370?",
+            "What process steps occur after a covered institution fails under Part 370?"
           ]
         },
         {
           "subquery_id": "6d99cff2169c93f0bbac1770071dfa8915c95d2044445165706c1563b70c766e",
           "original_subquery": "what is described in the High-Level Process at Failure section?",
-          "enhanced_query": "what is described in the High-Level Process at Failure section?",
+          "enhanced_query": "What is described in the High-Level Process at Failure section?",
           "multi_queries": [
-            "What is described in the High-Level Process at Failure section?",
-            "What is the content of the High-Level Process at Failure section?",
-            "What is discussed in the High-Level Process at Failure section?"
+            "What is described in the High-Level Process section at Failure?",
+            "What is described in the section titled High-Level Process at Failure?"
+          ]
+        },
+        {
+          "subquery_id": "8bc1bd2867f946e789ff2ae8ef22637b4233c87f65872722c269896e3b957615",
+          "original_subquery": "What activities must be completed within 24 hours after a bank failure according to Part 370?",
+          "enhanced_query": "What activities must be completed within 24 hours after a bank failure, specifically as per Part 370?",
+          "multi_queries": [
+            "What activities must be completed within 24 hours after a bank failure, specifically as per Part 370?",
+            "What are the 24-hour requirements following a bank failure as per Part 370?",
+            "What must be done within 24 hours after a bank failure, according to Part 370?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "47748d180f7c397cf61d98a3bec86542e86d03aadc817f358ec1f6f78e77279c",
+      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370? what is described in the High-Level Process at Failure section? What activities must be completed within 24 hours after a bank failure according to Part 370?",
+      "decomposed": [
+        {
+          "subquery_id": "db2804c6ccc9a4b2b814007d7ab31f6a6f5d0057aa9cdb739a5f4e7e191e8c6d",
+          "original_subquery": "What are the high-level process steps performed after a covered institution fails under Part 370?",
+          "enhanced_query": "What are the high-level process steps that occur after a covered institution fails under Part 370?",
+          "multi_queries": [
+            "What happens after a covered institution fails under Part 370?",
+            "What are the key steps that occur following a covered institution's failure under Part 370?",
+            "What process steps occur after a covered institution fails under Part 370?"
+          ]
+        },
+        {
+          "subquery_id": "6d99cff2169c93f0bbac1770071dfa8915c95d2044445165706c1563b70c766e",
+          "original_subquery": "what is described in the High-Level Process at Failure section?",
+          "enhanced_query": "What is described in the High-Level Process at Failure section?",
+          "multi_queries": [
+            "What is described in the High-Level Process section at Failure?",
+            "What is described in the section titled High-Level Process at Failure?"
+          ]
+        },
+        {
+          "subquery_id": "8bc1bd2867f946e789ff2ae8ef22637b4233c87f65872722c269896e3b957615",
+          "original_subquery": "What activities must be completed within 24 hours after a bank failure according to Part 370?",
+          "enhanced_query": "What activities must be completed within 24 hours after a bank failure, specifically as per Part 370?",
+          "multi_queries": [
+            "What activities must be completed within 24 hours after a bank failure, specifically as per Part 370?",
+            "What are the 24-hour requirements following a bank failure as per Part 370?",
+            "What must be done within 24 hours after a bank failure, according to Part 370?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "db2804c6ccc9a4b2b814007d7ab31f6a6f5d0057aa9cdb739a5f4e7e191e8c6d",
+      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370?",
+      "decomposed": [
+        {
+          "subquery_id": "db2804c6ccc9a4b2b814007d7ab31f6a6f5d0057aa9cdb739a5f4e7e191e8c6d",
+          "original_subquery": "What are the high-level process steps performed after a covered institution fails under Part 370?",
+          "enhanced_query": "What are the high-level process steps that occur after a covered institution fails under Part 370?",
+          "multi_queries": [
+            "What happens after a covered institution fails under Part 370?",
+            "What are the key steps that occur following a covered institution's failure under Part 370?",
+            "What process steps occur after a covered institution fails under Part 370?"
           ]
         }
       ]
