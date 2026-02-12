@@ -1,0 +1,183 @@
+[
+  {
+    "query_id": "47748d180f7c397cf61d98a3bec86542e86d03aadc817f358ec1f6f78e77279c-v2",
+    "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370? what is described in the High-Level Process at Failure section? What activities must be completed within 24 hours after a bank failure according to Part 370?",
+    "used_chunk_ids": [
+      155,
+      28,
+      156,
+      155,
+      28,
+      156,
+      155,
+      29,
+      28
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat are the high-level process steps performed after a covered institution fails under Part 370\n\nANSWER:\nBased on the provided context and sources, the high-level process steps performed after a covered institution fails under Part 370 are:\n\n1. Determine the aggregate funds each grantor has across all revocable trust accounts at the CI allocated to eligible unique primary beneficiaries (4.1.4.3, SOURCE [1]).\n2. If the total number of eligible unique beneficiaries of an account holder is five or fewer or if all primary beneficiaries have equal interest in the grantor's trust account, then:\n   a) If the total amount of the grantor's interest does not exceed SMDIA times the number of eligible unique beneficiaries, then all of the grantor's revocable trust funds at the CI are fully insured (4.1.4.3, SOURCE [1]).\n   b) If the total amount of the grantor's interest is greater than SMDIA times the number of eligible unique beneficiaries, then the excess is the uninsured amount for the account holder (4.1.4.3, SOURCE [1]).\n3. If the total number of eligible unique beneficiaries of a grantor is six or more and all the beneficiaries do not have equal interest in the trust, then:\n   a) Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary (4.1.4.3, SOURCE [1]).\n   b) If the total amount of the grantor exceeds the insured amount calculated based on the above, the excess is the uninsured amount for the grantor (4.1.4.3, SOURCE [1]).\n4. For all funds that do not meet the requirements for the REV ORC, aggregate and calculate deposit in the SGL ORC (4.1.2, SOURCE [1]).\n5. If there are uninsured funds for the grantor in either the REV or other ORC, then apply debits (4.1.4.3, SOURCE [1]).\n6. Record the respective uninsured amount of the grantor to each associated account (4.1.4.3, SOURCE [1]).\n7. Calculate the insured amount of the grantor for each associated account as the difference between the grantor's interests in that account and the uninsured amount (4.1.4.3, SOURCE [1]).\n\nAdditionally, the process steps for single ownership accounts are:\n\n1. Identify all single-ownership accounts and the beneficial owners of the deposits in these accounts (4.1.2.2, SOURCE [1]).\n2. Aggregate total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI (4.1.2.2, SOURCE [1]).\n3. For the aggregated account balance and accrued interest for each beneficial owner:\n   a) If the total balance plus accrued interest does not exceed SMDIA, then the funds are fully insured and the insured amount for each account is equal to the sum of the balance and accrued interest (4.1.2.2, SOURCE [1]).\n   b) If the total balance plus accrued interest exceeds SMDIA, then funds in excess of SMDIA are not insured (4.1.2.2, SOURCE [1]).\n4. If there are uninsured funds for the account holder, then apply debits (4.1.2.2, SOURCE [1]).\n5. Record the respective uninsured amount to each account for the account holder (4.1.2.2, SOURCE [1]).\n6. Calculate the insured amount for each individual account as the sum of the current balance and accrued interest, less the uninsured amount, and then record the insured amount for each account (4.1.2.2, SOURCE [1]).\n\nAnd the process steps for joint accounts are:\n\n1. Determine if an account meets FDIC requirements for a qualifying joint account (4.1.3.1, SOURCE [1]).\n2. If the account is a qualifying joint account, then:\n   a) Verify all co-owners are “natural persons” (defined as human beings) (4.1.3.1, SOURCE [1]).\n   b) Determine all co-owners have equal withdrawal rights (4.1.3.1, SOURCE [1]).\n   c) Verify all co-owners have signed the signature card, or have satisfied the signature requirement (4.1.3.1, SOURCE [1]).\n3. If the account does not qualify as a joint account, then:\n   a) For accounts that include one or more co-owners that are not natural persons, the funds should be treated as jointly owned by the remaining natural person co-owners (4.1.3, SOURCE [1]).\n   b) If only one natural person owner is present, then the account should be treated as a single ownership account (4.1.3, SOURCE [1]).\n\nREFERENCES\n[1] 370 — pages 20-21, 25\n\n============================================================\n\nQUESTION 2:\nwhat is described in the High-Level Process at Failure section\n\nANSWER:\nInsufficient evidence in retrieved context to answer this question.\n\nREFERENCES\n[1] 370 — pages 20-21, 25\n\n============================================================\n\nQUESTION 3:\nWhat activities must be completed within 24 hours after a bank failure according to Part 370\n\nANSWER:\nInsufficient evidence in retrieved context to answer this question.\n\nREFERENCES\n[1] 370 — pages 20, 23, 25",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What are the high-level process steps performed after a covered institution fails under Part 370",
+        "answer": "Based on the provided context and sources, the high-level process steps performed after a covered institution fails under Part 370 are:\n\n1. Determine the aggregate funds each grantor has across all revocable trust accounts at the CI allocated to eligible unique primary beneficiaries (4.1.4.3, SOURCE [1]).\n2. If the total number of eligible unique beneficiaries of an account holder is five or fewer or if all primary beneficiaries have equal interest in the grantor's trust account, then:\n   a) If the total amount of the grantor's interest does not exceed SMDIA times the number of eligible unique beneficiaries, then all of the grantor's revocable trust funds at the CI are fully insured (4.1.4.3, SOURCE [1]).\n   b) If the total amount of the grantor's interest is greater than SMDIA times the number of eligible unique beneficiaries, then the excess is the uninsured amount for the account holder (4.1.4.3, SOURCE [1]).\n3. If the total number of eligible unique beneficiaries of a grantor is six or more and all the beneficiaries do not have equal interest in the trust, then:\n   a) Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary (4.1.4.3, SOURCE [1]).\n   b) If the total amount of the grantor exceeds the insured amount calculated based on the above, the excess is the uninsured amount for the grantor (4.1.4.3, SOURCE [1]).\n4. For all funds that do not meet the requirements for the REV ORC, aggregate and calculate deposit in the SGL ORC (4.1.2, SOURCE [1]).\n5. If there are uninsured funds for the grantor in either the REV or other ORC, then apply debits (4.1.4.3, SOURCE [1]).\n6. Record the respective uninsured amount of the grantor to each associated account (4.1.4.3, SOURCE [1]).\n7. Calculate the insured amount of the grantor for each associated account as the difference between the grantor's interests in that account and the uninsured amount (4.1.4.3, SOURCE [1]).\n\nAdditionally, the process steps for single ownership accounts are:\n\n1. Identify all single-ownership accounts and the beneficial owners of the deposits in these accounts (4.1.2.2, SOURCE [1]).\n2. Aggregate total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI (4.1.2.2, SOURCE [1]).\n3. For the aggregated account balance and accrued interest for each beneficial owner:\n   a) If the total balance plus accrued interest does not exceed SMDIA, then the funds are fully insured and the insured amount for each account is equal to the sum of the balance and accrued interest (4.1.2.2, SOURCE [1]).\n   b) If the total balance plus accrued interest exceeds SMDIA, then funds in excess of SMDIA are not insured (4.1.2.2, SOURCE [1]).\n4. If there are uninsured funds for the account holder, then apply debits (4.1.2.2, SOURCE [1]).\n5. Record the respective uninsured amount to each account for the account holder (4.1.2.2, SOURCE [1]).\n6. Calculate the insured amount for each individual account as the sum of the current balance and accrued interest, less the uninsured amount, and then record the insured amount for each account (4.1.2.2, SOURCE [1]).\n\nAnd the process steps for joint accounts are:\n\n1. Determine if an account meets FDIC requirements for a qualifying joint account (4.1.3.1, SOURCE [1]).\n2. If the account is a qualifying joint account, then:\n   a) Verify all co-owners are “natural persons” (defined as human beings) (4.1.3.1, SOURCE [1]).\n   b) Determine all co-owners have equal withdrawal rights (4.1.3.1, SOURCE [1]).\n   c) Verify all co-owners have signed the signature card, or have satisfied the signature requirement (4.1.3.1, SOURCE [1]).\n3. If the account does not qualify as a joint account, then:\n   a) For accounts that include one or more co-owners that are not natural persons, the funds should be treated as jointly owned by the remaining natural person co-owners (4.1.3, SOURCE [1]).\n   b) If only one natural person owner is present, then the account should be treated as a single ownership account (4.1.3, SOURCE [1]).",
+        "used_chunk_ids": [
+          155,
+          28,
+          156
+        ],
+        "evidence_metrics": {
+          "sentence_count": 38,
+          "supported_sentences": 22,
+          "citation_coverage": 0.579,
+          "avg_evidence_confidence": 0.998
+        },
+        "references": [
+          "[1] 370 — pages 20-21, 25"
+        ]
+      },
+      {
+        "index": 2,
+        "question": "what is described in the High-Level Process at Failure section",
+        "answer": "Insufficient evidence in retrieved context to answer this question.",
+        "used_chunk_ids": [
+          155,
+          28,
+          156
+        ],
+        "evidence_metrics": {
+          "sentence_count": 5,
+          "supported_sentences": 0,
+          "citation_coverage": 0.0,
+          "avg_evidence_confidence": 0
+        },
+        "references": [
+          "[1] 370 — pages 20-21, 25"
+        ]
+      },
+      {
+        "index": 3,
+        "question": "What activities must be completed within 24 hours after a bank failure according to Part 370",
+        "answer": "Insufficient evidence in retrieved context to answer this question.",
+        "used_chunk_ids": [
+          155,
+          29,
+          28
+        ],
+        "evidence_metrics": {
+          "sentence_count": 14,
+          "supported_sentences": 0,
+          "citation_coverage": 0.0,
+          "avg_evidence_confidence": 0
+        },
+        "references": [
+          "[1] 370 — pages 20, 23, 25"
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.193,
+      "avg_evidence_confidence": 0.333,
+      "total_supported_sentences": 22,
+      "total_sentences": 57
+    },
+    "dedup_id": "ea29110833b02e89743dcfb92d9634452a2e7b275192d9c6f95f5e847688bc8d-v2"
+  },
+  {
+    "query_id": "47748d180f7c397cf61d98a3bec86542e86d03aadc817f358ec1f6f78e77279c",
+    "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370? what is described in the High-Level Process at Failure section? What activities must be completed within 24 hours after a bank failure according to Part 370?",
+    "used_chunk_ids": [
+      155,
+      28,
+      156,
+      155,
+      28,
+      156,
+      155,
+      29,
+      28
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat are the high-level process steps performed after a covered institution fails under Part 370\n\nANSWER:\nBased on the provided context and sources, the high-level process steps performed after a covered institution fails under Part 370 are:\n\n1. Determine the aggregate funds each grantor has across all revocable trust accounts at the CI allocated to eligible unique primary beneficiaries (4.1.4.3, SOURCE [1]).\n2. If the total number of eligible unique beneficiaries of an account holder is five or fewer or if all primary beneficiaries have equal interest in the grantor's trust account, then:\n   a) If the total amount of the grantor's interest does not exceed SMDIA times the number of eligible unique beneficiaries, then all of the grantor's revocable trust funds at the CI are fully insured (4.1.4.3, SOURCE [1]).\n   b) If the total amount of the grantor's interest is greater than SMDIA times the number of eligible unique beneficiaries, then the excess is the uninsured amount for the account holder (4.1.4.3, SOURCE [1]).\n3. If the total number of eligible unique beneficiaries of a grantor is six or more and all the beneficiaries do not have equal interest in the trust, then:\n   a) Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary (4.1.4.3, SOURCE [1]).\n   b) If the total amount of the grantor exceeds the insured amount calculated based on the above, the excess is the uninsured amount for the grantor (4.1.4.3, SOURCE [1]).\n4. For all funds that do not meet the requirements for the REV ORC, aggregate and calculate deposit in the SGL ORC (4.1.2, SOURCE [1]).\n5. If there are uninsured funds for the grantor in either the REV or other ORC, then apply debits (4.1.4.3, SOURCE [1]).\n6. Record the respective uninsured amount of the grantor to each associated account (4.1.4.3, SOURCE [1]).\n7. Calculate the insured amount of the grantor for each associated account as the difference between the grantor's interests in that account and the uninsured amount (4.1.4.3, SOURCE [1]).\n\nAdditionally, the process steps for single ownership accounts are:\n\n1. Identify all single-ownership accounts and the beneficial owners of the deposits in these accounts (4.1.2.2, SOURCE [1]).\n2. Aggregate total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI (4.1.2.2, SOURCE [1]).\n3. For the aggregated account balance and accrued interest for each beneficial owner:\n   a) If the total balance plus accrued interest does not exceed SMDIA, then the funds are fully insured and the insured amount for each account is equal to the sum of the balance and accrued interest (4.1.2.2, SOURCE [1]).\n   b) If the total balance plus accrued interest exceeds SMDIA, then funds in excess of SMDIA are not insured (4.1.2.2, SOURCE [1]).\n4. If there are uninsured funds for the account holder, then apply debits (4.1.2.2, SOURCE [1]).\n5. Record the respective uninsured amount to each account for the account holder (4.1.2.2, SOURCE [1]).\n6. Calculate the insured amount for each individual account as the sum of the current balance and accrued interest, less the uninsured amount, and then record the insured amount for each account (4.1.2.2, SOURCE [1]).\n\nAnd the process steps for joint accounts are:\n\n1. Determine if an account meets FDIC requirements for a qualifying joint account (4.1.3.1, SOURCE [1]).\n2. If the account is a qualifying joint account, then:\n   a) Verify all co-owners are “natural persons” (defined as human beings) (4.1.3.1, SOURCE [1]).\n   b) Determine all co-owners have equal withdrawal rights (4.1.3.1, SOURCE [1]).\n   c) Verify all co-owners have signed the signature card, or have satisfied the signature requirement (4.1.3.1, SOURCE [1]).\n3. If the account does not qualify as a joint account, then:\n   a) For accounts that include one or more co-owners that are not natural persons, the funds should be treated as jointly owned by the remaining natural person co-owners (4.1.3, SOURCE [1]).\n   b) If only one natural person owner is present, then the account should be treated as a single ownership account (4.1.3, SOURCE [1]).\n\nREFERENCES\n[1] 370 — pages 20-21, 25\n\n============================================================\n\nQUESTION 2:\nwhat is described in the High-Level Process at Failure section\n\nANSWER:\nBased on the provided context, the High-Level Process at Failure section is not explicitly mentioned. However, the provided text does describe the process for determining deposit insurance coverage in various scenarios, including single accounts, joint accounts, and trust accounts.\n\nThe relevant sections that describe the process for determining deposit insurance coverage are:\n\n* 4.1.2.1 Right and Capacity and SMDIA Calculation\n* 4.1.2.2 Single Ownership Account Deposit Insurance Calculation\n* 4.1.3 Joint Accounts\n* 4.1.4.3 Trust Accounts – Right and Capacity and SMDIA Calculation\n\nThese sections outline the steps for determining the ownership category, aggregating account balances, and calculating deposit insurance coverage for various types of accounts.\n\nHowever, without a specific reference to the \"High-Level Process at Failure\" section, it is not possible to provide a detailed description of the process described in that section.\n\nIf you could provide more context or clarify what you mean by \"High-Level Process at Failure,\" I may be able to provide a more accurate answer.\n\nREFERENCES\n[1] 370 — pages 20-21, 25\n\n============================================================\n\nQUESTION 3:\nWhat activities must be completed within 24 hours after a bank failure according to Part 370\n\nANSWER:\nBased on the provided sources, the following activities must be completed within 24 hours after a bank failure according to Part 370:\n\n1. Determine the correct Ownership Right and Capacity (ORC) for each deposit account from the deposit account records (1).\n2. Identify all grantors and all unique primary beneficiaries for trust accounts (1).\n3. Determine if the FDIC's six-month rule applies for deceased grantors (1).\n4. Identify eligible unique primary beneficiaries for trust accounts (1).\n5. Determine the aggregate funds each grantor has across all revocable trust accounts at the bank allocated to eligible unique primary beneficiaries (1).\n6. Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary (1).\n\nNote: The provided sources do not explicitly state that these activities must be completed within 24 hours after a bank failure. However, they are mentioned in the context of the FDIC's procedures for handling bank failures and calculating deposit insurance coverage.\n\nREFERENCES\n[1] 370 — pages 20, 23, 25",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What are the high-level process steps performed after a covered institution fails under Part 370",
+        "answer": "Based on the provided context and sources, the high-level process steps performed after a covered institution fails under Part 370 are:\n\n1. Determine the aggregate funds each grantor has across all revocable trust accounts at the CI allocated to eligible unique primary beneficiaries (4.1.4.3, SOURCE [1]).\n2. If the total number of eligible unique beneficiaries of an account holder is five or fewer or if all primary beneficiaries have equal interest in the grantor's trust account, then:\n   a) If the total amount of the grantor's interest does not exceed SMDIA times the number of eligible unique beneficiaries, then all of the grantor's revocable trust funds at the CI are fully insured (4.1.4.3, SOURCE [1]).\n   b) If the total amount of the grantor's interest is greater than SMDIA times the number of eligible unique beneficiaries, then the excess is the uninsured amount for the account holder (4.1.4.3, SOURCE [1]).\n3. If the total number of eligible unique beneficiaries of a grantor is six or more and all the beneficiaries do not have equal interest in the trust, then:\n   a) Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary (4.1.4.3, SOURCE [1]).\n   b) If the total amount of the grantor exceeds the insured amount calculated based on the above, the excess is the uninsured amount for the grantor (4.1.4.3, SOURCE [1]).\n4. For all funds that do not meet the requirements for the REV ORC, aggregate and calculate deposit in the SGL ORC (4.1.2, SOURCE [1]).\n5. If there are uninsured funds for the grantor in either the REV or other ORC, then apply debits (4.1.4.3, SOURCE [1]).\n6. Record the respective uninsured amount of the grantor to each associated account (4.1.4.3, SOURCE [1]).\n7. Calculate the insured amount of the grantor for each associated account as the difference between the grantor's interests in that account and the uninsured amount (4.1.4.3, SOURCE [1]).\n\nAdditionally, the process steps for single ownership accounts are:\n\n1. Identify all single-ownership accounts and the beneficial owners of the deposits in these accounts (4.1.2.2, SOURCE [1]).\n2. Aggregate total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI (4.1.2.2, SOURCE [1]).\n3. For the aggregated account balance and accrued interest for each beneficial owner:\n   a) If the total balance plus accrued interest does not exceed SMDIA, then the funds are fully insured and the insured amount for each account is equal to the sum of the balance and accrued interest (4.1.2.2, SOURCE [1]).\n   b) If the total balance plus accrued interest exceeds SMDIA, then funds in excess of SMDIA are not insured (4.1.2.2, SOURCE [1]).\n4. If there are uninsured funds for the account holder, then apply debits (4.1.2.2, SOURCE [1]).\n5. Record the respective uninsured amount to each account for the account holder (4.1.2.2, SOURCE [1]).\n6. Calculate the insured amount for each individual account as the sum of the current balance and accrued interest, less the uninsured amount, and then record the insured amount for each account (4.1.2.2, SOURCE [1]).\n\nAnd the process steps for joint accounts are:\n\n1. Determine if an account meets FDIC requirements for a qualifying joint account (4.1.3.1, SOURCE [1]).\n2. If the account is a qualifying joint account, then:\n   a) Verify all co-owners are “natural persons” (defined as human beings) (4.1.3.1, SOURCE [1]).\n   b) Determine all co-owners have equal withdrawal rights (4.1.3.1, SOURCE [1]).\n   c) Verify all co-owners have signed the signature card, or have satisfied the signature requirement (4.1.3.1, SOURCE [1]).\n3. If the account does not qualify as a joint account, then:\n   a) For accounts that include one or more co-owners that are not natural persons, the funds should be treated as jointly owned by the remaining natural person co-owners (4.1.3, SOURCE [1]).\n   b) If only one natural person owner is present, then the account should be treated as a single ownership account (4.1.3, SOURCE [1]).",
+        "used_chunk_ids": [
+          155,
+          28,
+          156
+        ],
+        "evidence_metrics": {
+          "sentence_count": 38,
+          "supported_sentences": 22,
+          "citation_coverage": 0.579,
+          "avg_evidence_confidence": 0.998
+        },
+        "references": [
+          "[1] 370 — pages 20-21, 25"
+        ]
+      },
+      {
+        "index": 2,
+        "question": "what is described in the High-Level Process at Failure section",
+        "answer": "Based on the provided context, the High-Level Process at Failure section is not explicitly mentioned. However, the provided text does describe the process for determining deposit insurance coverage in various scenarios, including single accounts, joint accounts, and trust accounts.\n\nThe relevant sections that describe the process for determining deposit insurance coverage are:\n\n* 4.1.2.1 Right and Capacity and SMDIA Calculation\n* 4.1.2.2 Single Ownership Account Deposit Insurance Calculation\n* 4.1.3 Joint Accounts\n* 4.1.4.3 Trust Accounts – Right and Capacity and SMDIA Calculation\n\nThese sections outline the steps for determining the ownership category, aggregating account balances, and calculating deposit insurance coverage for various types of accounts.\n\nHowever, without a specific reference to the \"High-Level Process at Failure\" section, it is not possible to provide a detailed description of the process described in that section.\n\nIf you could provide more context or clarify what you mean by \"High-Level Process at Failure,\" I may be able to provide a more accurate answer.",
+        "used_chunk_ids": [
+          155,
+          28,
+          156
+        ],
+        "evidence_metrics": {
+          "sentence_count": 5,
+          "supported_sentences": 0,
+          "citation_coverage": 0.0,
+          "avg_evidence_confidence": 0
+        },
+        "references": [
+          "[1] 370 — pages 20-21, 25"
+        ]
+      },
+      {
+        "index": 3,
+        "question": "What activities must be completed within 24 hours after a bank failure according to Part 370",
+        "answer": "Based on the provided sources, the following activities must be completed within 24 hours after a bank failure according to Part 370:\n\n1. Determine the correct Ownership Right and Capacity (ORC) for each deposit account from the deposit account records (1).\n2. Identify all grantors and all unique primary beneficiaries for trust accounts (1).\n3. Determine if the FDIC's six-month rule applies for deceased grantors (1).\n4. Identify eligible unique primary beneficiaries for trust accounts (1).\n5. Determine the aggregate funds each grantor has across all revocable trust accounts at the bank allocated to eligible unique primary beneficiaries (1).\n6. Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary (1).\n\nNote: The provided sources do not explicitly state that these activities must be completed within 24 hours after a bank failure. However, they are mentioned in the context of the FDIC's procedures for handling bank failures and calculating deposit insurance coverage.",
+        "used_chunk_ids": [
+          155,
+          29,
+          28
+        ],
+        "evidence_metrics": {
+          "sentence_count": 14,
+          "supported_sentences": 0,
+          "citation_coverage": 0.0,
+          "avg_evidence_confidence": 0
+        },
+        "references": [
+          "[1] 370 — pages 20, 23, 25"
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.193,
+      "avg_evidence_confidence": 0.333,
+      "total_supported_sentences": 22,
+      "total_sentences": 57
+    },
+    "dedup_id": "ea29110833b02e89743dcfb92d9634452a2e7b275192d9c6f95f5e847688bc8d-v2-1"
+  },
+  {
+    "query_id": "47748d180f7c397cf61d98a3bec86542e86d03aadc817f358ec1f6f78e77279c",
+    "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370? what is described in the High-Level Process at Failure section? What activities must be completed within 24 hours after a bank failure according to Part 370?",
+    "used_chunk_ids": [
+      "155",
+      "28",
+      "156",
+      "155",
+      "28",
+      "156",
+      "155",
+      "29",
+      "28"
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat are the high-level process steps performed after a covered institution fails under Part 370\n\nANSWER:\nBased on the provided context, the high-level process steps performed after a covered institution fails under Part 370 are:\n\n1. Determine the aggregate funds each grantor has across all revocable trust accounts at the CI allocated to eligible unique primary beneficiaries.\n2. If the total number of eligible unique beneficiaries of an account holder is five or fewer or if all primary beneficiaries have equal interest in the grantor's trust account, then:\n   a. If the total amount of the grantor's interest does not exceed SMDIA times the number of eligible unique beneficiaries, then all of the grantor's revocable trust funds at the CI are fully insured.\n   b. If the total amount of the grantor's interest is greater than SMDIA times the number of eligible unique beneficiaries, then the excess is the uninsured amount for the account holder.\n3. If the total number of eligible unique beneficiaries of a grantor is six or more and all the beneficiaries do not have equal interest in the trust, then:\n   a. Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary.\n   b. If the total amount of the grantor exceeds the insured amount calculated based on the above, the excess is the uninsured amount for the grantor.\n4. For all funds that do not meet the requirements for the REV ORC, aggregate and calculate deposit in the SGL ORC.\n5. If there are uninsured funds for the grantor in either the REV or other ORC, then apply debits.\n6. Record the respective uninsured amount of the grantor to each associated account.\n7. The insured amount of the grantor for each associated account is the difference between the grantor's interests in that account and the uninsured amount calculated based on the steps above.\n8. If all single ownership accounts have been processed through Section 4.1.2.1 Right and Capacity and SMDIA Calculation or placed in the Pending File, then:\n   a. Identify all single-ownership accounts and the beneficial owners of the deposits in these accounts.\n   b. Aggregate total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI.\n   c. For the aggregated account balance and accrued interest for each beneficial owner:\n      i. If the total balance plus accrued interest does not exceed SMDIA, then the funds are fully insured and the insured amount for each account is equal to the sum of the balance and accrued interest.\n      ii. If the total balance plus accrued interest exceeds SMDIA, then funds in excess of SMDIA are not insured.\n   d. If there are uninsured funds for the account holder, then apply debits.\n   e. Based on the above calculation, record the respective uninsured amount to each account for the account holder.\n   f. Calculate the insured amount for each individual account as\n\n============================================================\n\nQUESTION 2:\nwhat is described in the High-Level Process at Failure section\n\nANSWER:\nThe High-Level Process at Failure section is not explicitly mentioned in the provided context. However, based on the information given, it appears that the context is discussing the process for determining deposit insurance coverage for various types of accounts, including single ownership accounts, joint accounts, and trust accounts.\n\nThe process involves several steps, including:\n\n1. Identifying the account type and determining the applicable ownership right and capacity (ORC) code.\n2. Calculating the insured amount for each account based on the account balance and accrued interest.\n3. Aggregating account balances and accrued interest for each beneficial owner or account holder.\n4. Determining the uninsured amount for each account holder.\n5. Recording the insured and uninsured amounts for each account.\n\nHowever, without more specific information about the High-Level Process at Failure section, it is difficult to provide a detailed answer.\n\n============================================================\n\nQUESTION 3:\nWhat activities must be completed within 24 hours after a bank failure according to Part 370\n\nANSWER:\nInsufficient evidence. The provided context does not explicitly state the activities that must be completed within 24 hours after a bank failure according to Part 370.\n\nREFERENCES\n[1] 370 — pages 20-21, 23, 25\n",
+    "dedup_id": "94da714244f46b68f14d1946d1521d23a15daa33a667f8e223f7a75659e48c4c-v1"
+  }
+]

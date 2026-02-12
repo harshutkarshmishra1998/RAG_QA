@@ -280,38 +280,20 @@ def build_context(bundle, doc_to_ref):
 
 def llm_answer(query, context):
 
-#     system = """
-# Use ONLY provided context.
-
-# Each block has SOURCE labels like [1].
-
-# When using information cite inline.
-
-# Example:
-# Deposit insurance is calculated per grantor [1].
-# """
-
     system = """
 You are a strictly evidence-grounded QA system.
 
 Rules:
-
 1. Every factual statement MUST have a citation.
 2. Do NOT write any uncited claim.
 3. Do NOT add explanatory filler without citation.
 4. If a sentence has no evidence — remove it.
 5. Prefer concise factual sentences.
 6. Multiple claims in one sentence → multiple citations.
-
-Valid:
-The insured amount is calculated per grantor [1].
-
-Invalid:
-These steps involve multiple processes.
-
 Use ONLY citation numbers provided in context.
 Never invent citations.
 """
+
     resp = client.chat.completions.create(
         model=GROQ_MODEL,
         messages=[
@@ -324,7 +306,7 @@ Never invent citations.
 
 
 # =====================================================
-# EVIDENCE INTELLIGENCE
+# EVIDENCE METRICS
 # =====================================================
 
 def split_sentences(text):
@@ -353,55 +335,254 @@ def compute_evidence_metrics(answer, context):
         "avg_evidence_confidence": round(confidence, 3)
     }
 
+def enforce_evidence_grounding(answer, metrics):
+
+    if metrics["supported_sentences"] == 0:
+        return "Insufficient evidence in retrieved context to answer this question."
+
+    return answer
+
 
 # =====================================================
 # SELF HEALING RETRIEVAL
 # =====================================================
 
 def self_healing_answer(query, record):
-
     ranked = get_all_chunks_sorted(record)
+    return ranked[:MAX_CHUNKS_INITIAL]
 
-    print("Attempt 1: top chunks")
+
+# =====================================================
+# SUBQUERY EXTRACTION (FIX)
+# =====================================================
+
+def extract_subqueries(record):
+
+    subs = record.get("subqueries", [])
+
+    if not subs:
+        return [{
+            "question": record["original_query"],
+            "chunks": []
+        }]
+
+    questions = []
+    has_real = False
+
+    for sub in subs:
+        q = None
+        for k, v in sub.items():
+            if isinstance(v, str) and len(v.split()) > 5:
+                q = v.strip()
+                has_real = True
+                break
+        questions.append(q)
+
+    if not has_real:
+        original = record["original_query"]
+        split_q = [
+            x.strip()
+            for x in re.split(r"\?\s+|\?$", original)
+            if x.strip()
+        ]
+        while len(split_q) < len(subs):
+            split_q.append(original)
+        questions = split_q[:len(subs)]
+
+    result = []
+    for i, sub in enumerate(subs):
+        result.append({
+            "question": questions[i],
+            "chunks": sub.get("retrieved_chunks", [])
+        })
+
+    return result
+
+
+# =====================================================
+# SUBQUERY SELF HEALING (FIX)
+# =====================================================
+
+def self_healing_subquery_bundle(question, chunks, record):
+
+    ranked = sorted(
+        [{"chunk": c, "score": c.get("rrf_score", 0.0)} for c in chunks],
+        key=lambda x: x["score"],
+        reverse=True
+    )
+
     bundle = ranked[:MAX_CHUNKS_INITIAL]
+
+    if not bundle:
+        bundle = ranked[:MAX_CHUNKS_EXPANDED]
+
+    if not bundle:
+        bundle = self_healing_answer(question, record)
 
     return bundle
 
 
 # =====================================================
-# MAIN PIPELINE
+# MAIN PIPELINE (FIXED)
 # =====================================================
+
+# def generate_answer_from_last_entry():
+
+#     records = load_jsonl(MEMORY_FILE)
+#     record = records[-1]
+
+#     query_id = record["query_id"]
+#     original_query = record["original_query"]
+
+#     print("Processing query:", original_query)
+
+#     subqueries = extract_subqueries(record)
+
+#     final_blocks = []
+#     full_bundle = []
+
+#     for i, sub in enumerate(subqueries, 1):
+
+#         print(f"Processing subquery {i}")
+
+#         bundle = self_healing_subquery_bundle(
+#             sub["question"],
+#             sub["chunks"],
+#             record
+#         )
+
+#         refs, doc_to_ref = build_reference_list(bundle)
+#         context = build_context(bundle, doc_to_ref)
+
+#         answer = llm_answer(sub["question"], context)
+#         metrics = compute_evidence_metrics(answer, context)
+
+#         block = (
+#             f"QUESTION {i}:\n{sub['question']}\n\n"
+#             f"ANSWER:\n{answer}\n\n"
+#             f"EVIDENCE METRICS:\n{json.dumps(metrics, indent=2)}"
+#         )
+
+#         if refs:
+#             block += "\n\nREFERENCES\n" + "\n".join(refs)
+
+#         final_blocks.append(block)
+#         full_bundle.extend(bundle)
+
+#     final_answer = "\n\n" + ("\n\n" + "="*60 + "\n\n").join(final_blocks)
+
+#     result = {
+#         "query_id": query_id,
+#         "original_query": original_query,
+#         "used_chunk_ids": [c["chunk"]["chunk_id"] for c in full_bundle],
+#         "answer": final_answer
+#     }
+
+#     result["dedup_id"] = stable_hash(query_id, str(result["used_chunk_ids"]))
+
+#     data = load_json_array(OUTPUT_FILE)
+
+#     replaced = False
+#     for i, item in enumerate(data):
+#         if item.get("dedup_id") == result["dedup_id"]:
+#             data[i] = result
+#             replaced = True
+#             print("♻ Updated existing answer")
+#             break
+
+#     if not replaced:
+#         data.append(result)
+#         print("✅ Stored new answer")
+
+#     save_json_array(OUTPUT_FILE, data)
+#     return result
 
 def generate_answer_from_last_entry():
 
     records = load_jsonl(MEMORY_FILE)
     record = records[-1]
 
-    query = record["original_query"]
     query_id = record["query_id"]
+    original_query = record["original_query"]
 
-    print("Processing query:", query)
+    print("Processing query:", original_query)
 
-    bundle = self_healing_answer(query, record)
+    subqueries = extract_subqueries(record)
 
-    refs, doc_to_ref = build_reference_list(bundle)
-    context = build_context(bundle, doc_to_ref)
+    final_blocks = []
+    full_bundle = []
+    subquery_results = []
 
-    if not context:
-        print("⚠ No usable evidence found")
+    for i, sub in enumerate(subqueries, 1):
 
-    answer = llm_answer(query, context)
-    metrics = compute_evidence_metrics(answer, context)
+        print(f"Processing subquery {i}")
 
-    if refs:
-        answer += "\n\nREFERENCES\n" + "\n".join(refs)
+        bundle = self_healing_subquery_bundle(
+            sub["question"],
+            sub["chunks"],
+            record
+        )
+
+        refs, doc_to_ref = build_reference_list(bundle)
+        context = build_context(bundle, doc_to_ref)
+
+        answer = llm_answer(sub["question"], context)
+        metrics = compute_evidence_metrics(answer, context)
+
+        # answer = llm_answer(sub["question"], context)
+        # metrics = compute_evidence_metrics(answer, context)
+
+        # answer = enforce_evidence_grounding(answer, metrics)
+
+        # clean display block (NO METRICS HERE)
+        block = (
+            f"QUESTION {i}:\n{sub['question']}\n\n"
+            f"ANSWER:\n{answer}"
+        )
+
+        if refs:
+            block += "\n\nREFERENCES\n" + "\n".join(refs)
+
+        final_blocks.append(block)
+        full_bundle.extend(bundle)
+
+        # structured storage (THIS is where metrics go)
+        subquery_results.append({
+            "index": i,
+            "question": sub["question"],
+            "answer": answer,
+            "used_chunk_ids": [b["chunk"]["chunk_id"] for b in bundle],
+            "evidence_metrics": metrics,
+            "references": refs
+        })
+
+    final_answer = "\n\n" + ("\n\n" + "="*60 + "\n\n").join(final_blocks)
+
+    # optional aggregate metrics (recommended)
+    all_metrics = [s["evidence_metrics"] for s in subquery_results]
+    if all_metrics:
+        aggregate_metrics = {
+            "avg_citation_coverage": round(
+                sum(m["citation_coverage"] for m in all_metrics)/len(all_metrics), 3
+            ),
+            "avg_evidence_confidence": round(
+                sum(m["avg_evidence_confidence"] for m in all_metrics)/len(all_metrics), 3
+            ),
+            "total_supported_sentences": sum(m["supported_sentences"] for m in all_metrics),
+            "total_sentences": sum(m["sentence_count"] for m in all_metrics)
+        }
+    else:
+        aggregate_metrics = {}
 
     result = {
         "query_id": query_id,
-        "original_query": query,
-        "used_chunk_ids": [c["chunk"]["chunk_id"] for c in bundle],
-        "answer": answer,
-        "evidence_metrics": metrics
+        "original_query": original_query,
+        "used_chunk_ids": [c["chunk"]["chunk_id"] for c in full_bundle],
+        "answer": final_answer,
+
+        # NEW STRUCTURED FIELDS
+        "subquery_results": subquery_results,
+        "aggregate_evidence_metrics": aggregate_metrics
     }
 
     result["dedup_id"] = stable_hash(query_id, str(result["used_chunk_ids"]))
@@ -417,8 +598,8 @@ def generate_answer_from_last_entry():
             break
 
     if not replaced:
-        data.append(result)
         print("✅ Stored new answer")
+        data.append(result)
 
     save_json_array(OUTPUT_FILE, data)
     return result
