@@ -84,7 +84,7 @@ def resolve_document_name(doc_id):
 
 
 # =====================================================
-# TEXT NORMALIZATION (ROBUST)
+# TEXT NORMALIZATION
 # =====================================================
 
 def flatten_tokens(x):
@@ -98,38 +98,10 @@ def flatten_tokens(x):
     return [str(x)]
 
 
-# def repair_text(x):
-#     if x is None:
-#         return ""
-
-#     if isinstance(x, str):
-#         s = x.strip()
-#         if s.startswith("[") and s.endswith("]"):
-#             try:
-#                 parsed = ast.literal_eval(s)
-#                 tokens = flatten_tokens(parsed)
-#             except:
-#                 tokens = [s]
-#         else:
-#             tokens = [s]
-#     else:
-#         tokens = flatten_tokens(x)
-
-#     text = " ".join(tokens)
-#     text = re.sub(r"\s+([,.;:!?])", r"\1", text)
-#     text = re.sub(r"\s+", " ", text)
-#     return text.strip()
-
 def repair_text(x):
-    """
-    Converts OCR / token arrays into clean readable text.
-    Removes token quotes, commas, empty tokens, and artifacts.
-    """
-
     if x is None:
         return ""
 
-    # -------- flatten structure --------
     if isinstance(x, str):
         s = x.strip()
         if s.startswith("[") and s.endswith("]"):
@@ -143,31 +115,10 @@ def repair_text(x):
     else:
         tokens = flatten_tokens(x)
 
-    # -------- join tokens --------
     text = " ".join(tokens)
-
-    # -------- remove quoted token formatting --------
-    # 'FDIC' → FDIC
     text = re.sub(r"'([^']+)'", r"\1", text)
-
-    # remove empty quoted tokens ''
     text = text.replace("''", " ")
-
-    # -------- remove comma token separators --------
-    # word , word → word word
     text = re.sub(r"\s*,\s*", " ", text)
-
-    # -------- normalize dashes --------
-    text = text.replace(" — ", " — ")
-    text = re.sub(r"\s*-\s*", " - ", text)
-
-    # -------- remove duplicate punctuation --------
-    text = re.sub(r"([,.;:!?])\1+", r"\1", text)
-
-    # -------- remove bracket artifacts --------
-    text = text.replace("[", "").replace("]", "")
-
-    # -------- collapse whitespace --------
     text = re.sub(r"\s+", " ", text).strip()
 
     return text
@@ -177,12 +128,9 @@ def normalize_chunk_for_display(text, max_len=220):
     text = repair_text(text)
     text = re.sub(r'\b\d+(\.\d+)*\b\s*', '', text)
     text = re.sub(r'[-_=]{3,}', ' ', text)
-    text = text.replace("[", "").replace("]", "")
     text = re.sub(r"\s+", " ", text).strip()
-
     if len(text) > max_len:
         text = text[:max_len].rsplit(" ", 1)[0] + "..."
-
     return text
 
 
@@ -199,7 +147,7 @@ def overlap(a, b):
 
 
 # =====================================================
-# SCHEMA-ADAPTIVE CHUNK TEXT EXTRACTION
+# DISPLAY TEXT EXTRACTION
 # =====================================================
 
 def get_chunk_display_text(chunk: Dict[str, Any]):
@@ -216,12 +164,7 @@ def get_chunk_display_text(chunk: Dict[str, Any]):
     for c in candidates:
         if not c:
             continue
-
         cleaned = normalize_chunk_for_display(c)
-
-        if "[" in cleaned and "'" in cleaned:
-            continue
-
         if len(cleaned) > 20:
             return cleaned
 
@@ -235,13 +178,11 @@ def get_chunk_display_text(chunk: Dict[str, Any]):
 def fuzzy_unit_match(chunk_text):
     best = None
     best_score = 0
-
     for uid, unit in CONTENT_UNIT_INDEX.items():
         score = overlap(chunk_text, unit.get("content"))
         if score > best_score:
             best_score = score
             best = uid
-
     return [best] if best_score > 0.3 else []
 
 
@@ -265,7 +206,7 @@ def get_chunk_provenance(chunk):
 
 
 # =====================================================
-# REFERENCES + HUMAN READABLE EVIDENCE
+# REFERENCES + EVIDENCE SNIPPETS
 # =====================================================
 
 def page_ranges(pages):
@@ -275,15 +216,14 @@ def page_ranges(pages):
 
     start = prev = pages[0]
     ranges = []
-
     for p in pages[1:]:
         if p == prev + 1:
             prev = p
         else:
             ranges.append((start, prev))
             start = prev = p
-
     ranges.append((start, prev))
+
     return ", ".join(str(a) if a == b else f"{a}-{b}" for a, b in ranges)
 
 
@@ -294,14 +234,12 @@ def extract_evidence_snippets(bundle, doc):
         prov = get_chunk_provenance(chunk)
         if doc not in prov:
             continue
-        cleaned = get_chunk_display_text(chunk)
-        snippets.append(cleaned)
+        snippets.append(get_chunk_display_text(chunk))
     return snippets[:MAX_EVIDENCE_SNIPPETS]
 
 
 def build_reference_list(bundle):
     merged = {}
-
     for item in bundle:
         for doc, pages in get_chunk_provenance(item["chunk"]).items():
             merged.setdefault(doc, set()).update(pages)
@@ -328,61 +266,44 @@ def build_reference_list(bundle):
 
 
 # =====================================================
-# CLAIM SEGMENTATION
+# CLAIM SEGMENTATION + ATTRIBUTION
 # =====================================================
 
 def segment_claims(answer):
     lines = answer.split("\n")
     claims = []
-
     for line in lines:
         line = line.strip()
         if not line:
             continue
-
         if re.match(r"^(\d+\.|\-|\*)\s+", line):
             claims.append(line)
             continue
-
-        parts = re.split(r'(?<=[.!?])\s+', line)
-        claims.extend(p.strip() for p in parts if p.strip())
-
+        claims.extend(p.strip() for p in re.split(r'(?<=[.!?])\s+', line) if p.strip())
     return claims
 
-
-# =====================================================
-# CLAIM → EVIDENCE ATTRIBUTION
-# =====================================================
 
 def find_best_chunk_for_claim(claim, bundle):
     best_chunk = None
     best_score = 0
-
     for item in bundle:
-        chunk_text = repair_text(item["chunk"].get("text"))
-        score = overlap(claim, chunk_text)
-
+        score = overlap(claim, item["chunk"].get("text"))
         if score > best_score:
             best_score = score
             best_chunk = item["chunk"]
-
     return best_chunk
 
 
 def attribute_claims_to_refs(claims, bundle, doc_to_ref):
     attributed = []
-
     for claim in claims:
         chunk = find_best_chunk_for_claim(claim, bundle)
-
         if not chunk:
             attributed.append((claim, ["[unverified]"]))
             continue
-
         prov = get_chunk_provenance(chunk)
         refs = [doc_to_ref[d] for d in prov if d in doc_to_ref]
         attributed.append((claim, sorted(set(refs))))
-
     return attributed
 
 
@@ -391,7 +312,7 @@ def inject_citations(attributed_claims):
 
 
 # =====================================================
-# LLM ANSWER
+# LLM
 # =====================================================
 
 def llm_generate_answer(query, context):
@@ -415,7 +336,7 @@ Do not include citations.
 
 
 # =====================================================
-# CLAIM-LEVEL METRICS
+# METRICS
 # =====================================================
 
 def compute_evidence_metrics(answer):
@@ -437,69 +358,126 @@ def compute_evidence_metrics(answer):
 
 
 # =====================================================
+# SUBQUERY EXTRACTION
+# =====================================================
+
+def extract_subqueries(record):
+
+    subs = record.get("subqueries", [])
+
+    if not subs:
+        return [{"question": record["original_query"], "chunks": []}]
+
+    questions = []
+    has_real = False
+
+    for sub in subs:
+        q = None
+        for k, v in sub.items():
+            if isinstance(v, str) and len(v.split()) > 5:
+                q = v.strip()
+                has_real = True
+                break
+        questions.append(q)
+
+    if not has_real:
+        original = record["original_query"]
+        split_q = [x.strip() for x in re.split(r"\?\s+|\?$", original) if x.strip()]
+        while len(split_q) < len(subs):
+            split_q.append(original)
+        questions = split_q[:len(subs)]
+
+    return [
+        {"question": questions[i], "chunks": sub.get("retrieved_chunks", [])}
+        for i, sub in enumerate(subs)
+    ]
+
+
+# =====================================================
 # MAIN PIPELINE
 # =====================================================
 
 def generate_answer_from_last_entry():
 
     record = load_jsonl(MEMORY_FILE)[-1]
-    query = record["original_query"]
     query_id = record["query_id"]
+    original_query = record["original_query"]
 
-    print("Processing query:", query)
+    subqueries = extract_subqueries(record)
 
-    chunks = []
-    for s in record.get("subqueries", []):
-        for c in s.get("retrieved_chunks", []):
-            chunks.append({"chunk": c, "score": c.get("rrf_score", 0)})
+    final_blocks = []
+    full_bundle = []
+    subquery_results = []
 
-    chunks.sort(key=lambda x: x["score"], reverse=True)
-    bundle = chunks[:MAX_CHUNKS_INITIAL]
+    for i, sub in enumerate(subqueries, 1):
 
-    refs, doc_to_ref = build_reference_list(bundle)
+        chunks = [{"chunk": c, "score": c.get("rrf_score", 0)} for c in sub["chunks"]]
+        chunks.sort(key=lambda x: x["score"], reverse=True)
+        bundle = chunks[:MAX_CHUNKS_INITIAL]
 
-    context = "\n\n".join(
-        repair_text(item["chunk"].get("text")) +
-        "\nSOURCE " +
-        " ".join(doc_to_ref[d] for d in get_chunk_provenance(item["chunk"]) if d in doc_to_ref)
-        for item in bundle
-    )
+        full_bundle.extend(bundle)
 
-    raw_answer = llm_generate_answer(query, context)
+        refs, doc_to_ref = build_reference_list(bundle)
 
-    claims = segment_claims(raw_answer)
-    attributed = attribute_claims_to_refs(claims, bundle, doc_to_ref)
-    grounded_answer = inject_citations(attributed)
+        context = "\n\n".join(
+            repair_text(item["chunk"].get("text")) +
+            "\nSOURCE " +
+            " ".join(doc_to_ref[d]
+            for d in get_chunk_provenance(item["chunk"])
+            if d in doc_to_ref)
+            for item in bundle
+        )
 
-    metrics = compute_evidence_metrics(grounded_answer)
+        raw_answer = llm_generate_answer(sub["question"], context)
+        claims = segment_claims(raw_answer)
+        attributed = attribute_claims_to_refs(claims, bundle, doc_to_ref)
+        grounded_answer = inject_citations(attributed)
 
-    if refs:
-        grounded_answer += "\n\nREFERENCES\n" + "\n".join(refs)
+        metrics = compute_evidence_metrics(grounded_answer)
+
+        subquery_results.append({
+            "index": i,
+            "question": sub["question"],
+            "answer": grounded_answer,
+            "used_chunk_ids": [b["chunk"]["chunk_id"] for b in bundle],
+            "evidence_metrics": metrics,
+            "references": refs
+        })
+
+        display_block = (
+            f"QUESTION {i}:\n{sub['question']}\n\n"
+            f"ANSWER:\n{grounded_answer}"
+        )
+        if refs:
+            display_block += "\n\nREFERENCES\n" + "\n".join(refs)
+
+        final_blocks.append(display_block)
+
+    final_answer = "\n\n" + ("\n\n" + "="*60 + "\n\n").join(final_blocks)
+
+    aggregate_metrics = {
+        "avg_citation_coverage":
+            round(sum(s["evidence_metrics"]["citation_coverage"] for s in subquery_results)/len(subquery_results), 3),
+        "total_supported_claims":
+            sum(s["evidence_metrics"]["supported_claims"] for s in subquery_results),
+        "total_claims":
+            sum(s["evidence_metrics"]["claim_count"] for s in subquery_results)
+    }
 
     result = {
         "query_id": query_id,
-        "original_query": query,
-        "used_chunk_ids": [c["chunk"]["chunk_id"] for c in bundle],
-        "answer": grounded_answer,
-        "evidence_metrics": metrics
+        "original_query": original_query,
+        "used_chunk_ids": [c["chunk"]["chunk_id"] for c in full_bundle],
+        "answer": final_answer,
+        "subquery_results": subquery_results,
+        "aggregate_evidence_metrics": aggregate_metrics
     }
 
     result["dedup_id"] = stable_hash(query_id, str(result["used_chunk_ids"]))
 
-    # data = load_json_array(OUTPUT_FILE)
-    # data.append(result)
-    # save_json_array(OUTPUT_FILE, data)
-
-    # print("✅ Stored deterministic grounded answer")
     data = load_json_array(OUTPUT_FILE)
-
-    existing_ids = {item.get("dedup_id") for item in data}
-
-    if result["dedup_id"] in existing_ids:
-        print("⚠ Duplicate result — not stored")
-    else:
+    if result["dedup_id"] not in {d.get("dedup_id") for d in data}:
         data.append(result)
         save_json_array(OUTPUT_FILE, data)
-        print("✅ Stored deterministic grounded answer")
 
     return result
