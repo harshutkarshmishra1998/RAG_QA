@@ -1,4 +1,4 @@
-from answer_generation.answer_generation import generate_answer_from_last_entry
+from answer_generation.answer_generation_v2 import generate_answer_from_last_entry
 import json
 
 # =====================================================
