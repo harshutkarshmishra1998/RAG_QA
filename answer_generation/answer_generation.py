@@ -128,21 +128,13 @@ DOCUMENT_REGISTRY = load_document_registry(DOCUMENTS_FILE)
 # LOAD SOURCE REGISTRY
 # =====================================================
 
-# 
-
 def load_source_registry(path: Path):
     registry = {}
 
     for row in load_jsonl(path):
         source_id = row.get("source_id") or row.get("id")
-
         uri = row.get("source_uri")
-
-        if uri:
-            filename = Path(uri).stem
-        else:
-            filename = None
-
+        filename = Path(uri).stem if uri else None
         registry[source_id] = filename
 
     print("Loaded sources:", len(registry))
@@ -221,7 +213,6 @@ def get_chunk_provenance(chunk):
     if not unit_ids:
         unit_ids = CHUNK_UNIT_MAP.get(str(chunk.get("chunk_id")), [])
 
-    # fuzzy recovery
     if not unit_ids:
         chunk_text = repair_chunk_text(chunk.get("text", "")).lower()
         best_uid = None
@@ -286,9 +277,7 @@ def format_page_ranges(pages):
             prev = p
     ranges.append((start, prev))
 
-    return ", ".join(
-        str(a) if a == b else f"{a}-{b}" for a, b in ranges
-    )
+    return ", ".join(str(a) if a == b else f"{a}-{b}" for a, b in ranges)
 
 
 def build_reference_list(bundle):
@@ -319,30 +308,180 @@ def get_all_chunks_sorted(record):
 
 
 # =====================================================
-# CONTEXT BUILD
+# SUBQUERY EXTRACTION
 # =====================================================
 
-def build_context(bundle):
-    blocks = []
-    for item in bundle:
-        text = repair_chunk_text(item["chunk"].get("text", ""))
+# def extract_subqueries(record):
+#     subs = []
+
+#     if record.get("subqueries"):
+#         for i, sub in enumerate(record["subqueries"], 1):
+#             q = (
+#                 sub.get("subquery")
+#                 or sub.get("query")
+#                 or sub.get("question")
+#                 or f"Subquestion {i}"
+#             )
+#             subs.append({
+#                 "question": q,
+#                 "chunks": sub.get("retrieved_chunks", [])
+#             })
+#     else:
+#         subs.append({
+#             "question": record["original_query"],
+#             "chunks": []
+#         })
+
+#     return subs
+
+def extract_subqueries(record):
+
+    subs = record.get("subqueries", [])
+
+    if not subs:
+        return [{
+            "question": record["original_query"],
+            "chunks": []
+        }]
+
+    # try to detect actual stored subquery text
+    has_real_questions = False
+    questions = []
+
+    for sub in subs:
+        for k, v in sub.items():
+            if isinstance(v, str) and len(v.split()) > 5:
+                questions.append(v.strip())
+                has_real_questions = True
+                break
+        else:
+            questions.append(None)
+
+    # if no real subquery text stored → split original query
+    if not has_real_questions:
+
+        original = record["original_query"]
+
+        split_questions = [
+            q.strip()
+            for q in re.split(r"\?\s+|\?$", original)
+            if q.strip()
+        ]
+
+        # ensure count alignment
+        while len(split_questions) < len(subs):
+            split_questions.append(original)
+
+        questions = split_questions[:len(subs)]
+
+    result = []
+
+    for i, sub in enumerate(subs):
+        result.append({
+            "question": questions[i],
+            "chunks": sub.get("retrieved_chunks", [])
+        })
+
+    return result
+
+
+# =====================================================
+# CONTEXT BUILD (PER SUBQUERY)
+# =====================================================
+
+# def build_context(chunks):
+#     blocks = []
+#     for ch in chunks:
+#         text = repair_chunk_text(ch.get("text", ""))
+#         if chunk_is_usable(text):
+#             blocks.append(text)
+#     return "\n\n".join(blocks)
+
+def build_context(chunks):
+
+    usable_blocks = []
+    raw_blocks = []
+
+    for ch in chunks:
+        text = repair_chunk_text(ch.get("text", ""))
+
+        if not text:
+            continue
+
+        raw_blocks.append(text)
+
         if chunk_is_usable(text):
-            blocks.append(text)
-    return "\n\n".join(blocks)
+            usable_blocks.append(text)
+
+    # prefer clean usable chunks
+    if usable_blocks:
+        return "\n\n".join(usable_blocks)
+
+    # fallback if filtering removed everything
+    if raw_blocks:
+        print("⚠ using raw chunks (filter removed all)")
+        return "\n\n".join(raw_blocks)
+
+    return ""
+
 
 
 # =====================================================
-# LLM CALL
+# STRUCTURED LLM ANSWER (PER QUESTION)
 # =====================================================
 
-def llm_answer(query: str, context: str):
+# def llm_answer_single(question, context):
+
+#     system = """
+# You are a retrieval-grounded QA system.
+
+# Answer ONLY the specific question provided.
+# Use ONLY the context.
+
+# Rules:
+# 1. Answer completely and precisely
+# 2. If context insufficient say: Insufficient evidence in provided context
+# 3. Do not include unrelated information
+# 4. Do not merge with other questions
+# 5. Be clear and structured
+# """
+
+#     user = f"QUESTION:\n{question}\n\nCONTEXT:\n{context}"
+
+#     resp = client.chat.completions.create(
+#         model=GROQ_MODEL,
+#         messages=[
+#             {"role": "system", "content": system},
+#             {"role": "user", "content": user}
+#         ],
+#         temperature=0,
+#         max_tokens=600,
+#     )
+
+#     return resp.choices[0].message.content.strip()
+
+def llm_answer_single(question, context):
 
     system = """
 You are a retrieval-grounded QA system.
-Answer ONLY from context.
+
+Use the provided context to answer the question.
+
+Rules:
+1. Base your answer strictly on information contained in the context
+2. You MAY synthesize, summarize, or reorganize information from multiple context passages
+3. The answer does NOT need to appear as an exact sentence match
+4. If context provides partial information, answer with what is supported
+5. Only say "Insufficient evidence" if the context truly contains no relevant information
+6. Be precise and factual
 """
 
-    user = f"QUESTION:\n{query}\n\nCONTEXT:\n{context}"
+    user = f"""QUESTION:
+{question}
+
+CONTEXT:
+{context}
+"""
 
     resp = client.chat.completions.create(
         model=GROQ_MODEL,
@@ -358,28 +497,59 @@ Answer ONLY from context.
 
 
 # =====================================================
-# SELF HEALING
+# SELF HEALING PER SUBQUERY
 # =====================================================
 
-def self_healing_answer(query, record):
-    ranked = get_all_chunks_sorted(record)
+# def answer_subquery_with_self_healing(question, chunks):
 
-    print("Attempt 1: top chunks")
+#     ranked = sorted(
+#         [{"chunk": c, "score": c.get("rrf_score", 0.0)} for c in chunks],
+#         key=lambda x: x["score"],
+#         reverse=True
+#     )
+
+#     bundle = ranked[:MAX_CHUNKS_INITIAL]
+#     context = build_context([b["chunk"] for b in bundle])
+
+#     if not context:
+#         bundle = ranked[:MAX_CHUNKS_EXPANDED]
+#         context = build_context([b["chunk"] for b in bundle])
+
+#     if not context:
+#         return "No usable evidence found.", []
+
+#     answer = llm_answer_single(question, context)
+#     return answer, bundle
+
+def answer_subquery_with_self_healing(question, chunks, record):
+
+    ranked = sorted(
+        [{"chunk": c, "score": c.get("rrf_score", 0.0)} for c in chunks],
+        key=lambda x: x["score"],
+        reverse=True
+    )
+
+    # attempt 1
     bundle = ranked[:MAX_CHUNKS_INITIAL]
-    context = build_context(bundle)
+    context = build_context([b["chunk"] for b in bundle])
 
-    if context:
-        return llm_answer(query, context), bundle
+    # attempt 2
+    if not context:
+        bundle = ranked[:MAX_CHUNKS_EXPANDED]
+        context = build_context([b["chunk"] for b in bundle])
 
-    print("Recovery: expanding chunks")
-    bundle = ranked[:MAX_CHUNKS_EXPANDED]
-    context = build_context(bundle)
+    # final rescue → global retrieval
+    if not context:
+        print("⚠ fallback to global top chunks")
+        global_ranked = get_all_chunks_sorted(record)
+        bundle = global_ranked[:MAX_CHUNKS_EXPANDED]
+        context = build_context([b["chunk"] for b in bundle])
 
-    if context:
-        return llm_answer(query, context), bundle
+    if not context:
+        return "No usable evidence found.", []
 
-    return "No usable evidence found.", []
-
+    answer = llm_answer_single(question, context)
+    return answer, bundle
 
 # =====================================================
 # MAIN PIPELINE
@@ -393,23 +563,42 @@ def generate_answer_from_last_entry():
     query_id = record.get("query_id")
     query = record.get("original_query")
 
-    print("Processing query:", query)
+    subqueries = extract_subqueries(record)
 
-    answer, bundle = self_healing_answer(query, record)
+    structured_blocks = []
+    full_bundle = []
 
-    refs = build_reference_list(bundle)
+    for i, sub in enumerate(subqueries, 1):
+
+        print(f"Processing subquery {i}")
+
+        answer, bundle = answer_subquery_with_self_healing(
+            sub["question"],
+            sub["chunks"],
+            record
+        )
+
+        structured_blocks.append(
+            f"QUESTION {i}:\n{sub['question']}\n\nANSWER:\n{answer}"
+        )
+
+        full_bundle.extend(bundle)
+
+    final_answer = "\n\n" + ("\n\n" + "="*60 + "\n\n").join(structured_blocks)
+
+    refs = build_reference_list(full_bundle)
     if refs:
-        answer += "\n\nREFERENCES\n"
+        final_answer += "\n\nREFERENCES\n"
         for r in refs:
-            answer += r + "\n"
+            final_answer += r + "\n"
 
-    chunk_ids = [str(x["chunk"].get("chunk_id")) for x in bundle]
+    chunk_ids = [str(x["chunk"].get("chunk_id")) for x in full_bundle]
 
     result = {
         "query_id": query_id,
         "original_query": query,
         "used_chunk_ids": chunk_ids,
-        "answer": answer
+        "answer": final_answer
     }
 
     dedup_id = stable_hash(query_id, "|".join(chunk_ids))
@@ -422,17 +611,11 @@ def generate_answer_from_last_entry():
         if item.get("dedup_id") == dedup_id:
             existing[i] = result
             updated = True
-            print("♻ Updated existing answer")
             break
 
     if not updated:
         existing.append(result)
-        print("✅ Stored new answer")
 
     save_json_array(OUTPUT_FILE, existing)
-    # print("\n===== FULL RAW SOURCE RECORD =====")
-    # for row in load_jsonl(SOURCES_FILE):
-    #     print(json.dumps(row, indent=2))
-    #     break
-    # print("=================================\n")
+
     return result
