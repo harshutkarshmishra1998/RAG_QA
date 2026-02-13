@@ -79,6 +79,28 @@
           ]
         }
       ]
+    },
+    {
+      "id": "483d54df90187df802e2c1949abf4c7391c232e1d8582a2097bcb55c9eb1e151",
+      "original_query": "What happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then?",
+      "decomposed": [
+        {
+          "subquery_id": "b796e2ffa2ae9ca76c54a96f88008bc4b5cb34626b3c3977e457410cd0e7e295",
+          "original_subquery": "What happens if joint account owners do not have equal withdrawal rights?",
+          "enhanced_query": "What are the consequences for joint account owners if they do not have equal withdrawal rights?",
+          "multi_queries": [
+            "What happens if joint account owners do not have equal withdrawal rights?",
+            "What are the implications for joint account owners without equal withdrawal rights?",
+            "What are the consequences for joint account owners with unequal withdrawal rights?"
+          ]
+        },
+        {
+          "subquery_id": "e06cfb8f9b413835675996215fe74fc6de771929f034a3d9573d1b15b44b78bb",
+          "original_subquery": "how is insurance determined then?",
+          "enhanced_query": "how is insurance determined then?",
+          "multi_queries": []
+        }
+      ]
     }
   ]
 }

@@ -13,9 +13,12 @@ from ingestion.pdf_ingestion import ingest_pdf
 from pipeline_incremental.pipeline_incremental import run_incremental_pipeline
 from query.query_pipeline_v3 import process_user_query
 from retrieval.retrieval_pipeline import retrieve_latest_query_chunks
-from answer_generation.answer_generation_v3 import generate_answer_from_last_entry
 
-# cleaner module
+# answer generation versions
+from answer_generation.answer_generation_v2 import generate_answer_from_last_entry as generate_answer_v2
+from answer_generation.answer_generation_v3 import generate_answer_from_last_entry as generate_answer_v3
+
+# cleaner
 from patch.system_startup_cleaner import clean_data_directories
 
 
@@ -28,7 +31,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# IMPORTANT — unified project root
 PROJECT_ROOT_NEW = Path(__file__).resolve().parents[0]
 UPLOAD_DIR = PROJECT_ROOT_NEW / "uploaded_files"
 STORAGE_DIR = PROJECT_ROOT_NEW / "storage"
@@ -51,6 +53,9 @@ if "pipeline_ready" not in st.session_state:
 
 if "multi_doc_confirmed" not in st.session_state:
     st.session_state.multi_doc_confirmed = False
+
+if "answer_engine" not in st.session_state:
+    st.session_state.answer_engine = "v3 (Grounded + Evidence)"
 
 
 # =========================================================
@@ -102,49 +107,33 @@ def save_uploaded_file(uploaded_file) -> Path:
     return path
 
 
-# def load_existing_documents():
-#     docs = []
-#     if SOURCES_FILE.exists():
-#         with open(SOURCES_FILE, "r", encoding="utf-8") as f:
-#             for line in f:
-#                 try:
-#                     data = json.loads(line.strip())
-#                     if "source_name" in data:
-#                         docs.append(data["source_name"])
-#                 except:
-#                     pass
-#     return sorted(set(docs))
-
 def load_existing_documents():
     docs = []
-
     if SOURCES_FILE.exists():
         with open(SOURCES_FILE, "r", encoding="utf-8") as f:
             for line in f:
                 try:
                     data = json.loads(line.strip())
                     uri = data.get("source_uri")
-
                     if uri:
                         filename = Path(uri).name
-
-                        # remove extension
                         name = filename.replace(".pdf", "")
-
-                        # remove timestamp prefix (first 2 underscore parts)
                         parts = name.split("_", 2)
                         if len(parts) == 3:
                             name = parts[2]
-
-                        # replace underscores with spaces
                         name = name.replace("_", " ")
-
                         docs.append(name)
-
                 except Exception:
                     pass
-
     return sorted(set(docs))
+
+
+def run_answer_generation():
+    if st.session_state.answer_engine.startswith("v3"):
+        return generate_answer_v3()
+    else:
+        return generate_answer_v2()
+
 
 # ==============================
 # SIDEBAR
@@ -175,6 +164,20 @@ if existing_docs:
 else:
     st.sidebar.caption("No documents indexed yet")
 
+
+st.sidebar.divider()
+
+
+# ---------- Answer engine selector ----------
+st.sidebar.subheader("🧠 Answer Generation Engine")
+engine_choice = st.sidebar.radio(
+    "Select version",
+    ["v3 (Grounded + Evidence)", "v2 (Legacy)"],
+    index=0 if st.session_state.answer_engine.startswith("v3") else 1
+)
+st.session_state.answer_engine = engine_choice
+
+
 st.sidebar.divider()
 
 
@@ -186,7 +189,6 @@ uploaded_files = st.sidebar.file_uploader(
 )
 
 
-# Reset confirmation when uploader cleared
 if not uploaded_files:
     st.session_state.multi_doc_confirmed = False
 
@@ -198,7 +200,6 @@ if uploaded_files:
 
     multiple_uploads = len(uploaded_files) > 1
     adding_to_existing = len(existing_docs) > 0
-
     knowledge_conflict = multiple_uploads or adding_to_existing
 
     if knowledge_conflict and not st.session_state.multi_doc_confirmed:
@@ -250,7 +251,6 @@ if uploaded_files:
                         unsafe_allow_html=True
                     )
 
-                    # CRITICAL — refresh sidebar knowledge sources
                     st.rerun()
 
             except Exception as e:
@@ -283,7 +283,7 @@ else:
                 try:
                     process_user_query(query)
                     retrieve_latest_query_chunks()
-                    payload = generate_answer_from_last_entry()
+                    payload = run_answer_generation()
 
                     if isinstance(payload, dict):
                         answer = payload.get("answer") or str(payload)
@@ -294,6 +294,7 @@ else:
                     answer = f"Error generating answer: {str(e)}"
 
             st.markdown(answer)
+            st.caption(f"Generated using {st.session_state.answer_engine}")
 
         st.session_state.chat_history.append({"role": "assistant", "content": answer})
 

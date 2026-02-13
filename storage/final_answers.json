@@ -220,5 +220,122 @@
       "total_claims": 1
     },
     "dedup_id": "fd2a4db944cb08bfda396e510be5f46749998257a2eff023d01b5f9efba23ed7"
+  },
+  {
+    "query_id": "483d54df90187df802e2c1949abf4c7391c232e1d8582a2097bcb55c9eb1e151",
+    "original_query": "What happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then?",
+    "used_chunk_ids": [
+      1,
+      2,
+      10,
+      14,
+      2,
+      1
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then\n\nANSWER:\nIf joint account owners do not have equal withdrawal rights, the ORC will be determined by the actual ownership interest of the named account holders [1]. \n\nFor accounts where the owners do not have equal withdrawal rights, the account should be reclassified as a single ownership account for deposit insurance purposes [1]. \n\nThe actual ownership interest of the named account holders will determine the ORC for non-qualifying joint accounts [1]. \n\nFor non-qualifying joint accounts, the ORC will be determined by the actual ownership interest of the named account holders, and the account should be reclassified as a single ownership account for deposit insurance purposes [1]. \n\nThe ORC for non-qualifying joint accounts will be determined by the actual ownership interest of the named account holders, and the account should be reclassified as a single ownership account for deposit insurance purposes [1].\n\nInsurance for joint account owners with unequal withdrawal rights will be determined based on their actual ownership interest [1]. \n\nThe insured amount for each account co-owner will be calculated based on their actual ownership interest in the account [1]. \n\nThe uninsured amount for each account co-owner will be calculated based on their actual ownership interest in the account [1]. \n\nThe insured amount of the owner for each individual account is the difference between the co-owner’s funds in that account and the uninsured amount calculated based on the steps above [1].\n\nREFERENCES\n[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3\n\n============================================================\n\nQUESTION 2:\nWhat happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then?\n\nANSWER:\nIf joint account owners do not have equal withdrawal rights, the ownership interest of the named account holders will determine the ORC (Ownership Right Category). \n\nFor example, if individuals are the named account holders for a non-qualifying joint account, then refer to Section 4.1.2 of this document for Single Accounts [1].\n\nIn this case, the account will be treated as a single ownership account for deposit insurance purposes [1].\n\nIf the account has no eligible beneficiaries, then refer to Section 4.1.2 or Section 4.1.3 of this document for Single or Joint Accounts depending on the grantor(s) [1].\n\nInsurance is determined based on the ownership interest of the account holders. If the account meets the definition of a single account, then set DP_Right_Capacity equal to SGL, and the account holder is entitled to SMDIA (Standard Maximum Deposit Insurance Amount) for the combined amount of their interests in all single accounts at the same CI (Control Number) [1].\n\nIf the account meets the definition of a qualifying joint account, then set DP_Right_Capacity equal to JNT, and each co-owner of a qualifying joint account is insured up to SMDIA for their share of all qualifying joint accounts at the same CI [1].\n\nIn the case of a non-qualifying joint account, the funds should be treated as jointly owned by the remaining natural person co-owners [1].\n\nIf only one natural person owner exists, the account should be reclassified as a single ownership account for deposit insurance purposes [1].\n\nIf the account has no eligible beneficiaries, then refer to Section 4.1.2 or Section 4.1.3 of this document for Single or Joint Accounts depending on the grantor(s) [1].\n\nReferences:\n[1] FDIC – Part 370 Recordkeeping Information Technology Functional Guide Version 3.0\n\nREFERENCES\n[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3, 5",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then",
+        "answer": "If joint account owners do not have equal withdrawal rights, the ORC will be determined by the actual ownership interest of the named account holders [1]. \n\nFor accounts where the owners do not have equal withdrawal rights, the account should be reclassified as a single ownership account for deposit insurance purposes [1]. \n\nThe actual ownership interest of the named account holders will determine the ORC for non-qualifying joint accounts [1]. \n\nFor non-qualifying joint accounts, the ORC will be determined by the actual ownership interest of the named account holders, and the account should be reclassified as a single ownership account for deposit insurance purposes [1]. \n\nThe ORC for non-qualifying joint accounts will be determined by the actual ownership interest of the named account holders, and the account should be reclassified as a single ownership account for deposit insurance purposes [1].\n\nInsurance for joint account owners with unequal withdrawal rights will be determined based on their actual ownership interest [1]. \n\nThe insured amount for each account co-owner will be calculated based on their actual ownership interest in the account [1]. \n\nThe uninsured amount for each account co-owner will be calculated based on their actual ownership interest in the account [1]. \n\nThe insured amount of the owner for each individual account is the difference between the co-owner’s funds in that account and the uninsured amount calculated based on the steps above [1].",
+        "used_chunk_ids": [
+          1,
+          2,
+          10
+        ],
+        "evidence_metrics": {
+          "sentence_count": 9,
+          "supported_sentences": 9,
+          "citation_coverage": 1.0,
+          "avg_evidence_confidence": 0.994
+        },
+        "references": [
+          "[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3"
+        ]
+      },
+      {
+        "index": 2,
+        "question": "What happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then?",
+        "answer": "If joint account owners do not have equal withdrawal rights, the ownership interest of the named account holders will determine the ORC (Ownership Right Category). \n\nFor example, if individuals are the named account holders for a non-qualifying joint account, then refer to Section 4.1.2 of this document for Single Accounts [1].\n\nIn this case, the account will be treated as a single ownership account for deposit insurance purposes [1].\n\nIf the account has no eligible beneficiaries, then refer to Section 4.1.2 or Section 4.1.3 of this document for Single or Joint Accounts depending on the grantor(s) [1].\n\nInsurance is determined based on the ownership interest of the account holders. If the account meets the definition of a single account, then set DP_Right_Capacity equal to SGL, and the account holder is entitled to SMDIA (Standard Maximum Deposit Insurance Amount) for the combined amount of their interests in all single accounts at the same CI (Control Number) [1].\n\nIf the account meets the definition of a qualifying joint account, then set DP_Right_Capacity equal to JNT, and each co-owner of a qualifying joint account is insured up to SMDIA for their share of all qualifying joint accounts at the same CI [1].\n\nIn the case of a non-qualifying joint account, the funds should be treated as jointly owned by the remaining natural person co-owners [1].\n\nIf only one natural person owner exists, the account should be reclassified as a single ownership account for deposit insurance purposes [1].\n\nIf the account has no eligible beneficiaries, then refer to Section 4.1.2 or Section 4.1.3 of this document for Single or Joint Accounts depending on the grantor(s) [1].\n\nReferences:\n[1] FDIC – Part 370 Recordkeeping Information Technology Functional Guide Version 3.0",
+        "used_chunk_ids": [
+          14,
+          2,
+          1
+        ],
+        "evidence_metrics": {
+          "sentence_count": 11,
+          "supported_sentences": 9,
+          "citation_coverage": 0.818,
+          "avg_evidence_confidence": 0.971
+        },
+        "references": [
+          "[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3, 5"
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.909,
+      "avg_evidence_confidence": 0.982,
+      "total_supported_sentences": 18,
+      "total_sentences": 20
+    },
+    "dedup_id": "192ce2eee120bbbf64990ae1e11911cae0e2248999372b258ffaaead3989a9f5"
+  },
+  {
+    "query_id": "483d54df90187df802e2c1949abf4c7391c232e1d8582a2097bcb55c9eb1e151",
+    "original_query": "What happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then?",
+    "used_chunk_ids": [
+      1,
+      2,
+      10,
+      14,
+      2,
+      1
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then\n\nANSWER:\nIf joint account owners do not have equal withdrawal rights, the FDIC will determine the insurance coverage based on the actual ownership interest of the named account holders. [1]\nIn this case, the FDIC will not split the total account balance and accrued interest equally across the total number of account co-owners, as is done for qualifying joint accounts. [1]\nInstead, the FDIC will determine the ownership interest of each co-owner and use that to calculate the insurance coverage. [1]\nHere's how it works: [1]\n1. The FDIC will identify the co-owners of the account and determine their actual ownership interest. [1]\n2. The FDIC will then calculate the total account balance and accrued interest for each co-owner based on their ownership interest. [1]\n3. If the total balance plus accrued interest of a co-owner does not exceed SMDIA, then the funds of that co-owner are fully insured. [1]\n4. If the total balance plus accrued interest of a co-owner exceeds SMDIA, then the owner's funds in excess of SMDIA are not insured. [1]\n5. If there are uninsured funds, the FDIC will calculate the uninsured amount for each co-owner based on their ownership interest. [1]\n6. The FDIC will then apply debits to the appropriate account to reflect the uninsured amount. [1]\n7. Finally, the FDIC will calculate the insured amount for each co-owner for each individual account by subtracting the uninsured amount from the co-owner's funds in that account. [1]\nFor example, let's say there are two co-owners of a joint account, with one co-owner owning 60% of the account and the other co-owner owning 40%. [1]\nIf the total account balance is $100,000, the FDIC would calculate the insurance coverage as follows: [1]\n* Co-owner 1 (60% owner): $60,000 (60% of $100,000) is fully insured, but $40,000 (40% of $100,000) is not insured. [1]\n* Co-owner 2 (40% owner): $40,000 (40% of $100,000) is fully insured. [1]\nIn this example, Co-owner 1 would have $60,000 insured and $40,000 uninsured, while Co-owner 2 would have $40,000 insured. [1]\n\nREFERENCES\n[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3\n    Evidence:\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...\n      - ) For accounts that do not qualify as joint: a) For accounts that include one or more co-owners that are not natural persons the funds should be treated as jointly owned by the remaining natural person co-owners. If...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n\n============================================================\n\nQUESTION 2:\nWhat happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then?\n\nANSWER:\nIf joint account owners do not have equal withdrawal rights, the Ownership Rights Capacity (ORC) will be determined by the actual ownership interest of the named account holders. [1]\nIn this case, the account will not be treated as a qualifying joint account, and the funds will not be split equally across the total number of account co-owners. [1]\nInstead, the account will be treated as a single ownership account, and the account holder will be entitled to the SMDIA for the combined amount of their interests in all single accounts at the same CI. [1]\nTo determine the ORC, the actual ownership interest of the named account holders will be considered. [1]\nFor example, if individuals are the named account holders for a non-qualifying joint account, the account will be reclassified as a single account, and the account holder will be entitled to the SMDIA for their share of the account. [1]\nIn this scenario, the insurance determination will be based on the actual ownership interest of the account holders, rather than equal withdrawal rights. [1]\nThe account holder with the largest ownership interest will be entitled to the SMDIA for their share of the account, and any excess funds will not be insured. [1]\nFor example, if two individuals, A and B, have a joint account with a balance of $100,000, but A has a 60% ownership interest and B has a 40% ownership interest, the account will be treated as a single ownership account, and A will be entitled to $60,000 (60% of $100,000) in insurance coverage, while B will be entitled to $40,000 (40% of $100,000) in insurance coverage. [1]\n\nREFERENCES\n[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3, 5\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version other half ($) is treated as B’s SGL ORC. These totals are subject to aggregation with any other SGL accounts that A or B has at the same Cl. d)...\n      - ) For accounts that do not qualify as joint: a) For accounts that include one or more co-owners that are not natural persons the funds should be treated as jointly owned by the remaining natural person co-owners. If...\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then",
+        "answer": "If joint account owners do not have equal withdrawal rights, the FDIC will determine the insurance coverage based on the actual ownership interest of the named account holders. [1]\nIn this case, the FDIC will not split the total account balance and accrued interest equally across the total number of account co-owners, as is done for qualifying joint accounts. [1]\nInstead, the FDIC will determine the ownership interest of each co-owner and use that to calculate the insurance coverage. [1]\nHere's how it works: [1]\n1. The FDIC will identify the co-owners of the account and determine their actual ownership interest. [1]\n2. The FDIC will then calculate the total account balance and accrued interest for each co-owner based on their ownership interest. [1]\n3. If the total balance plus accrued interest of a co-owner does not exceed SMDIA, then the funds of that co-owner are fully insured. [1]\n4. If the total balance plus accrued interest of a co-owner exceeds SMDIA, then the owner's funds in excess of SMDIA are not insured. [1]\n5. If there are uninsured funds, the FDIC will calculate the uninsured amount for each co-owner based on their ownership interest. [1]\n6. The FDIC will then apply debits to the appropriate account to reflect the uninsured amount. [1]\n7. Finally, the FDIC will calculate the insured amount for each co-owner for each individual account by subtracting the uninsured amount from the co-owner's funds in that account. [1]\nFor example, let's say there are two co-owners of a joint account, with one co-owner owning 60% of the account and the other co-owner owning 40%. [1]\nIf the total account balance is $100,000, the FDIC would calculate the insurance coverage as follows: [1]\n* Co-owner 1 (60% owner): $60,000 (60% of $100,000) is fully insured, but $40,000 (40% of $100,000) is not insured. [1]\n* Co-owner 2 (40% owner): $40,000 (40% of $100,000) is fully insured. [1]\nIn this example, Co-owner 1 would have $60,000 insured and $40,000 uninsured, while Co-owner 2 would have $40,000 insured. [1]",
+        "used_chunk_ids": [
+          1,
+          2,
+          10
+        ],
+        "evidence_metrics": {
+          "claim_count": 16,
+          "supported_claims": 16,
+          "citation_coverage": 1.0
+        },
+        "references": [
+          "[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3\n    Evidence:\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...\n      - ) For accounts that do not qualify as joint: a) For accounts that include one or more co-owners that are not natural persons the funds should be treated as jointly owned by the remaining natural person co-owners. If...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for..."
+        ]
+      },
+      {
+        "index": 2,
+        "question": "What happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then?",
+        "answer": "If joint account owners do not have equal withdrawal rights, the Ownership Rights Capacity (ORC) will be determined by the actual ownership interest of the named account holders. [1]\nIn this case, the account will not be treated as a qualifying joint account, and the funds will not be split equally across the total number of account co-owners. [1]\nInstead, the account will be treated as a single ownership account, and the account holder will be entitled to the SMDIA for the combined amount of their interests in all single accounts at the same CI. [1]\nTo determine the ORC, the actual ownership interest of the named account holders will be considered. [1]\nFor example, if individuals are the named account holders for a non-qualifying joint account, the account will be reclassified as a single account, and the account holder will be entitled to the SMDIA for their share of the account. [1]\nIn this scenario, the insurance determination will be based on the actual ownership interest of the account holders, rather than equal withdrawal rights. [1]\nThe account holder with the largest ownership interest will be entitled to the SMDIA for their share of the account, and any excess funds will not be insured. [1]\nFor example, if two individuals, A and B, have a joint account with a balance of $100,000, but A has a 60% ownership interest and B has a 40% ownership interest, the account will be treated as a single ownership account, and A will be entitled to $60,000 (60% of $100,000) in insurance coverage, while B will be entitled to $40,000 (40% of $100,000) in insurance coverage. [1]",
+        "used_chunk_ids": [
+          14,
+          2,
+          1
+        ],
+        "evidence_metrics": {
+          "claim_count": 8,
+          "supported_claims": 8,
+          "citation_coverage": 1.0
+        },
+        "references": [
+          "[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3, 5\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version other half ($) is treated as B’s SGL ORC. These totals are subject to aggregation with any other SGL accounts that A or B has at the same Cl. d)...\n      - ) For accounts that do not qualify as joint: a) For accounts that include one or more co-owners that are not natural persons the funds should be treated as jointly owned by the remaining natural person co-owners. If...\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a..."
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 1.0,
+      "total_supported_claims": 24,
+      "total_claims": 24
+    },
+    "dedup_id": "e098ab30701d5ea8381f81875618b05ccec98574e9a149f1b5d5c733fc8dad29"
   }
 ]
