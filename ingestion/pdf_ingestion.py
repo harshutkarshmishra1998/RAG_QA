@@ -21,10 +21,36 @@ from ingestion.vision_interpretation import interpret_image
 # Artifacts
 # ============================================================
 
-ARTIFACT_DIR = Path("storage/artifacts")
-IMAGE_DIR = ARTIFACT_DIR / "images"
-IMAGE_DIR.mkdir(parents=True, exist_ok=True)
+# ARTIFACT_DIR = Path("storage/artifacts")
+# IMAGE_DIR = ARTIFACT_DIR / "images"
+# IMAGE_DIR.mkdir(parents=True, exist_ok=True)
 
+# ============================================================
+# Paths
+# ============================================================
+
+BASE_DIR_NEW = Path(__file__).resolve().parents[1]  # stable path (very important)
+
+STORAGE = BASE_DIR_NEW / "storage"
+ARTIFACT_DIR = STORAGE / "artifacts"
+IMAGE_DIR = ARTIFACT_DIR / "images"
+
+SOURCES = STORAGE / "sources.jsonl"
+DOCUMENTS = STORAGE / "documents.jsonl"
+UNITS = STORAGE / "content_units.jsonl"
+
+# ============================================================
+# Initialization (idempotent, safe to call anytime)
+# ============================================================
+
+def ensure_storage():
+    IMAGE_DIR.mkdir(parents=True, exist_ok=True)
+
+    for file in (SOURCES, DOCUMENTS, UNITS):
+        file.parent.mkdir(parents=True, exist_ok=True)
+        file.touch(exist_ok=True)
+
+ensure_storage()
 
 # ============================================================
 # Runtime checks

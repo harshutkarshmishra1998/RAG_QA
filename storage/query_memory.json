@@ -1,142 +1,177 @@
 {
   "queries": [
     {
-      "id": "0c9d9be6acde2541f2e3cec09d6980004255f8ae8a2379cb37da1f1be52910dc",
-      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370 and what is described in the High-Level Process at Failure section? What activities must be completed within 24 hours after a bank failure according to Part 370?",
+      "id": "b738bb2a793d9ce3abb1e2b2cf04db269d272bfaabe5d5a1c34296315339a54a",
+      "original_query": "Summarize this",
       "decomposed": [
         {
-          "subquery_id": "db2804c6ccc9a4b2b814007d7ab31f6a6f5d0057aa9cdb739a5f4e7e191e8c6d",
-          "original_subquery": "What are the high-level process steps performed after a covered institution fails under Part 370?",
-          "enhanced_query": "What are the high-level process steps that occur after a covered institution fails under Part 370?",
+          "subquery_id": "9bd450c312d256e93924cd28bcfc7857569af50e7b5399c2a4219c8ce58fd090",
+          "original_subquery": "Summarize this?",
+          "enhanced_query": "Summarize this?",
           "multi_queries": [
-            "What happens after a covered institution fails under Part 370?",
-            "What are the key steps that occur following a covered institution's failure under Part 370?",
-            "What process steps occur after a covered institution fails under Part 370?"
+            "Can you summarize this?",
+            "How would you summarize this?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1680f6dc7ae55319040efd2f763345554d1d1d7cd3c30d86e0a190b31ac94e4b",
+      "original_query": "What are the steps in the high-level process at failure, what happens within 24 hours, and what output files are generated?",
+      "decomposed": [
+        {
+          "subquery_id": "5a225dd46d3b3dc3f52463f1c2fc454f5cec549d87970355e38d534fcbac94ca",
+          "original_subquery": "What are the steps in the high-level process at failure, what happens within 24 hours,?",
+          "enhanced_query": "What are the steps in the high-level process at failure, and what happens within 24 hours?",
+          "multi_queries": [
+            "What are the steps in the high-level process at failure?"
           ]
         },
         {
-          "subquery_id": "6d99cff2169c93f0bbac1770071dfa8915c95d2044445165706c1563b70c766e",
-          "original_subquery": "what is described in the High-Level Process at Failure section?",
-          "enhanced_query": "What is described in the High-Level Process at Failure section?",
+          "subquery_id": "71f4653b4e8c38e54f6535f08caaf5af2924584d610802d87b6851afd2acd454",
+          "original_subquery": "what output files are generated?",
+          "enhanced_query": "What are the output files generated?",
           "multi_queries": [
-            "What is described in the High-Level Process section at Failure?",
-            "What is described in the section titled High-Level Process at Failure?"
+            "What files are generated as output?",
+            "What are the files produced as output?",
+            "What files are the output of the process?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4d244eef930377b5cf1d3dec94278be8840b8fd2fb63281e54132d9c3bbcbce9",
+      "original_query": "What are fiduciary accounts, when are they placed in the Pending File, and how is deposit insurance calculated once information becomes available?",
+      "decomposed": [
+        {
+          "subquery_id": "e825801cda21d05846c15255dd099dcdbed4b49e9b722657e27ee6142d07b456",
+          "original_subquery": "What are fiduciary accounts, when are they placed in the Pending File,?",
+          "enhanced_query": "What are fiduciary accounts and when are they placed in the Pending File?",
+          "multi_queries": [
+            "What types of accounts are considered fiduciary and when are they placed in the Pending File?",
+            "When are fiduciary accounts typically placed in the Pending File?",
+            "What is the purpose of placing fiduciary accounts in the Pending File?"
           ]
         },
         {
-          "subquery_id": "8bc1bd2867f946e789ff2ae8ef22637b4233c87f65872722c269896e3b957615",
-          "original_subquery": "What activities must be completed within 24 hours after a bank failure according to Part 370?",
-          "enhanced_query": "What activities must be completed within 24 hours after a bank failure, specifically as per Part 370?",
+          "subquery_id": "86341f4b5c008c07e6091591187971adb0300d26df4599235e90acd5bf2f61ac",
+          "original_subquery": "how is deposit insurance calculated once information becomes available?",
+          "enhanced_query": "How is deposit insurance calculated once all necessary information is available?",
           "multi_queries": [
-            "What activities must be completed within 24 hours after a bank failure, specifically as per Part 370?",
-            "What are the 24-hour requirements following a bank failure as per Part 370?",
-            "What must be done within 24 hours after a bank failure, according to Part 370?"
+            "What is the formula used to calculate deposit insurance once all necessary information is available?",
+            "How is the calculation of deposit insurance finalized once all required data is available?",
+            "What steps are taken to determine the final amount of deposit insurance once all necessary information is available?"
           ]
         }
       ]
     },
     {
-      "id": "47748d180f7c397cf61d98a3bec86542e86d03aadc817f358ec1f6f78e77279c",
-      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370? what is described in the High-Level Process at Failure section? What activities must be completed within 24 hours after a bank failure according to Part 370?",
+      "id": "eece331b7f57ad2f6f5e0cf12ca552ea75a63b2d43fb1e42377a2b27967e2e00",
+      "original_query": "Explain how deposit insurance is calculated for joint accounts including aggregation, allocation, and uninsured amount handling.",
       "decomposed": [
         {
-          "subquery_id": "db2804c6ccc9a4b2b814007d7ab31f6a6f5d0057aa9cdb739a5f4e7e191e8c6d",
-          "original_subquery": "What are the high-level process steps performed after a covered institution fails under Part 370?",
-          "enhanced_query": "What are the high-level process steps that occur after a covered institution fails under Part 370?",
+          "subquery_id": "f7c2c0c38deb032974cbe90a9c892d8d2f140c07cadcb3403870854b5437195b",
+          "original_subquery": "Explain how deposit insurance is calculated for joint accounts including aggregation, allocation, and uninsured amount handling.?",
+          "enhanced_query": "How is deposit insurance calculated for joint accounts, including the aggregation of accounts, allocation of coverage, and handling of uninsured amounts?",
           "multi_queries": [
-            "What happens after a covered institution fails under Part 370?",
-            "What are the key steps that occur following a covered institution's failure under Part 370?",
-            "What process steps occur after a covered institution fails under Part 370?"
+            "How is deposit insurance calculated for joint accounts in terms of account aggregation?",
+            "What is the process for allocating deposit insurance coverage to joint accounts?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f98cba35ec7e3b917d87a204496feb698c147cffbde0d3bc1317f5f181565cbd",
+      "original_query": "Explain how missing depositor information impacts insurance determination and system processing.",
+      "decomposed": [
+        {
+          "subquery_id": "806a5cab01e534d6388cef0445ea82adc86968433a26b191caf694ae1f623a79",
+          "original_subquery": "Explain how missing depositor information impacts insurance determination and system processing.?",
+          "enhanced_query": "How does missing depositor information affect insurance determination and system processing?",
+          "multi_queries": [
+            "What impact does missing depositor information have on insurance determination?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a6ffd0f005e9099dc1b2f7a95d7492c62fe1f2975a93ad699e58306a70b58feb",
+      "original_query": "After a covered institution fails, explain the sequence of operational, data, and reporting steps performed by the CI IT system and the FDIC, including aggregation, validation, output generation, and fund release.",
+      "decomposed": [
+        {
+          "subquery_id": "da16bb7d6656e0a5a83e7c5a04da89acc31b6fc6cfc3e1f9eb6c6397bb3ceabb",
+          "original_subquery": "After a covered institution fails, explain the sequence of operational, data, and reporting steps performed by the CI IT system and the FDIC, including aggregation, validation, output generation, and fund release.?",
+          "enhanced_query": "What are the operational, data, and reporting steps performed by the CI IT system and the FDIC after a covered institution fails, including aggregation, validation, output generation, and fund release?",
+          "multi_queries": [
+            "What steps are performed by the CI IT system and the FDIC after a covered institution fails?",
+            "What are the operational, data, and reporting steps taken by the CI IT system and the FDIC after a covered institution fails?",
+            "What are the aggregation, validation, output generation, and fund release steps performed by the CI IT system and the FDIC after a covered institution fails?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7f132a2d066201c9fe4df85c2451299e03b0ffefc399eaecf01859eda72a39c1",
+      "original_query": "Explain how Part 370 ensures both regulatory compliance and rapid depositor access to insured funds.",
+      "decomposed": [
+        {
+          "subquery_id": "ffd232c411bb4a664a10faa518cf524f712f1b2a3636cd92130037dd1004f756",
+          "original_subquery": "Explain how Part 370 ensures both regulatory compliance and rapid depositor access to insured funds.?",
+          "enhanced_query": "What are the key aspects of Part 370 that facilitate both regulatory compliance and rapid depositor access to insured funds?",
+          "multi_queries": [
+            "How does Part 370 enable rapid depositor access to insured funds?",
+            "What features of Part 370 support both regulatory compliance and depositor access to insured funds?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7dfd29363e9fc0989577a1e85a00d0c2b2e0f4f079bbe1b22ea1251f2479bdf9",
+      "original_query": "What happens during compliance testing, what does the FDIC verify, and how often can testing occur?",
+      "decomposed": [
+        {
+          "subquery_id": "e799d9d359ed8ccc42016707c742c1bd2fb033958d7b3be3a61bbde44d8339bb",
+          "original_subquery": "What happens during compliance testing, what does the FDIC verify,?",
+          "enhanced_query": "What are the processes and items verified during FDIC compliance testing?",
+          "multi_queries": [
+            "What processes and items are verified during FDIC compliance testing?",
+            "What are the processes and items that FDIC compliance testing verifies?",
+            "During FDIC compliance testing, what processes and items are checked?"
           ]
         },
         {
-          "subquery_id": "6d99cff2169c93f0bbac1770071dfa8915c95d2044445165706c1563b70c766e",
-          "original_subquery": "what is described in the High-Level Process at Failure section?",
-          "enhanced_query": "What is described in the High-Level Process at Failure section?",
+          "subquery_id": "546e10abb9e25632bd292ad39700824b7a0c0e8324ea7a81ddd6725f5dd43fc2",
+          "original_subquery": "how often can testing occur?",
+          "enhanced_query": "How frequently can testing be performed?",
           "multi_queries": [
-            "What is described in the High-Level Process section at Failure?",
-            "What is described in the section titled High-Level Process at Failure?"
+            "How often can testing be done?",
+            "How frequently should testing be conducted?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faced88db764b7017241cbfbbb026c1727ed9c17bb72a73da9ffdaf7d1efcdb0",
+      "original_query": "How are deposits aggregated for insurance calculation, what role does ORC play, and how are insured vs uninsured amounts determined?",
+      "decomposed": [
+        {
+          "subquery_id": "ece6f521857e4f069cd78f48c021b7a88859e127d1df9ee667b41d4b0d2d0c0d",
+          "original_subquery": "How are deposits aggregated for insurance calculation, what role does ORC play,?",
+          "enhanced_query": "What is the process of aggregating deposits for insurance calculation and what role does the Order Reinsurance Ceding (ORC) process play?",
+          "multi_queries": [
+            "What is the purpose of aggregating deposits for insurance calculation and what role does the ORC process play?",
+            "How does the process of aggregating deposits contribute to insurance calculation and what is the significance of the ORC process?",
+            "What is the function of aggregating deposits in insurance calculation and what is the role of the ORC process in this context?"
           ]
         },
         {
-          "subquery_id": "8bc1bd2867f946e789ff2ae8ef22637b4233c87f65872722c269896e3b957615",
-          "original_subquery": "What activities must be completed within 24 hours after a bank failure according to Part 370?",
-          "enhanced_query": "What activities must be completed within 24 hours after a bank failure, specifically as per Part 370?",
+          "subquery_id": "51c16922d1a3b63a4803bd714045d27b17c8935ee7b0fe11ca019c2df7125d12",
+          "original_subquery": "how are insured vs uninsured amounts determined?",
+          "enhanced_query": "how are insured vs uninsured amounts determined?",
           "multi_queries": [
-            "What activities must be completed within 24 hours after a bank failure, specifically as per Part 370?",
-            "What are the 24-hour requirements following a bank failure as per Part 370?",
-            "What must be done within 24 hours after a bank failure, according to Part 370?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "db2804c6ccc9a4b2b814007d7ab31f6a6f5d0057aa9cdb739a5f4e7e191e8c6d",
-      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370?",
-      "decomposed": [
-        {
-          "subquery_id": "db2804c6ccc9a4b2b814007d7ab31f6a6f5d0057aa9cdb739a5f4e7e191e8c6d",
-          "original_subquery": "What are the high-level process steps performed after a covered institution fails under Part 370?",
-          "enhanced_query": "What are the high-level process steps that occur after a covered institution fails under Part 370?",
-          "multi_queries": [
-            "What happens after a covered institution fails under Part 370?",
-            "What are the key steps that occur following a covered institution's failure under Part 370?",
-            "What process steps occur after a covered institution fails under Part 370?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "f46efdfa851943897d774bdf9c56d2e50eba5902d7a2a7658ead8225c78ff9ff",
-      "original_query": "Can you summarize the document",
-      "decomposed": [
-        {
-          "subquery_id": "563328d9be3ab2a2bd15856cbb362101bac42ba652193ff7599340b770b7a213",
-          "original_subquery": "Can you summarize the document?",
-          "enhanced_query": "How can you summarize the document?",
-          "multi_queries": []
-        }
-      ]
-    },
-    {
-      "id": "737b13c8b8d1f2ac6eca696aed6838732b8f02fd35746f1d2b90be1ab46064a3",
-      "original_query": "What is MCP?",
-      "decomposed": [
-        {
-          "subquery_id": "737b13c8b8d1f2ac6eca696aed6838732b8f02fd35746f1d2b90be1ab46064a3",
-          "original_subquery": "What is MCP?",
-          "enhanced_query": "What does MCP stand for?",
-          "multi_queries": []
-        }
-      ]
-    },
-    {
-      "id": "37fb15dc4f951b0905ec9317ebfce47ed04f5bf9221e6dd38a377afc4209cabb",
-      "original_query": "What is the data needed GenAI Adoption?",
-      "decomposed": [
-        {
-          "subquery_id": "37fb15dc4f951b0905ec9317ebfce47ed04f5bf9221e6dd38a377afc4209cabb",
-          "original_subquery": "What is the data needed GenAI Adoption?",
-          "enhanced_query": "What data is required for GenAI adoption?",
-          "multi_queries": [
-            "What data is necessary for GenAI adoption?",
-            "What information is required for GenAI adoption?",
-            "What kind of data is needed for GenAI adoption?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "48a0e9d3996b3c4c567c0e5de62659db45ad83c17b84080114772f527aa40020",
-      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section?",
-      "decomposed": [
-        {
-          "subquery_id": "48a0e9d3996b3c4c567c0e5de62659db45ad83c17b84080114772f527aa40020",
-          "original_subquery": "What are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section?",
-          "enhanced_query": "What are the high-level process steps that occur after a covered institution fails under Part 370, and what is described in the High-Level Process at Failure section?",
-          "multi_queries": [
-            "What are the high-level process steps that occur after a covered institution fails under Part 370?",
-            "What happens after a covered institution fails under Part 370 according to the High-Level Process at Failure section?"
+            "how are insured and uninsured amounts calculated?",
+            "what factors determine insured vs uninsured amounts?",
+            "how are insured and uninsured amounts differentiated?"
           ]
         }
       ]

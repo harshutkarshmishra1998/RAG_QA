@@ -79,10 +79,33 @@ def build_faiss_db(jsonl_path: str) -> Path:
     texts = _load_texts(jsonl_path) #type: ignore
     vectors = _embed_texts(texts)
 
-    index = faiss.IndexFlatIP(EMBEDDING_DIM)
-    index.add(vectors) #type: ignore
+    # index = faiss.IndexFlatIP(EMBEDDING_DIM)
+    # index.add(vectors) #type: ignore
+
+    # output_path = jsonl_path.parent / "content_units.faiss" #type: ignore
+    # faiss.write_index(index, str(output_path))
 
     output_path = jsonl_path.parent / "content_units.faiss" #type: ignore
+
+    # ensure directory exists
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # load existing index OR create new one
+    if output_path.exists() and output_path.stat().st_size > 0:
+        try:
+            index = faiss.read_index(str(output_path))
+            print("Loaded existing FAISS index")
+        except Exception:
+            print("FAISS file corrupted — creating new index")
+            index = faiss.IndexFlatIP(EMBEDDING_DIM)
+    else:
+        print("Creating new FAISS index")
+        index = faiss.IndexFlatIP(EMBEDDING_DIM)
+
+    # add new vectors
+    index.add(vectors) #type: ignore
+
+    # save index (creates file if not present)
     faiss.write_index(index, str(output_path))
 
     return output_path
