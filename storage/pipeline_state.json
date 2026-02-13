@@ -1,7 +1,8 @@
 {
   "processed_doc_ids": [
     "doc_b41c1b12b5784c1184ad7873a67268b0",
-    "doc_5a206ae1f4604fcf8fdd13fe24927c2b"
+    "doc_5a206ae1f4604fcf8fdd13fe24927c2b",
+    "doc_d2acc56fa6d345e08ecfc6d117137c52"
   ],
   "processed_chunk_ids": [
     "chunk_000000",
@@ -297,6 +298,22 @@
     "chunk_000001",
     "chunk_000002",
     "chunk_000003",
-    "chunk_000004"
+    "chunk_000004",
+    "chunk_000000",
+    "chunk_000001",
+    "chunk_000002",
+    "chunk_000003",
+    "chunk_000004",
+    "chunk_000005",
+    "chunk_000006",
+    "chunk_000007",
+    "chunk_000008",
+    "chunk_000009",
+    "chunk_000010",
+    "chunk_000011",
+    "chunk_000012",
+    "chunk_000013",
+    "chunk_000014",
+    "chunk_000015"
   ]
 }

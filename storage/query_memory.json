@@ -235,6 +235,34 @@
           ]
         }
       ]
+    },
+    {
+      "id": "c148b28b327ddd0e86ebe170ef65a50235e457144a8c458926f9ef1a6b713fe7",
+      "original_query": "What is the purpose of the Part 370 Information Technology Functional Guide?",
+      "decomposed": [
+        {
+          "subquery_id": "c148b28b327ddd0e86ebe170ef65a50235e457144a8c458926f9ef1a6b713fe7",
+          "original_subquery": "What is the purpose of the Part 370 Information Technology Functional Guide?",
+          "enhanced_query": "What is the purpose of the Part 370 Information Technology Functional Guide?",
+          "multi_queries": [
+            "What is the main objective of the Part 370 Information Technology Functional Guide?",
+            "What is the primary purpose of the Part 370 Information Technology Functional Guide?",
+            "What is the main function of the Part 370 Information Technology Functional Guide?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e8d7f16b20a5cfbe92ed11368cf5a719c105bd99ee830768fa0ceeab87fe134e",
+      "original_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.",
+      "decomposed": [
+        {
+          "subquery_id": "71c45c69780eaff6c408dad54b36ebbf3e22175a649a572bac62d9074ea8709b",
+          "original_subquery": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.?",
+          "enhanced_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.?",
+          "multi_queries": []
+        }
+      ]
     }
   ]
 }
