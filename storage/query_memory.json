@@ -1,119 +1,60 @@
 {
   "queries": [
     {
-      "id": "d6898cdeccdfd620cccaf895e0c27d73568e1652bb402fe103902d366fde6b1f",
-      "original_query": "What DP_Right_Capacity code is assigned to single accounts?",
+      "id": "53113450a823f885afeda1f06c78cb2ec0895ee8db90ac9c2da807472fce307e",
+      "original_query": "Describe the full decision tree for classifying an account as Single vs Joint vs Trust.",
       "decomposed": [
         {
-          "subquery_id": "d6898cdeccdfd620cccaf895e0c27d73568e1652bb402fe103902d366fde6b1f",
-          "original_subquery": "What DP_Right_Capacity code is assigned to single accounts?",
-          "enhanced_query": "What is the DP_Right_Capacity code assigned to single accounts?",
-          "multi_queries": [
-            "What is the DP_Right_Capacity code assigned to single user accounts?",
-            "What DP_Right_Capacity code is assigned to individual accounts?",
-            "What is the DP_Right_Capacity code for single user accounts?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "4774f7e58efa891b4de3b5b60c32dae7ebed0f8982414d3d9dab56cdd3e279ac",
-      "original_query": "What happens if total deposits exceed the SMDIA for a single account holder?",
-      "decomposed": [
-        {
-          "subquery_id": "4774f7e58efa891b4de3b5b60c32dae7ebed0f8982414d3d9dab56cdd3e279ac",
-          "original_subquery": "What happens if total deposits exceed the SMDIA for a single account holder?",
-          "enhanced_query": "What are the consequences of total deposits exceeding the SMDIA for a single account holder?",
-          "multi_queries": [
-            "What happens when total deposits exceed the SMDIA for a single account holder?",
-            "What are the implications of exceeding the SMDIA for a single account holder's deposits?",
-            "What are the consequences of a single account holder's deposits exceeding the SMDIA?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "d6898cdeccdfd620cccaf895e0c27d73568e1652bb402fe103902d366fde6b1f",
-      "original_query": "What DP_Right_Capacity code is assigned to single accounts?",
-      "decomposed": [
-        {
-          "subquery_id": "d6898cdeccdfd620cccaf895e0c27d73568e1652bb402fe103902d366fde6b1f",
-          "original_subquery": "What DP_Right_Capacity code is assigned to single accounts?",
-          "enhanced_query": "What is the DP_Right_Capacity code assigned to single accounts?",
-          "multi_queries": [
-            "What is the DP_Right_Capacity code assigned to single user accounts?",
-            "What DP_Right_Capacity code is assigned to individual accounts?",
-            "What is the DP_Right_Capacity code for single user accounts?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "40855e9bc7672d4d6daccb14cbf7dd4b731b41a627f53f17dec3f32a15173932",
-      "original_query": "What is a primary beneficiary in a revocable trust?",
-      "decomposed": [
-        {
-          "subquery_id": "40855e9bc7672d4d6daccb14cbf7dd4b731b41a627f53f17dec3f32a15173932",
-          "original_subquery": "What is a primary beneficiary in a revocable trust?",
-          "enhanced_query": "What are the characteristics of a primary beneficiary in a revocable trust?",
-          "multi_queries": [
-            "What are the key features of a primary beneficiary in a revocable trust?",
-            "What defines a primary beneficiary in a revocable trust?",
-            "What are the primary characteristics of a beneficiary in a revocable trust?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "0f99dd83d906f471b8f50700bf7de8864bfcb1788b20cbc53c2167d466b7b32d",
-      "original_query": "When is a trust account placed in the Pending File?",
-      "decomposed": [
-        {
-          "subquery_id": "0f99dd83d906f471b8f50700bf7de8864bfcb1788b20cbc53c2167d466b7b32d",
-          "original_subquery": "When is a trust account placed in the Pending File?",
-          "enhanced_query": "When is a trust account placed in the Pending File and what are the criteria for this placement?",
-          "multi_queries": [
-            "When is a trust account placed in the Pending File and what are the criteria for this placement?",
-            "What triggers the placement of a trust account in the Pending File?",
-            "Under what conditions is a trust account moved to the Pending File?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "483d54df90187df802e2c1949abf4c7391c232e1d8582a2097bcb55c9eb1e151",
-      "original_query": "What happens if joint account owners do not have equal withdrawal rights AND how is insurance determined then?",
-      "decomposed": [
-        {
-          "subquery_id": "b796e2ffa2ae9ca76c54a96f88008bc4b5cb34626b3c3977e457410cd0e7e295",
-          "original_subquery": "What happens if joint account owners do not have equal withdrawal rights?",
-          "enhanced_query": "What are the consequences for joint account owners if they do not have equal withdrawal rights?",
-          "multi_queries": [
-            "What happens if joint account owners do not have equal withdrawal rights?",
-            "What are the implications for joint account owners without equal withdrawal rights?",
-            "What are the consequences for joint account owners with unequal withdrawal rights?"
-          ]
-        },
-        {
-          "subquery_id": "e06cfb8f9b413835675996215fe74fc6de771929f034a3d9573d1b15b44b78bb",
-          "original_subquery": "how is insurance determined then?",
-          "enhanced_query": "how is insurance determined then?",
+          "subquery_id": "ffa2e81cb33795330c9308e584753f5efe9296f280457788a1552edd375f4fa6",
+          "original_subquery": "Describe the full decision tree for classifying an account as Single vs Joint vs Trust.?",
+          "enhanced_query": "Describe the full decision tree for classifying an account as Single vs Joint vs Trust.?",
           "multi_queries": []
         }
       ]
     },
     {
-      "id": "68bd8f0eff9635ad13990c467b808326cf8349e59351eed23dc36302313129b9",
-      "original_query": "Explain how single account insurance is calculated including aggregation, uninsured amount handling, and final insured balance calculation.",
+      "id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
+      "original_query": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
       "decomposed": [
         {
-          "subquery_id": "59ecb981679c1a853e5992df058c6c107693741a8f6fa2379a5531d0d532411f",
-          "original_subquery": "Explain how single account insurance is calculated including aggregation, uninsured amount handling, and final insured balance calculation.?",
-          "enhanced_query": "How is single account insurance calculated, including aggregation methods, handling of uninsured amounts, and the final insured balance calculation process?",
+          "subquery_id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
+          "original_subquery": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
+          "enhanced_query": "What is the purpose behind the FDIC's method of aggregating balances by beneficial owner before applying insurance limits?",
           "multi_queries": [
-            "What are the steps involved in calculating single account insurance, including aggregation methods and handling of uninsured amounts?",
-            "How is the final insured balance calculated in single account insurance, and what methods are used for aggregation?",
-            "What is the process for determining the insured balance in single account insurance, including handling of uninsured amounts?"
+            "What is the purpose behind the FDIC's method of aggregating balances before applying insurance limits?",
+            "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
+            "What is the reasoning behind the FDIC's method of aggregating balances by beneficial owner?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cea34fa9df32a774f8ff6c9a0908ffcd99d07874fadd1f72ab13aadc31ff43f5",
+      "original_query": "Why are non-qualifying joint accounts reclassified rather than simply denied coverage?",
+      "decomposed": [
+        {
+          "subquery_id": "cea34fa9df32a774f8ff6c9a0908ffcd99d07874fadd1f72ab13aadc31ff43f5",
+          "original_subquery": "Why are non-qualifying joint accounts reclassified rather than simply denied coverage?",
+          "enhanced_query": "What is the reasoning behind reclassifying non-qualifying joint accounts instead of denying them coverage outright?",
+          "multi_queries": [
+            "Why are non-qualifying joint accounts being reclassified instead of denied coverage?",
+            "Is there a specific reason for reclassifying non-qualifying joint accounts rather than denying them coverage?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
+      "original_query": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
+      "decomposed": [
+        {
+          "subquery_id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
+          "original_subquery": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
+          "enhanced_query": "What is the purpose behind the FDIC's method of aggregating balances by beneficial owner before applying insurance limits?",
+          "multi_queries": [
+            "What is the purpose behind the FDIC's method of aggregating balances before applying insurance limits?",
+            "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
+            "What is the reasoning behind the FDIC's method of aggregating balances by beneficial owner?"
           ]
         }
       ]

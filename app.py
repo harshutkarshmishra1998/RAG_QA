@@ -2,34 +2,28 @@ import streamlit as st
 from pathlib import Path
 from datetime import datetime
 import json
+import time
 
-# PDF utilities
 from pypdf import PdfReader
 
 # ==============================
-# PROJECT IMPORTS (YOUR PIPELINE)
+# PROJECT IMPORTS
 # ==============================
 from ingestion.pdf_ingestion import ingest_pdf
 from pipeline_incremental.pipeline_incremental import run_incremental_pipeline
 from query.query_pipeline_v3 import process_user_query
 from retrieval.retrieval_pipeline import retrieve_latest_query_chunks
 
-# answer generation versions
 from answer_generation.answer_generation_v2 import generate_answer_from_last_entry as generate_answer_v2
 from answer_generation.answer_generation_v3 import generate_answer_from_last_entry as generate_answer_v3
 
-# cleaner
 from patch.system_startup_cleaner import clean_data_directories
 
 
 # ==============================
 # CONFIG
 # ==============================
-st.set_page_config(
-    page_title="RAG Knowledge Assistant",
-    page_icon="📚",
-    layout="wide"
-)
+st.set_page_config(page_title="RAG Knowledge Assistant", page_icon="📚", layout="wide")
 
 PROJECT_ROOT_NEW = Path(__file__).resolve().parents[0]
 UPLOAD_DIR = PROJECT_ROOT_NEW / "uploaded_files"
@@ -56,14 +50,6 @@ if "multi_doc_confirmed" not in st.session_state:
 
 if "answer_engine" not in st.session_state:
     st.session_state.answer_engine = "v3 (Grounded + Evidence)"
-
-
-# =========================================================
-# STARTUP CLEANING — DISABLED DURING TESTING
-# =========================================================
-# if "startup_clean_done" not in st.session_state:
-#     clean_data_directories(PROJECT_ROOT_NEW)
-#     st.session_state.startup_clean_done = True
 
 
 # ==============================
@@ -129,88 +115,91 @@ def load_existing_documents():
 
 
 def run_answer_generation():
-    if st.session_state.answer_engine.startswith("v3"):
-        return generate_answer_v3()
-    else:
-        return generate_answer_v2()
+    return generate_answer_v3() if st.session_state.answer_engine.startswith("v3") else generate_answer_v2()
+
+
+# ==============================
+# METRICS RENDERERS
+# ==============================
+
+def _safe_get(metrics, *keys):
+    for k in keys:
+        if k in metrics and metrics[k] is not None:
+            return metrics[k]
+    return None
+
 
 def render_evidence_metrics(payload: dict):
-
     metrics = payload.get("aggregate_evidence_metrics")
     if not metrics:
         return
 
     st.markdown("### 🔎 Evidence Quality")
-
     col1, col2, col3 = st.columns(3)
 
-    # -------------------------
-    # Citation coverage
-    # -------------------------
-    coverage = metrics.get("avg_citation_coverage")
+    coverage = _safe_get(metrics, "avg_citation_coverage", "coverage")
     if coverage is not None:
         col1.metric("Citation Coverage", f"{coverage*100:.1f}%")
         st.progress(float(coverage))
 
-    # -------------------------
-    # Supported ratio
-    # -------------------------
-    supported = (
-        metrics.get("total_supported_claims")
-        or metrics.get("total_supported_sentences")
-    )
-
-    total = (
-        metrics.get("total_claims")
-        or metrics.get("total_sentences")
-    )
-
+    supported = _safe_get(metrics, "total_supported_claims", "total_supported_sentences")
+    total = _safe_get(metrics, "total_claims", "total_sentences")
     if supported is not None and total:
-        ratio = supported / total
         col2.metric("Supported Evidence", f"{supported}/{total}")
-        st.progress(float(ratio))
+        st.progress(float(supported/total))
 
-    # -------------------------
-    # Confidence (optional)
-    # -------------------------
-    confidence = metrics.get("avg_evidence_confidence")
+    confidence = _safe_get(
+        metrics,
+        "avg_evidence_confidence",
+        "evidence_confidence",
+        "confidence",
+        "confidence_score",
+        "avg_confidence"
+    )
     if confidence is not None:
         col3.metric("Evidence Confidence", f"{confidence*100:.1f}%")
+
+
+def render_timing(qp, retr, gen, total):
+    st.markdown("### ⏱ Execution Time")
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Query Processing", f"{qp:.2f}s")
+    c2.metric("Retrieval", f"{retr:.2f}s")
+    c3.metric("Answer Generation", f"{gen:.2f}s")
+    c4.metric("Total", f"{total:.2f}s")
+
+    if total < 2:
+        st.success("⚡ Fast response")
+    elif total < 5:
+        st.info("⏳ Moderate latency")
+    else:
+        st.warning("🐢 Slow response")
+
 
 # ==============================
 # SIDEBAR
 # ==============================
 st.sidebar.header("📥 Document Ingestion")
 
-
-# ---------- Manual clean ----------
 if st.sidebar.button("🧹 Clean All Data (Fresh Start)", use_container_width=True):
     clean_data_directories(PROJECT_ROOT_NEW)
     st.session_state.pipeline_ready = False
     st.session_state.chat_history = []
     st.session_state.multi_doc_confirmed = False
-    st.success("All stored data cleared.")
     st.rerun()
-
 
 st.sidebar.divider()
 
-
-# ---------- Existing docs ----------
 st.sidebar.subheader("📚 Existing Knowledge Sources")
 existing_docs = load_existing_documents()
-
 if existing_docs:
     for doc in existing_docs:
         st.sidebar.write(f"• {doc}")
 else:
     st.sidebar.caption("No documents indexed yet")
 
-
 st.sidebar.divider()
 
-
-# ---------- Answer engine selector ----------
 st.sidebar.subheader("🧠 Answer Generation Engine")
 engine_choice = st.sidebar.radio(
     "Select version",
@@ -219,88 +208,78 @@ engine_choice = st.sidebar.radio(
 )
 st.session_state.answer_engine = engine_choice
 
-
 st.sidebar.divider()
 
-
-# ---------- Upload ----------
 uploaded_files = st.sidebar.file_uploader(
     "Upload PDF (max 10 MB)",
     type=["pdf"],
     accept_multiple_files=True
 )
 
-
 if not uploaded_files:
     st.session_state.multi_doc_confirmed = False
 
 
 # ==============================
-# MULTI KNOWLEDGE WARNING
+# INGESTION
 # ==============================
 if uploaded_files:
-
-    multiple_uploads = len(uploaded_files) > 1
-    adding_to_existing = len(existing_docs) > 0
-    knowledge_conflict = multiple_uploads or adding_to_existing
+    knowledge_conflict = len(uploaded_files) > 1 or len(existing_docs) > 0
 
     if knowledge_conflict and not st.session_state.multi_doc_confirmed:
-
         st.sidebar.warning(
             "You are uploading documents that may belong to different knowledge domains. "
-            "This can cause cross-referencing and inconsistent answers.\n\n"
-            "Upload documents from the same knowledge domain for best results."
+            "This can cause cross-referencing and inconsistent answers."
         )
-
         if st.sidebar.button("Yes, Continue Anyway"):
             st.session_state.multi_doc_confirmed = True
             st.rerun()
-
     else:
         if st.sidebar.button("🚀 Ingest & Process", use_container_width=True):
-            try:
-                processed_files = []
 
-                for uploaded_file in uploaded_files:
+            total_time = 0
+            processed_files = []
 
-                    size_mb = uploaded_file.size / (1024 * 1024)
-                    if size_mb > MAX_FILE_SIZE_MB:
-                        st.sidebar.error(f"{uploaded_file.name} exceeds 10 MB limit")
-                        continue
+            for uploaded_file in uploaded_files:
+                if uploaded_file.size / (1024*1024) > MAX_FILE_SIZE_MB:
+                    st.sidebar.error(f"{uploaded_file.name} exceeds 10MB limit")
+                    continue
 
-                    saved_path = save_uploaded_file(uploaded_file)
-                    pages = get_pdf_page_count(saved_path)
+                saved_path = save_uploaded_file(uploaded_file)
+                pages = get_pdf_page_count(saved_path)
 
-                    with st.spinner(f"Processing {uploaded_file.name} ({pages} pages)..."):
-                        ingest_pdf(str(saved_path))
-                        run_incremental_pipeline()
+                start = time.perf_counter()
+                with st.spinner(f"Processing {uploaded_file.name} ({pages} pages)..."):
+                    ingest_pdf(str(saved_path))
+                    run_incremental_pipeline()
+                duration = time.perf_counter() - start
 
-                    processed_files.append((uploaded_file.name, pages))
+                total_time += duration
+                processed_files.append((uploaded_file.name, pages, duration))
 
-                if processed_files:
-                    st.session_state.pipeline_ready = True
-                    st.session_state.multi_doc_confirmed = False
+            if processed_files:
+                st.session_state.pipeline_ready = True
+                st.session_state.multi_doc_confirmed = False
 
-                    summary = "<br>".join([f"📄 {name} — {pages} pages" for name, pages in processed_files])
+                summary = "<br>".join(
+                    f"📄 {n} — {p} pages — ⏱ {t:.2f}s" for n,p,t in processed_files
+                )
 
-                    st.sidebar.markdown(
-                        f"""
-                        <div class='success-box'>
-                        ✅ Documents processed successfully<br>
-                        {summary}
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-
-                    st.rerun()
-
-            except Exception as e:
-                st.sidebar.error(f"Processing failed: {str(e)}")
+                st.sidebar.markdown(
+                    f"""
+                    <div class='success-box'>
+                    ✅ Documents processed successfully<br>
+                    {summary}<br><br>
+                    ⏱ Total processing time: {total_time:.2f}s
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+                st.rerun()
 
 
 # ==============================
-# MAIN CHAT
+# CHAT
 # ==============================
 st.header("💬 Chat with Your Documents")
 
@@ -308,9 +287,19 @@ if not st.session_state.pipeline_ready:
     st.info("Upload and process a document to start asking questions.")
 else:
 
+    # -------- replay full conversation --------
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
+
+            if msg["role"] == "assistant":
+                if msg.get("engine"):
+                    st.caption(f"Generated using {msg['engine']}")
+                if msg.get("payload"):
+                    render_evidence_metrics(msg["payload"])
+                if msg.get("timing"):
+                    t = msg["timing"]
+                    render_timing(t["qp"], t["retr"], t["gen"], t["total"])
 
     query = st.chat_input("Ask a question about your documents...")
 
@@ -321,32 +310,54 @@ else:
             st.markdown(query)
 
         with st.chat_message("assistant"):
-            with st.spinner("Retrieving knowledge and generating answer..."):
-                try:
+
+            placeholder = st.empty()
+
+            with placeholder.container():
+                with st.spinner("Generating answer..."):
+
+                    total_start = time.perf_counter()
+
+                    qp_start = time.perf_counter()
                     process_user_query(query)
+                    qp_time = time.perf_counter() - qp_start
+
+                    retr_start = time.perf_counter()
                     retrieve_latest_query_chunks()
+                    retr_time = time.perf_counter() - retr_start
+
+                    gen_start = time.perf_counter()
                     payload = run_answer_generation()
+                    gen_time = time.perf_counter() - gen_start
 
-                    if isinstance(payload, dict):
-                        answer = payload.get("answer") or str(payload)
-                    else:
-                        answer = str(payload)
+                    total_time = time.perf_counter() - total_start
 
-                except Exception as e:
-                    answer = f"Error generating answer: {str(e)}"
+            placeholder.empty()
+
+            answer = payload.get("answer") if isinstance(payload, dict) else str(payload)
 
             st.markdown(answer)
             st.caption(f"Generated using {st.session_state.answer_engine}")
 
-            # show metrics only for structured payload
             if isinstance(payload, dict):
                 render_evidence_metrics(payload)
 
-        st.session_state.chat_history.append({"role": "assistant", "content": answer})
+            render_timing(qp_time, retr_time, gen_time, total_time)
+
+        # -------- persist full structured assistant message --------
+        st.session_state.chat_history.append({
+            "role": "assistant",
+            "content": answer,
+            "payload": payload if isinstance(payload, dict) else None,
+            "timing": {
+                "qp": qp_time,
+                "retr": retr_time,
+                "gen": gen_time,
+                "total": total_time
+            },
+            "engine": st.session_state.answer_engine
+        })
 
 
-# ==============================
-# FOOTER
-# ==============================
 st.divider()
 st.caption("Incremental RAG System • Streamlit UI")
