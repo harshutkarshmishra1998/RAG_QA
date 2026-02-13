@@ -101,6 +101,22 @@
           "multi_queries": []
         }
       ]
+    },
+    {
+      "id": "68bd8f0eff9635ad13990c467b808326cf8349e59351eed23dc36302313129b9",
+      "original_query": "Explain how single account insurance is calculated including aggregation, uninsured amount handling, and final insured balance calculation.",
+      "decomposed": [
+        {
+          "subquery_id": "59ecb981679c1a853e5992df058c6c107693741a8f6fa2379a5531d0d532411f",
+          "original_subquery": "Explain how single account insurance is calculated including aggregation, uninsured amount handling, and final insured balance calculation.?",
+          "enhanced_query": "How is single account insurance calculated, including aggregation methods, handling of uninsured amounts, and the final insured balance calculation process?",
+          "multi_queries": [
+            "What are the steps involved in calculating single account insurance, including aggregation methods and handling of uninsured amounts?",
+            "How is the final insured balance calculated in single account insurance, and what methods are used for aggregation?",
+            "What is the process for determining the insured balance in single account insurance, including handling of uninsured amounts?"
+          ]
+        }
+      ]
     }
   ]
 }

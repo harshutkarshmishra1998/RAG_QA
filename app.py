@@ -134,6 +134,48 @@ def run_answer_generation():
     else:
         return generate_answer_v2()
 
+def render_evidence_metrics(payload: dict):
+
+    metrics = payload.get("aggregate_evidence_metrics")
+    if not metrics:
+        return
+
+    st.markdown("### 🔎 Evidence Quality")
+
+    col1, col2, col3 = st.columns(3)
+
+    # -------------------------
+    # Citation coverage
+    # -------------------------
+    coverage = metrics.get("avg_citation_coverage")
+    if coverage is not None:
+        col1.metric("Citation Coverage", f"{coverage*100:.1f}%")
+        st.progress(float(coverage))
+
+    # -------------------------
+    # Supported ratio
+    # -------------------------
+    supported = (
+        metrics.get("total_supported_claims")
+        or metrics.get("total_supported_sentences")
+    )
+
+    total = (
+        metrics.get("total_claims")
+        or metrics.get("total_sentences")
+    )
+
+    if supported is not None and total:
+        ratio = supported / total
+        col2.metric("Supported Evidence", f"{supported}/{total}")
+        st.progress(float(ratio))
+
+    # -------------------------
+    # Confidence (optional)
+    # -------------------------
+    confidence = metrics.get("avg_evidence_confidence")
+    if confidence is not None:
+        col3.metric("Evidence Confidence", f"{confidence*100:.1f}%")
 
 # ==============================
 # SIDEBAR
@@ -295,6 +337,10 @@ else:
 
             st.markdown(answer)
             st.caption(f"Generated using {st.session_state.answer_engine}")
+
+            # show metrics only for structured payload
+            if isinstance(payload, dict):
+                render_evidence_metrics(payload)
 
         st.session_state.chat_history.append({"role": "assistant", "content": answer})
 

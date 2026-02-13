@@ -337,5 +337,43 @@
       "total_claims": 24
     },
     "dedup_id": "e098ab30701d5ea8381f81875618b05ccec98574e9a149f1b5d5c733fc8dad29"
+  },
+  {
+    "query_id": "68bd8f0eff9635ad13990c467b808326cf8349e59351eed23dc36302313129b9",
+    "original_query": "Explain how single account insurance is calculated including aggregation, uninsured amount handling, and final insured balance calculation.",
+    "used_chunk_ids": [
+      1,
+      8,
+      14
+    ],
+    "answer": "\n\nQUESTION 1:\nExplain how single account insurance is calculated including aggregation, uninsured amount handling, and final insured balance calculation.\n\nANSWER:\nHere's a step-by-step explanation of how single account insurance is calculated, including aggregation, uninsured amount handling, and final insured balance calculation, based on the provided FDIC guidelines:\n\n**Aggregation:**\n\n1. Identify all single-ownership accounts and the beneficial owners of the deposits in these accounts. [1]\n2. Aggregate total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI. If this is a second or successive iteration of the Deposit Insurance Calculation due to newly identified account(s), the accounts in the same ORC from the previous calculation must be aggregated with the newly identified account(s). [1]\n\n**Uninsured Amount Handling:**\n\n1. If the total balance plus accrued interest does not exceed SMDIA, then the funds are fully insured and the insured amount for each account is equal to the sum of the balance and accrued interest. [1]\n2. If the total balance plus accrued interest exceeds SMDIA, then funds in excess of SMDIA are not insured. [1]\n3. If there are uninsured funds for the account holder, then apply debits. [1]\n4. Record the respective uninsured amount to each account for the account holder. [1]\n\n**Final Insured Balance Calculation:**\n\n1. Calculate the insured amount for each individual account as the sum of the current balance and accrued interest, less the uninsured amount, and then record the insured amount for each account. [1]\n\nNote that the FDIC guidelines also provide specific rules for joint accounts, revocable trust accounts, and other types of accounts, which are not addressed in this response.\n\nREFERENCES\n[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2, 5",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "Explain how single account insurance is calculated including aggregation, uninsured amount handling, and final insured balance calculation.",
+        "answer": "Here's a step-by-step explanation of how single account insurance is calculated, including aggregation, uninsured amount handling, and final insured balance calculation, based on the provided FDIC guidelines:\n\n**Aggregation:**\n\n1. Identify all single-ownership accounts and the beneficial owners of the deposits in these accounts. [1]\n2. Aggregate total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI. If this is a second or successive iteration of the Deposit Insurance Calculation due to newly identified account(s), the accounts in the same ORC from the previous calculation must be aggregated with the newly identified account(s). [1]\n\n**Uninsured Amount Handling:**\n\n1. If the total balance plus accrued interest does not exceed SMDIA, then the funds are fully insured and the insured amount for each account is equal to the sum of the balance and accrued interest. [1]\n2. If the total balance plus accrued interest exceeds SMDIA, then funds in excess of SMDIA are not insured. [1]\n3. If there are uninsured funds for the account holder, then apply debits. [1]\n4. Record the respective uninsured amount to each account for the account holder. [1]\n\n**Final Insured Balance Calculation:**\n\n1. Calculate the insured amount for each individual account as the sum of the current balance and accrued interest, less the uninsured amount, and then record the insured amount for each account. [1]\n\nNote that the FDIC guidelines also provide specific rules for joint accounts, revocable trust accounts, and other types of accounts, which are not addressed in this response.",
+        "used_chunk_ids": [
+          1,
+          8,
+          14
+        ],
+        "evidence_metrics": {
+          "sentence_count": 16,
+          "supported_sentences": 7,
+          "citation_coverage": 0.438,
+          "avg_evidence_confidence": 0.886
+        },
+        "references": [
+          "[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2, 5"
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.438,
+      "avg_evidence_confidence": 0.886,
+      "total_supported_sentences": 7,
+      "total_sentences": 16
+    },
+    "dedup_id": "63b188d0bcb3b97a01ee8e214dd123050b4e6ea02a20a66f551e2f843e6d1194"
   }
 ]
