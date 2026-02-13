@@ -1,6 +1,7 @@
 {
   "processed_doc_ids": [
-    "doc_b41c1b12b5784c1184ad7873a67268b0"
+    "doc_b41c1b12b5784c1184ad7873a67268b0",
+    "doc_5a206ae1f4604fcf8fdd13fe24927c2b"
   ],
   "processed_chunk_ids": [
     "chunk_000000",
@@ -291,6 +292,11 @@
     "chunk_000285",
     "chunk_000286",
     "chunk_000287",
-    "chunk_000288"
+    "chunk_000288",
+    "chunk_000000",
+    "chunk_000001",
+    "chunk_000002",
+    "chunk_000003",
+    "chunk_000004"
   ]
 }

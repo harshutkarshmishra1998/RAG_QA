@@ -175,6 +175,66 @@
           ]
         }
       ]
+    },
+    {
+      "id": "22059dbcfaff1ecfa89a6bdcaba447861a8fc5ef552b6319ba0fefc9dbbbc060",
+      "original_query": "Explain GenAI Adoption Roadmap",
+      "decomposed": [
+        {
+          "subquery_id": "8c4d54eca6c52156e1d35028938c2a924a57028728365208d434e2131c8fa6f0",
+          "original_subquery": "Explain GenAI Adoption Roadmap?",
+          "enhanced_query": "Explain GenAI Adoption Roadmap?",
+          "multi_queries": [
+            "What is the GenAI Adoption Roadmap?",
+            "Can you describe the GenAI Adoption Roadmap?",
+            "How does the GenAI Adoption Roadmap work?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "014e916a7d426636bbfd9351eaf6fc5c1e441ec0e524a7eafcd5bc350038e917",
+      "original_query": "What are tech needed for GenAI Adoption Roadmap",
+      "decomposed": [
+        {
+          "subquery_id": "7660a57fd8af2fd0e8470be1096120e01f82080cf47bbd4f445e20974fcc3400",
+          "original_subquery": "What are tech needed for GenAI Adoption Roadmap?",
+          "enhanced_query": "What are tech needed for GenAI Adoption Roadmap?",
+          "multi_queries": [
+            "What are the technologies required for GenAI Adoption Roadmap?",
+            "What tech is necessary for implementing GenAI Adoption Roadmap?",
+            "What are the technical requirements for GenAI Adoption Roadmap?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f5d241a01dbc24c46633b73ae25a4b5c53b2557bdd632aa081eb6d33986d07b7",
+      "original_query": "what is the Execution Plan",
+      "decomposed": [
+        {
+          "subquery_id": "8720f0a902f6eb6de02a30e358b61f9a6f4d644b97a66ee030ed926b594f6df1",
+          "original_subquery": "what is the Execution Plan?",
+          "enhanced_query": "what is the Execution Plan?",
+          "multi_queries": []
+        }
+      ]
+    },
+    {
+      "id": "cf3942e5f45096b27445ab7f5b99bd5894a40c73f13193ca1bee208cc8e55965",
+      "original_query": "what is the Execution Plan in GenAI Adoption Roadmap",
+      "decomposed": [
+        {
+          "subquery_id": "9529c5ef1f57d59123a3f537722dddad1897878b532facd839027ff5cbf83430",
+          "original_subquery": "what is the Execution Plan in GenAI Adoption Roadmap?",
+          "enhanced_query": "What is the Execution Plan in the context of GenAI Adoption Roadmap?",
+          "multi_queries": [
+            "What is the Execution Plan in the context of AI Adoption Roadmap?",
+            "What does Execution Plan mean in the context of GenAI Adoption Roadmap?",
+            "How does Execution Plan relate to GenAI Adoption Roadmap?"
+          ]
+        }
+      ]
     }
   ]
 }
