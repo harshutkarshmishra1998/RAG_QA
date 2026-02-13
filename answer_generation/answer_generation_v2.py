@@ -585,7 +585,7 @@ def generate_answer_from_last_entry():
         "aggregate_evidence_metrics": aggregate_metrics
     }
 
-    result["dedup_id"] = stable_hash(query_id, str(result["used_chunk_ids"]))
+    result["dedup_id"] = stable_hash(query_id, str(result["used_chunk_ids"]), str("v2"))
 
     # data = load_json_array(OUTPUT_FILE)
 

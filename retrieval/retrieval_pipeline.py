@@ -214,15 +214,45 @@ def retrieve_latest_query_chunks():
                 except Exception:
                     last_entry = None
 
-        # ---------- sequential dedupe ----------
+        # # ---------- sequential dedupe ----------
+        # if last_entry and last_entry.get("query_id") == output["query_id"]:
+        #     # overwrite last line
+        #     with open(OUTPUT_FILE, "rb+") as f:
+        #         f.seek(-len(last_line) - 1, 2)
+        #         f.truncate()
+        #         f.write(json.dumps(output, default=_json_safe).encode("utf-8") + b"\n")
+        # else:
+        #     with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
+        #         f.write(json.dumps(output, default=_json_safe) + "\n")
+
         if last_entry and last_entry.get("query_id") == output["query_id"]:
-            # overwrite last line
-            with open(OUTPUT_FILE, "rb+") as f:
-                f.seek(-len(last_line) - 1, 2)
-                f.truncate()
-                f.write(json.dumps(output, default=_json_safe).encode("utf-8") + b"\n")
+            # load all valid lines
+            valid_lines = []
+            with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        obj = json.loads(line)
+                        valid_lines.append(obj)
+                    except json.JSONDecodeError:
+                        continue
+
+            # replace last entry
+            if valid_lines:
+                valid_lines[-1] = output
+            else:
+                valid_lines.append(output)
+
+            # rewrite file cleanly
+            with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+                for obj in valid_lines:
+                    f.write(json.dumps(obj, default=_json_safe) + "\n")
+
         else:
             with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
                 f.write(json.dumps(output, default=_json_safe) + "\n")
+
 
     return output

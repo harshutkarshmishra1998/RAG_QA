@@ -601,7 +601,7 @@ def generate_answer_from_last_entry():
         "answer": final_answer
     }
 
-    dedup_id = stable_hash(query_id, "|".join(chunk_ids))
+    dedup_id = stable_hash(query_id, "|".join(chunk_ids), str("v1"))
     result["dedup_id"] = dedup_id
 
     # existing = load_json_array(OUTPUT_FILE)

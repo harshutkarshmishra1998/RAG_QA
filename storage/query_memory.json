@@ -1,289 +1,81 @@
 {
   "queries": [
     {
-      "id": "b738bb2a793d9ce3abb1e2b2cf04db269d272bfaabe5d5a1c34296315339a54a",
-      "original_query": "Summarize this",
+      "id": "d6898cdeccdfd620cccaf895e0c27d73568e1652bb402fe103902d366fde6b1f",
+      "original_query": "What DP_Right_Capacity code is assigned to single accounts?",
       "decomposed": [
         {
-          "subquery_id": "9bd450c312d256e93924cd28bcfc7857569af50e7b5399c2a4219c8ce58fd090",
-          "original_subquery": "Summarize this?",
-          "enhanced_query": "Summarize this?",
+          "subquery_id": "d6898cdeccdfd620cccaf895e0c27d73568e1652bb402fe103902d366fde6b1f",
+          "original_subquery": "What DP_Right_Capacity code is assigned to single accounts?",
+          "enhanced_query": "What is the DP_Right_Capacity code assigned to single accounts?",
           "multi_queries": [
-            "Can you summarize this?",
-            "How would you summarize this?"
+            "What is the DP_Right_Capacity code assigned to single user accounts?",
+            "What DP_Right_Capacity code is assigned to individual accounts?",
+            "What is the DP_Right_Capacity code for single user accounts?"
           ]
         }
       ]
     },
     {
-      "id": "1680f6dc7ae55319040efd2f763345554d1d1d7cd3c30d86e0a190b31ac94e4b",
-      "original_query": "What are the steps in the high-level process at failure, what happens within 24 hours, and what output files are generated?",
+      "id": "4774f7e58efa891b4de3b5b60c32dae7ebed0f8982414d3d9dab56cdd3e279ac",
+      "original_query": "What happens if total deposits exceed the SMDIA for a single account holder?",
       "decomposed": [
         {
-          "subquery_id": "5a225dd46d3b3dc3f52463f1c2fc454f5cec549d87970355e38d534fcbac94ca",
-          "original_subquery": "What are the steps in the high-level process at failure, what happens within 24 hours,?",
-          "enhanced_query": "What are the steps in the high-level process at failure, and what happens within 24 hours?",
+          "subquery_id": "4774f7e58efa891b4de3b5b60c32dae7ebed0f8982414d3d9dab56cdd3e279ac",
+          "original_subquery": "What happens if total deposits exceed the SMDIA for a single account holder?",
+          "enhanced_query": "What are the consequences of total deposits exceeding the SMDIA for a single account holder?",
           "multi_queries": [
-            "What are the steps in the high-level process at failure?"
-          ]
-        },
-        {
-          "subquery_id": "71f4653b4e8c38e54f6535f08caaf5af2924584d610802d87b6851afd2acd454",
-          "original_subquery": "what output files are generated?",
-          "enhanced_query": "What are the output files generated?",
-          "multi_queries": [
-            "What files are generated as output?",
-            "What are the files produced as output?",
-            "What files are the output of the process?"
+            "What happens when total deposits exceed the SMDIA for a single account holder?",
+            "What are the implications of exceeding the SMDIA for a single account holder's deposits?",
+            "What are the consequences of a single account holder's deposits exceeding the SMDIA?"
           ]
         }
       ]
     },
     {
-      "id": "4d244eef930377b5cf1d3dec94278be8840b8fd2fb63281e54132d9c3bbcbce9",
-      "original_query": "What are fiduciary accounts, when are they placed in the Pending File, and how is deposit insurance calculated once information becomes available?",
+      "id": "d6898cdeccdfd620cccaf895e0c27d73568e1652bb402fe103902d366fde6b1f",
+      "original_query": "What DP_Right_Capacity code is assigned to single accounts?",
       "decomposed": [
         {
-          "subquery_id": "e825801cda21d05846c15255dd099dcdbed4b49e9b722657e27ee6142d07b456",
-          "original_subquery": "What are fiduciary accounts, when are they placed in the Pending File,?",
-          "enhanced_query": "What are fiduciary accounts and when are they placed in the Pending File?",
+          "subquery_id": "d6898cdeccdfd620cccaf895e0c27d73568e1652bb402fe103902d366fde6b1f",
+          "original_subquery": "What DP_Right_Capacity code is assigned to single accounts?",
+          "enhanced_query": "What is the DP_Right_Capacity code assigned to single accounts?",
           "multi_queries": [
-            "What types of accounts are considered fiduciary and when are they placed in the Pending File?",
-            "When are fiduciary accounts typically placed in the Pending File?",
-            "What is the purpose of placing fiduciary accounts in the Pending File?"
-          ]
-        },
-        {
-          "subquery_id": "86341f4b5c008c07e6091591187971adb0300d26df4599235e90acd5bf2f61ac",
-          "original_subquery": "how is deposit insurance calculated once information becomes available?",
-          "enhanced_query": "How is deposit insurance calculated once all necessary information is available?",
-          "multi_queries": [
-            "What is the formula used to calculate deposit insurance once all necessary information is available?",
-            "How is the calculation of deposit insurance finalized once all required data is available?",
-            "What steps are taken to determine the final amount of deposit insurance once all necessary information is available?"
+            "What is the DP_Right_Capacity code assigned to single user accounts?",
+            "What DP_Right_Capacity code is assigned to individual accounts?",
+            "What is the DP_Right_Capacity code for single user accounts?"
           ]
         }
       ]
     },
     {
-      "id": "eece331b7f57ad2f6f5e0cf12ca552ea75a63b2d43fb1e42377a2b27967e2e00",
-      "original_query": "Explain how deposit insurance is calculated for joint accounts including aggregation, allocation, and uninsured amount handling.",
+      "id": "40855e9bc7672d4d6daccb14cbf7dd4b731b41a627f53f17dec3f32a15173932",
+      "original_query": "What is a primary beneficiary in a revocable trust?",
       "decomposed": [
         {
-          "subquery_id": "f7c2c0c38deb032974cbe90a9c892d8d2f140c07cadcb3403870854b5437195b",
-          "original_subquery": "Explain how deposit insurance is calculated for joint accounts including aggregation, allocation, and uninsured amount handling.?",
-          "enhanced_query": "How is deposit insurance calculated for joint accounts, including the aggregation of accounts, allocation of coverage, and handling of uninsured amounts?",
+          "subquery_id": "40855e9bc7672d4d6daccb14cbf7dd4b731b41a627f53f17dec3f32a15173932",
+          "original_subquery": "What is a primary beneficiary in a revocable trust?",
+          "enhanced_query": "What are the characteristics of a primary beneficiary in a revocable trust?",
           "multi_queries": [
-            "How is deposit insurance calculated for joint accounts in terms of account aggregation?",
-            "What is the process for allocating deposit insurance coverage to joint accounts?"
+            "What are the key features of a primary beneficiary in a revocable trust?",
+            "What defines a primary beneficiary in a revocable trust?",
+            "What are the primary characteristics of a beneficiary in a revocable trust?"
           ]
         }
       ]
     },
     {
-      "id": "f98cba35ec7e3b917d87a204496feb698c147cffbde0d3bc1317f5f181565cbd",
-      "original_query": "Explain how missing depositor information impacts insurance determination and system processing.",
+      "id": "0f99dd83d906f471b8f50700bf7de8864bfcb1788b20cbc53c2167d466b7b32d",
+      "original_query": "When is a trust account placed in the Pending File?",
       "decomposed": [
         {
-          "subquery_id": "806a5cab01e534d6388cef0445ea82adc86968433a26b191caf694ae1f623a79",
-          "original_subquery": "Explain how missing depositor information impacts insurance determination and system processing.?",
-          "enhanced_query": "How does missing depositor information affect insurance determination and system processing?",
+          "subquery_id": "0f99dd83d906f471b8f50700bf7de8864bfcb1788b20cbc53c2167d466b7b32d",
+          "original_subquery": "When is a trust account placed in the Pending File?",
+          "enhanced_query": "When is a trust account placed in the Pending File and what are the criteria for this placement?",
           "multi_queries": [
-            "What impact does missing depositor information have on insurance determination?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "a6ffd0f005e9099dc1b2f7a95d7492c62fe1f2975a93ad699e58306a70b58feb",
-      "original_query": "After a covered institution fails, explain the sequence of operational, data, and reporting steps performed by the CI IT system and the FDIC, including aggregation, validation, output generation, and fund release.",
-      "decomposed": [
-        {
-          "subquery_id": "da16bb7d6656e0a5a83e7c5a04da89acc31b6fc6cfc3e1f9eb6c6397bb3ceabb",
-          "original_subquery": "After a covered institution fails, explain the sequence of operational, data, and reporting steps performed by the CI IT system and the FDIC, including aggregation, validation, output generation, and fund release.?",
-          "enhanced_query": "What are the operational, data, and reporting steps performed by the CI IT system and the FDIC after a covered institution fails, including aggregation, validation, output generation, and fund release?",
-          "multi_queries": [
-            "What steps are performed by the CI IT system and the FDIC after a covered institution fails?",
-            "What are the operational, data, and reporting steps taken by the CI IT system and the FDIC after a covered institution fails?",
-            "What are the aggregation, validation, output generation, and fund release steps performed by the CI IT system and the FDIC after a covered institution fails?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "7f132a2d066201c9fe4df85c2451299e03b0ffefc399eaecf01859eda72a39c1",
-      "original_query": "Explain how Part 370 ensures both regulatory compliance and rapid depositor access to insured funds.",
-      "decomposed": [
-        {
-          "subquery_id": "ffd232c411bb4a664a10faa518cf524f712f1b2a3636cd92130037dd1004f756",
-          "original_subquery": "Explain how Part 370 ensures both regulatory compliance and rapid depositor access to insured funds.?",
-          "enhanced_query": "What are the key aspects of Part 370 that facilitate both regulatory compliance and rapid depositor access to insured funds?",
-          "multi_queries": [
-            "How does Part 370 enable rapid depositor access to insured funds?",
-            "What features of Part 370 support both regulatory compliance and depositor access to insured funds?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "7dfd29363e9fc0989577a1e85a00d0c2b2e0f4f079bbe1b22ea1251f2479bdf9",
-      "original_query": "What happens during compliance testing, what does the FDIC verify, and how often can testing occur?",
-      "decomposed": [
-        {
-          "subquery_id": "e799d9d359ed8ccc42016707c742c1bd2fb033958d7b3be3a61bbde44d8339bb",
-          "original_subquery": "What happens during compliance testing, what does the FDIC verify,?",
-          "enhanced_query": "What are the processes and items verified during FDIC compliance testing?",
-          "multi_queries": [
-            "What processes and items are verified during FDIC compliance testing?",
-            "What are the processes and items that FDIC compliance testing verifies?",
-            "During FDIC compliance testing, what processes and items are checked?"
-          ]
-        },
-        {
-          "subquery_id": "546e10abb9e25632bd292ad39700824b7a0c0e8324ea7a81ddd6725f5dd43fc2",
-          "original_subquery": "how often can testing occur?",
-          "enhanced_query": "How frequently can testing be performed?",
-          "multi_queries": [
-            "How often can testing be done?",
-            "How frequently should testing be conducted?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "faced88db764b7017241cbfbbb026c1727ed9c17bb72a73da9ffdaf7d1efcdb0",
-      "original_query": "How are deposits aggregated for insurance calculation, what role does ORC play, and how are insured vs uninsured amounts determined?",
-      "decomposed": [
-        {
-          "subquery_id": "ece6f521857e4f069cd78f48c021b7a88859e127d1df9ee667b41d4b0d2d0c0d",
-          "original_subquery": "How are deposits aggregated for insurance calculation, what role does ORC play,?",
-          "enhanced_query": "What is the process of aggregating deposits for insurance calculation and what role does the Order Reinsurance Ceding (ORC) process play?",
-          "multi_queries": [
-            "What is the purpose of aggregating deposits for insurance calculation and what role does the ORC process play?",
-            "How does the process of aggregating deposits contribute to insurance calculation and what is the significance of the ORC process?",
-            "What is the function of aggregating deposits in insurance calculation and what is the role of the ORC process in this context?"
-          ]
-        },
-        {
-          "subquery_id": "51c16922d1a3b63a4803bd714045d27b17c8935ee7b0fe11ca019c2df7125d12",
-          "original_subquery": "how are insured vs uninsured amounts determined?",
-          "enhanced_query": "how are insured vs uninsured amounts determined?",
-          "multi_queries": [
-            "how are insured and uninsured amounts calculated?",
-            "what factors determine insured vs uninsured amounts?",
-            "how are insured and uninsured amounts differentiated?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "22059dbcfaff1ecfa89a6bdcaba447861a8fc5ef552b6319ba0fefc9dbbbc060",
-      "original_query": "Explain GenAI Adoption Roadmap",
-      "decomposed": [
-        {
-          "subquery_id": "8c4d54eca6c52156e1d35028938c2a924a57028728365208d434e2131c8fa6f0",
-          "original_subquery": "Explain GenAI Adoption Roadmap?",
-          "enhanced_query": "Explain GenAI Adoption Roadmap?",
-          "multi_queries": [
-            "What is the GenAI Adoption Roadmap?",
-            "Can you describe the GenAI Adoption Roadmap?",
-            "How does the GenAI Adoption Roadmap work?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "014e916a7d426636bbfd9351eaf6fc5c1e441ec0e524a7eafcd5bc350038e917",
-      "original_query": "What are tech needed for GenAI Adoption Roadmap",
-      "decomposed": [
-        {
-          "subquery_id": "7660a57fd8af2fd0e8470be1096120e01f82080cf47bbd4f445e20974fcc3400",
-          "original_subquery": "What are tech needed for GenAI Adoption Roadmap?",
-          "enhanced_query": "What are tech needed for GenAI Adoption Roadmap?",
-          "multi_queries": [
-            "What are the technologies required for GenAI Adoption Roadmap?",
-            "What tech is necessary for implementing GenAI Adoption Roadmap?",
-            "What are the technical requirements for GenAI Adoption Roadmap?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "f5d241a01dbc24c46633b73ae25a4b5c53b2557bdd632aa081eb6d33986d07b7",
-      "original_query": "what is the Execution Plan",
-      "decomposed": [
-        {
-          "subquery_id": "8720f0a902f6eb6de02a30e358b61f9a6f4d644b97a66ee030ed926b594f6df1",
-          "original_subquery": "what is the Execution Plan?",
-          "enhanced_query": "what is the Execution Plan?",
-          "multi_queries": []
-        }
-      ]
-    },
-    {
-      "id": "cf3942e5f45096b27445ab7f5b99bd5894a40c73f13193ca1bee208cc8e55965",
-      "original_query": "what is the Execution Plan in GenAI Adoption Roadmap",
-      "decomposed": [
-        {
-          "subquery_id": "9529c5ef1f57d59123a3f537722dddad1897878b532facd839027ff5cbf83430",
-          "original_subquery": "what is the Execution Plan in GenAI Adoption Roadmap?",
-          "enhanced_query": "What is the Execution Plan in the context of GenAI Adoption Roadmap?",
-          "multi_queries": [
-            "What is the Execution Plan in the context of AI Adoption Roadmap?",
-            "What does Execution Plan mean in the context of GenAI Adoption Roadmap?",
-            "How does Execution Plan relate to GenAI Adoption Roadmap?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "c148b28b327ddd0e86ebe170ef65a50235e457144a8c458926f9ef1a6b713fe7",
-      "original_query": "What is the purpose of the Part 370 Information Technology Functional Guide?",
-      "decomposed": [
-        {
-          "subquery_id": "c148b28b327ddd0e86ebe170ef65a50235e457144a8c458926f9ef1a6b713fe7",
-          "original_subquery": "What is the purpose of the Part 370 Information Technology Functional Guide?",
-          "enhanced_query": "What is the purpose of the Part 370 Information Technology Functional Guide?",
-          "multi_queries": [
-            "What is the main objective of the Part 370 Information Technology Functional Guide?",
-            "What is the primary purpose of the Part 370 Information Technology Functional Guide?",
-            "What is the main function of the Part 370 Information Technology Functional Guide?"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "e8d7f16b20a5cfbe92ed11368cf5a719c105bd99ee830768fa0ceeab87fe134e",
-      "original_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.",
-      "decomposed": [
-        {
-          "subquery_id": "71c45c69780eaff6c408dad54b36ebbf3e22175a649a572bac62d9074ea8709b",
-          "original_subquery": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.?",
-          "enhanced_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.?",
-          "multi_queries": []
-        }
-      ]
-    },
-    {
-      "id": "1680f6dc7ae55319040efd2f763345554d1d1d7cd3c30d86e0a190b31ac94e4b",
-      "original_query": "What are the steps in the high-level process at failure, what happens within 24 hours, and what output files are generated?",
-      "decomposed": [
-        {
-          "subquery_id": "5a225dd46d3b3dc3f52463f1c2fc454f5cec549d87970355e38d534fcbac94ca",
-          "original_subquery": "What are the steps in the high-level process at failure, what happens within 24 hours,?",
-          "enhanced_query": "What are the steps in the high-level process at failure, and what happens within 24 hours?",
-          "multi_queries": [
-            "What are the steps in the high-level process at failure?"
-          ]
-        },
-        {
-          "subquery_id": "71f4653b4e8c38e54f6535f08caaf5af2924584d610802d87b6851afd2acd454",
-          "original_subquery": "what output files are generated?",
-          "enhanced_query": "What are the output files generated?",
-          "multi_queries": [
-            "What files are generated as output?",
-            "What are the files produced as output?",
-            "What files are the output of the process?"
+            "When is a trust account placed in the Pending File and what are the criteria for this placement?",
+            "What triggers the placement of a trust account in the Pending File?",
+            "Under what conditions is a trust account moved to the Pending File?"
           ]
         }
       ]
