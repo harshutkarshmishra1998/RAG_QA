@@ -166,26 +166,62 @@ def retrieve_latest_query_chunks():
 
     STORAGE_PATH.mkdir(parents=True, exist_ok=True)
 
+    # # If file doesn't exist → create and write
+    # if not OUTPUT_FILE.exists():
+    #     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    #         f.write(json.dumps(output) + "\n")
+    # else:
+    #     # Check for duplicate query_id
+    #     is_duplicate = False
+
+    #     with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+    #         for line in f:
+    #             try:
+    #                 existing = json.loads(line)
+    #                 if existing.get("query_id") == output["query_id"]:
+    #                     is_duplicate = True
+    #                     break
+    #             except Exception:
+    #                 continue
+
+    #     # Append only if not duplicate
+    #     if not is_duplicate:
+    #         with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
+    #             f.write(json.dumps(output, default=_json_safe) + "\n")
+
     # If file doesn't exist → create and write
     if not OUTPUT_FILE.exists():
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-            f.write(json.dumps(output) + "\n")
+            f.write(json.dumps(output, default=_json_safe) + "\n")
+
     else:
-        # Check for duplicate query_id
-        is_duplicate = False
+        # ---------- read ONLY last entry ----------
+        last_entry = None
 
-        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
-            for line in f:
+        with open(OUTPUT_FILE, "rb") as f:
+            try:
+                f.seek(-2, 2)
+                while f.read(1) != b"\n":
+                    f.seek(-2, 1)
+            except OSError:
+                f.seek(0)
+
+            last_line = f.readline().decode("utf-8").strip()
+
+            if last_line:
                 try:
-                    existing = json.loads(line)
-                    if existing.get("query_id") == output["query_id"]:
-                        is_duplicate = True
-                        break
+                    last_entry = json.loads(last_line)
                 except Exception:
-                    continue
+                    last_entry = None
 
-        # Append only if not duplicate
-        if not is_duplicate:
+        # ---------- sequential dedupe ----------
+        if last_entry and last_entry.get("query_id") == output["query_id"]:
+            # overwrite last line
+            with open(OUTPUT_FILE, "rb+") as f:
+                f.seek(-len(last_line) - 1, 2)
+                f.truncate()
+                f.write(json.dumps(output, default=_json_safe).encode("utf-8") + b"\n")
+        else:
             with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
                 f.write(json.dumps(output, default=_json_safe) + "\n")
 

@@ -587,19 +587,32 @@ def generate_answer_from_last_entry():
 
     result["dedup_id"] = stable_hash(query_id, str(result["used_chunk_ids"]))
 
+    # data = load_json_array(OUTPUT_FILE)
+
+    # replaced = False
+    # for i, item in enumerate(data):
+    #     if item.get("dedup_id") == result["dedup_id"]:
+    #         data[i] = result
+    #         replaced = True
+    #         print("♻ Updated existing answer")
+    #         break
+
+    # if not replaced:
+    #     print("✅ Stored new answer")
+    #     data.append(result)
+
+    # save_json_array(OUTPUT_FILE, data)
+
     data = load_json_array(OUTPUT_FILE)
 
-    replaced = False
-    for i, item in enumerate(data):
-        if item.get("dedup_id") == result["dedup_id"]:
-            data[i] = result
-            replaced = True
-            print("♻ Updated existing answer")
-            break
-
-    if not replaced:
+    # last-entry-only dedupe
+    if data and data[-1].get("dedup_id") == result["dedup_id"]:
+        data[-1] = result
+        print("♻ Updated last answer")
+    else:
         print("✅ Stored new answer")
         data.append(result)
 
     save_json_array(OUTPUT_FILE, data)
+
     return result

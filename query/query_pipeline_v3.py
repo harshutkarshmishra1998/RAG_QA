@@ -415,13 +415,22 @@ def process_user_query(user_query: str) -> Dict:
         "decomposed": processed_subqueries
     }
 
-    existing_index = next(
-        (i for i, q in enumerate(memory["queries"]) if q["id"] == query_id),
-        None
-    )
+    # existing_index = next(
+    #     (i for i, q in enumerate(memory["queries"]) if q["id"] == query_id),
+    #     None
+    # )
 
-    if existing_index is not None:
-        memory["queries"][existing_index] = new_entry
+    # if existing_index is not None:
+    #     memory["queries"][existing_index] = new_entry
+    # else:
+    #     memory["queries"].append(new_entry)
+
+    # sequential dedupe (compare only with last entry)
+    if memory["queries"]:
+        if memory["queries"][-1]["id"] == query_id:
+            memory["queries"][-1] = new_entry
+        else:
+            memory["queries"].append(new_entry)
     else:
         memory["queries"].append(new_entry)
 

@@ -604,18 +604,28 @@ def generate_answer_from_last_entry():
     dedup_id = stable_hash(query_id, "|".join(chunk_ids))
     result["dedup_id"] = dedup_id
 
-    existing = load_json_array(OUTPUT_FILE)
+    # existing = load_json_array(OUTPUT_FILE)
 
-    updated = False
-    for i, item in enumerate(existing):
-        if item.get("dedup_id") == dedup_id:
-            existing[i] = result
-            updated = True
-            break
+    # updated = False
+    # for i, item in enumerate(existing):
+    #     if item.get("dedup_id") == dedup_id:
+    #         existing[i] = result
+    #         updated = True
+    #         break
 
-    if not updated:
-        existing.append(result)
+    # if not updated:
+    #     existing.append(result)
 
-    save_json_array(OUTPUT_FILE, existing)
+    # save_json_array(OUTPUT_FILE, existing)
+
+    data = load_json_array(OUTPUT_FILE)
+
+    # last-entry-only dedupe
+    if data and data[-1].get("dedup_id") == dedup_id:
+        data[-1] = result
+    else:
+        data.append(result)
+
+    save_json_array(OUTPUT_FILE, data)
 
     return result

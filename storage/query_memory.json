@@ -263,6 +263,30 @@
           "multi_queries": []
         }
       ]
+    },
+    {
+      "id": "1680f6dc7ae55319040efd2f763345554d1d1d7cd3c30d86e0a190b31ac94e4b",
+      "original_query": "What are the steps in the high-level process at failure, what happens within 24 hours, and what output files are generated?",
+      "decomposed": [
+        {
+          "subquery_id": "5a225dd46d3b3dc3f52463f1c2fc454f5cec549d87970355e38d534fcbac94ca",
+          "original_subquery": "What are the steps in the high-level process at failure, what happens within 24 hours,?",
+          "enhanced_query": "What are the steps in the high-level process at failure, and what happens within 24 hours?",
+          "multi_queries": [
+            "What are the steps in the high-level process at failure?"
+          ]
+        },
+        {
+          "subquery_id": "71f4653b4e8c38e54f6535f08caaf5af2924584d610802d87b6851afd2acd454",
+          "original_subquery": "what output files are generated?",
+          "enhanced_query": "What are the output files generated?",
+          "multi_queries": [
+            "What files are generated as output?",
+            "What are the files produced as output?",
+            "What files are the output of the process?"
+          ]
+        }
+      ]
     }
   ]
 }

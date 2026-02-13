@@ -475,9 +475,19 @@ def generate_answer_from_last_entry():
 
     result["dedup_id"] = stable_hash(query_id, str(result["used_chunk_ids"]))
 
+    # data = load_json_array(OUTPUT_FILE)
+    # if result["dedup_id"] not in {d.get("dedup_id") for d in data}:
+    #     data.append(result)
+    #     save_json_array(OUTPUT_FILE, data)
+    
     data = load_json_array(OUTPUT_FILE)
-    if result["dedup_id"] not in {d.get("dedup_id") for d in data}:
+
+    # last-entry-only dedupe
+    if data and data[-1].get("dedup_id") == result["dedup_id"]:
+        data[-1] = result
+    else:
         data.append(result)
-        save_json_array(OUTPUT_FILE, data)
+
+    save_json_array(OUTPUT_FILE, data)
 
     return result
