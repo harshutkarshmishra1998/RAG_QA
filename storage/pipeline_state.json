@@ -4,7 +4,8 @@
     "doc_293e88c887d9456abb738d28e727fe3d",
     "doc_e74e0ddd539c4d168baaba8eaedb3b25",
     "doc_30f40674b55c435d8fe09eb5cd94ca6e",
-    "doc_64e6b746112d475b92a02e8fff2f3622"
+    "doc_64e6b746112d475b92a02e8fff2f3622",
+    "doc_f2ed417c4d2a48b785b8135c57eb9e78"
   ],
   "processed_chunk_ids": [
     "chunk_000000",
@@ -312,6 +313,11 @@
     "chunk_000006",
     "chunk_000007",
     "chunk_000008",
-    "chunk_000009"
+    "chunk_000009",
+    "chunk_000000",
+    "chunk_000001",
+    "chunk_000002",
+    "chunk_000003",
+    "chunk_000004"
   ]
 }

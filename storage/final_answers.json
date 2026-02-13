@@ -279,5 +279,154 @@
       "total_claims": 37
     },
     "dedup_id": "ea29110833b02e89743dcfb92d9634452a2e7b275192d9c6f95f5e847688bc8d"
+  },
+  {
+    "query_id": "f46efdfa851943897d774bdf9c56d2e50eba5902d7a2a7658ead8225c78ff9ff",
+    "original_query": "Can you summarize the document",
+    "used_chunk_ids": [
+      0,
+      137,
+      7
+    ],
+    "answer": "\n\nQUESTION 1:\nCan you summarize the document\n\nANSWER:\nBased on the provided context and sources, I will summarize the document.\n\nThe document is about the revenue trends across Q1, Q2, and Q3. The revenue grew steadily with the highest growth recorded in Q3 (SOURCE [2]). Q1 showed a moderate increase in revenue as new product lines were introduced (SOURCE [2]). Q2 outperformed Q1 due to marketing campaigns (SOURCE [2]). Q3 had exponential growth due to global expansion (SOURCE [2]).\n\nHowever, the provided sources do not relate to the revenue trends. The sources are about the FDIC's Information Technology Functional Guide for Part 370, which is about recordkeeping for timely deposit insurance determination.\n\nThe guide covers various topics, including:\n\n- Mergers of IDIs (SOURCE [1])\n- Death of a beneficial owner (SOURCE [1])\n- Input Files, including fiduciary accounts (SOURCE [1])\n- Disclaimers and purpose of the guide (SOURCE [1])\n\nThe guide is not related to the revenue trends, and the provided sources do not support the claims about the revenue trends.\n\nREFERENCES\n[1] 370 — pages 3, 11\n[2] multimodal_sample — pages 1",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "Can you summarize the document",
+        "answer": "Based on the provided context and sources, I will summarize the document.\n\nThe document is about the revenue trends across Q1, Q2, and Q3. The revenue grew steadily with the highest growth recorded in Q3 (SOURCE [2]). Q1 showed a moderate increase in revenue as new product lines were introduced (SOURCE [2]). Q2 outperformed Q1 due to marketing campaigns (SOURCE [2]). Q3 had exponential growth due to global expansion (SOURCE [2]).\n\nHowever, the provided sources do not relate to the revenue trends. The sources are about the FDIC's Information Technology Functional Guide for Part 370, which is about recordkeeping for timely deposit insurance determination.\n\nThe guide covers various topics, including:\n\n- Mergers of IDIs (SOURCE [1])\n- Death of a beneficial owner (SOURCE [1])\n- Input Files, including fiduciary accounts (SOURCE [1])\n- Disclaimers and purpose of the guide (SOURCE [1])\n\nThe guide is not related to the revenue trends, and the provided sources do not support the claims about the revenue trends.",
+        "used_chunk_ids": [
+          0,
+          137,
+          7
+        ],
+        "evidence_metrics": {
+          "sentence_count": 9,
+          "supported_sentences": 5,
+          "citation_coverage": 0.556,
+          "avg_evidence_confidence": 0.965
+        },
+        "references": [
+          "[1] 370 — pages 3, 11",
+          "[2] multimodal_sample — pages 1"
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.556,
+      "avg_evidence_confidence": 0.965,
+      "total_supported_sentences": 5,
+      "total_sentences": 9
+    },
+    "dedup_id": "cdc47248e7d21572b097588f49efe6a140da258a59a2db4af994393fb84b8834"
+  },
+  {
+    "query_id": "737b13c8b8d1f2ac6eca696aed6838732b8f02fd35746f1d2b90be1ab46064a3",
+    "original_query": "What is MCP?",
+    "used_chunk_ids": [
+      102,
+      52,
+      194
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat is MCP\n\nANSWER:\nBased on the provided sources, I can answer your question about MCP.\n\nUnfortunately, there is no information about MCP in the provided sources.\n\nREFERENCES\n[1] 370 — pages 40, 46, 58",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What is MCP",
+        "answer": "Based on the provided sources, I can answer your question about MCP.\n\nUnfortunately, there is no information about MCP in the provided sources.",
+        "used_chunk_ids": [
+          102,
+          52,
+          194
+        ],
+        "evidence_metrics": {
+          "sentence_count": 2,
+          "supported_sentences": 0,
+          "citation_coverage": 0.0,
+          "avg_evidence_confidence": 0
+        },
+        "references": [
+          "[1] 370 — pages 40, 46, 58"
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.0,
+      "avg_evidence_confidence": 0.0,
+      "total_supported_sentences": 0,
+      "total_sentences": 2
+    },
+    "dedup_id": "3777a9c04fa56d1a84fad93ca47c66148069b1182bba5019a96a41dc95495bfb"
+  },
+  {
+    "query_id": "37fb15dc4f951b0905ec9317ebfce47ed04f5bf9221e6dd38a377afc4209cabb",
+    "original_query": "What is the data needed GenAI Adoption?",
+    "used_chunk_ids": [
+      83
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat is the data needed GenAI Adoption\n\nANSWER:\nBased on the provided context and source [1], the data needed for GenAI adoption in this scenario is not explicitly stated. However, the data required for the Customer Output File (Time Period 3) and the Account Output File (Time Period 3) can be identified:\n\nFor the Customer Output File (Time Period 3):\n\n- Unique depositor information (e.g., Tax ID number)\n- Account owner information from indirect (ARE) depositors\n- \"CS_Unique_ID\" (e.g., Government ID or a unique identifier assigned by the CI)\n\nFor the Account Output File (Time Period 3):\n\n- \"DP_Acct_Identifier\"\n- \"DP_Right_Capacity\"\n- Deposit insurance determination results\n- \"DP_PT_Account_Flag\" field (for pass-through accounts)\n\nNote that the data required for GenAI adoption is not specified in the provided context.\n\nREFERENCES\n[1] 370 — pages 82",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What is the data needed GenAI Adoption",
+        "answer": "Based on the provided context and source [1], the data needed for GenAI adoption in this scenario is not explicitly stated. However, the data required for the Customer Output File (Time Period 3) and the Account Output File (Time Period 3) can be identified:\n\nFor the Customer Output File (Time Period 3):\n\n- Unique depositor information (e.g., Tax ID number)\n- Account owner information from indirect (ARE) depositors\n- \"CS_Unique_ID\" (e.g., Government ID or a unique identifier assigned by the CI)\n\nFor the Account Output File (Time Period 3):\n\n- \"DP_Acct_Identifier\"\n- \"DP_Right_Capacity\"\n- Deposit insurance determination results\n- \"DP_PT_Account_Flag\" field (for pass-through accounts)\n\nNote that the data required for GenAI adoption is not specified in the provided context.",
+        "used_chunk_ids": [
+          83
+        ],
+        "evidence_metrics": {
+          "sentence_count": 2,
+          "supported_sentences": 1,
+          "citation_coverage": 0.5,
+          "avg_evidence_confidence": 0.45
+        },
+        "references": [
+          "[1] 370 — pages 82"
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.5,
+      "avg_evidence_confidence": 0.45,
+      "total_supported_sentences": 1,
+      "total_sentences": 2
+    },
+    "dedup_id": "1334af04abc6cc0fee473e9ef9065d7f5a3010908ab558c8e380fcd825c468e1"
+  },
+  {
+    "query_id": "48a0e9d3996b3c4c567c0e5de62659db45ad83c17b84080114772f527aa40020",
+    "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section?",
+    "used_chunk_ids": [
+      155,
+      28,
+      156
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section\n\nANSWER:\nBased on the provided context and sources, here are the high-level process steps performed after a covered institution fails under Part 370:\n\n1. Determine the aggregate funds each grantor has across all revocable trust accounts at the CI allocated to eligible unique primary beneficiaries (Source [1], Step 4).\n2. If the total number of eligible unique beneficiaries of an account holder is five or fewer or if all primary beneficiaries have equal interest in the grantor's trust account, then:\n   a) If the total amount of the grantor's interest does not exceed SMDIA times the number of eligible unique beneficiaries, then all of the grantor's revocable trust funds at the CI are fully insured (Source [1], Step 5a).\n   b) If the total amount of the grantor's interest is greater than SMDIA times the number of eligible unique beneficiaries, then the excess is the uninsured amount for the account holder (Source [1], Step 5b).\n3. If the total number of eligible unique beneficiaries of a grantor is six or more and all the beneficiaries do not have equal interest in the trust, then:\n   a) Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary (Source [1], Step 6a).\n   b) If the total amount of the grantor exceeds the insured amount calculated based on the above, the excess is the uninsured amount for the grantor (Source [1], Step 6b).\n4. For all funds that do not meet the requirements for the REV ORC, aggregate and calculate deposit in the SGL ORC (Source [1], Step 7).\n5. If there are uninsured funds for the grantor in either the REV or other ORC, then apply debits (Source [1], Step 8).\n6. Record the respective uninsured amount of the grantor to each associated account (Source [1], Step 9).\n7. The insured amount of the grantor for each associated account is the difference between the grantor's interests in that account and the uninsured amount calculated based on the steps above (Source [1], Step 10).\n\nThe High-Level Process at Failure section is not explicitly described in the provided context. However, based on the provided information, it appears that the process involves:\n\n1. Identifying the accounts that do not meet the requirements for the REV ORC.\n2. Aggregating and calculating deposit in the SGL ORC for these accounts.\n3. Applying debits to the uninsured funds.\n4. Recording the respective uninsured amount of the grantor to each associated account.\n5. Calculating the insured amount for each individual account as the sum of the current balance and accrued interest, less the uninsured amount.\n\nNote that the provided context and sources do not explicitly describe the High-Level Process at Failure section, so the above information is based on the available information and may not be comprehensive.\n\nREFERENCES\n[1] 370 — pages 20-21, 25",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section",
+        "answer": "Based on the provided context and sources, here are the high-level process steps performed after a covered institution fails under Part 370:\n\n1. Determine the aggregate funds each grantor has across all revocable trust accounts at the CI allocated to eligible unique primary beneficiaries (Source [1], Step 4).\n2. If the total number of eligible unique beneficiaries of an account holder is five or fewer or if all primary beneficiaries have equal interest in the grantor's trust account, then:\n   a) If the total amount of the grantor's interest does not exceed SMDIA times the number of eligible unique beneficiaries, then all of the grantor's revocable trust funds at the CI are fully insured (Source [1], Step 5a).\n   b) If the total amount of the grantor's interest is greater than SMDIA times the number of eligible unique beneficiaries, then the excess is the uninsured amount for the account holder (Source [1], Step 5b).\n3. If the total number of eligible unique beneficiaries of a grantor is six or more and all the beneficiaries do not have equal interest in the trust, then:\n   a) Calculate the insured and uninsured amount for the funds associated with each beneficiary based on the aggregate dollar allocation from each grantor to each eligible unique beneficiary (Source [1], Step 6a).\n   b) If the total amount of the grantor exceeds the insured amount calculated based on the above, the excess is the uninsured amount for the grantor (Source [1], Step 6b).\n4. For all funds that do not meet the requirements for the REV ORC, aggregate and calculate deposit in the SGL ORC (Source [1], Step 7).\n5. If there are uninsured funds for the grantor in either the REV or other ORC, then apply debits (Source [1], Step 8).\n6. Record the respective uninsured amount of the grantor to each associated account (Source [1], Step 9).\n7. The insured amount of the grantor for each associated account is the difference between the grantor's interests in that account and the uninsured amount calculated based on the steps above (Source [1], Step 10).\n\nThe High-Level Process at Failure section is not explicitly described in the provided context. However, based on the provided information, it appears that the process involves:\n\n1. Identifying the accounts that do not meet the requirements for the REV ORC.\n2. Aggregating and calculating deposit in the SGL ORC for these accounts.\n3. Applying debits to the uninsured funds.\n4. Recording the respective uninsured amount of the grantor to each associated account.\n5. Calculating the insured amount for each individual account as the sum of the current balance and accrued interest, less the uninsured amount.\n\nNote that the provided context and sources do not explicitly describe the High-Level Process at Failure section, so the above information is based on the available information and may not be comprehensive.",
+        "used_chunk_ids": [
+          155,
+          28,
+          156
+        ],
+        "evidence_metrics": {
+          "sentence_count": 28,
+          "supported_sentences": 9,
+          "citation_coverage": 0.321,
+          "avg_evidence_confidence": 0.986
+        },
+        "references": [
+          "[1] 370 — pages 20-21, 25"
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.321,
+      "avg_evidence_confidence": 0.986,
+      "total_supported_sentences": 9,
+      "total_sentences": 28
+    },
+    "dedup_id": "aa3aa6dbe93ee6ad5b7421725c786da38cee09fc3820bc565f74859a2e61c840"
   }
 ]

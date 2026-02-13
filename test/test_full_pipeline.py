@@ -39,7 +39,7 @@ def main():
     result = ingest_pdf(str(pdf_path))
     print(f"   ✔ Document created: {result.document.doc_id}")
 
-    # 2️⃣ Incremental Pipeline
+    # 2️⃣ Incremental Pipeline (Clean → Chunk → Embed → FAISS Append)
     print("2️⃣ Running incremental processing...")
     pipeline_result = run_incremental_pipeline()
 

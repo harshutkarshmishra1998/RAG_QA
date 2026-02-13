@@ -85,6 +85,61 @@
           ]
         }
       ]
+    },
+    {
+      "id": "f46efdfa851943897d774bdf9c56d2e50eba5902d7a2a7658ead8225c78ff9ff",
+      "original_query": "Can you summarize the document",
+      "decomposed": [
+        {
+          "subquery_id": "563328d9be3ab2a2bd15856cbb362101bac42ba652193ff7599340b770b7a213",
+          "original_subquery": "Can you summarize the document?",
+          "enhanced_query": "How can you summarize the document?",
+          "multi_queries": []
+        }
+      ]
+    },
+    {
+      "id": "737b13c8b8d1f2ac6eca696aed6838732b8f02fd35746f1d2b90be1ab46064a3",
+      "original_query": "What is MCP?",
+      "decomposed": [
+        {
+          "subquery_id": "737b13c8b8d1f2ac6eca696aed6838732b8f02fd35746f1d2b90be1ab46064a3",
+          "original_subquery": "What is MCP?",
+          "enhanced_query": "What does MCP stand for?",
+          "multi_queries": []
+        }
+      ]
+    },
+    {
+      "id": "37fb15dc4f951b0905ec9317ebfce47ed04f5bf9221e6dd38a377afc4209cabb",
+      "original_query": "What is the data needed GenAI Adoption?",
+      "decomposed": [
+        {
+          "subquery_id": "37fb15dc4f951b0905ec9317ebfce47ed04f5bf9221e6dd38a377afc4209cabb",
+          "original_subquery": "What is the data needed GenAI Adoption?",
+          "enhanced_query": "What data is required for GenAI adoption?",
+          "multi_queries": [
+            "What data is necessary for GenAI adoption?",
+            "What information is required for GenAI adoption?",
+            "What kind of data is needed for GenAI adoption?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "48a0e9d3996b3c4c567c0e5de62659db45ad83c17b84080114772f527aa40020",
+      "original_query": "What are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section?",
+      "decomposed": [
+        {
+          "subquery_id": "48a0e9d3996b3c4c567c0e5de62659db45ad83c17b84080114772f527aa40020",
+          "original_subquery": "What are the high-level process steps performed after a covered institution fails under Part 370 and moreover what is described in the High-Level Process at Failure section?",
+          "enhanced_query": "What are the high-level process steps that occur after a covered institution fails under Part 370, and what is described in the High-Level Process at Failure section?",
+          "multi_queries": [
+            "What are the high-level process steps that occur after a covered institution fails under Part 370?",
+            "What happens after a covered institution fails under Part 370 according to the High-Level Process at Failure section?"
+          ]
+        }
+      ]
     }
   ]
 }
