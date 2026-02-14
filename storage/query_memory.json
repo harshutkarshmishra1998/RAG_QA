@@ -1,61 +1,78 @@
 {
   "queries": [
     {
-      "id": "53113450a823f885afeda1f06c78cb2ec0895ee8db90ac9c2da807472fce307e",
-      "original_query": "Describe the full decision tree for classifying an account as Single vs Joint vs Trust.",
+      "id": "8300d34d2d455425a7b47023ccd2e88bb739a3441723fc9dc129d31fd3e54095",
+      "original_query": "What is CNN?",
       "decomposed": [
         {
-          "subquery_id": "ffa2e81cb33795330c9308e584753f5efe9296f280457788a1552edd375f4fa6",
-          "original_subquery": "Describe the full decision tree for classifying an account as Single vs Joint vs Trust.?",
-          "enhanced_query": "Describe the full decision tree for classifying an account as Single vs Joint vs Trust.?",
+          "subquery_id": "8300d34d2d455425a7b47023ccd2e88bb739a3441723fc9dc129d31fd3e54095",
+          "original_subquery": "What is CNN?",
+          "enhanced_query": "What is the meaning of CNN?",
           "multi_queries": []
         }
       ]
     },
     {
-      "id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
-      "original_query": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
+      "id": "3e224ad7505579bef8b508e3e8f2993daa6b721f0ccfe53b06f55d247b4bea47",
+      "original_query": "What is Convulation Neural Network?",
       "decomposed": [
         {
-          "subquery_id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
-          "original_subquery": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
-          "enhanced_query": "What is the purpose behind the FDIC's method of aggregating balances by beneficial owner before applying insurance limits?",
+          "subquery_id": "3e224ad7505579bef8b508e3e8f2993daa6b721f0ccfe53b06f55d247b4bea47",
+          "original_subquery": "What is Convulation Neural Network?",
+          "enhanced_query": "What is Convulation Neural Network?",
+          "multi_queries": []
+        }
+      ]
+    },
+    {
+      "id": "5cee95ac81940bd0091e1ea55c675278d9477f2a37160decf47b9cb90bb923bc",
+      "original_query": "Why must beneficiary eligibility be verified before insurance calculation?",
+      "decomposed": [
+        {
+          "subquery_id": "5cee95ac81940bd0091e1ea55c675278d9477f2a37160decf47b9cb90bb923bc",
+          "original_subquery": "Why must beneficiary eligibility be verified before insurance calculation?",
+          "enhanced_query": "What are the reasons for verifying beneficiary eligibility before performing insurance calculations?",
           "multi_queries": [
-            "What is the purpose behind the FDIC's method of aggregating balances before applying insurance limits?",
-            "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
-            "What is the reasoning behind the FDIC's method of aggregating balances by beneficial owner?"
+            "Why is it necessary to verify beneficiary eligibility before performing insurance calculations?"
           ]
         }
       ]
     },
     {
-      "id": "cea34fa9df32a774f8ff6c9a0908ffcd99d07874fadd1f72ab13aadc31ff43f5",
-      "original_query": "Why are non-qualifying joint accounts reclassified rather than simply denied coverage?",
+      "id": "7ac1f60c0a3f31873f6c78021b70e323546c32e72c6ac907a09c593da2734692",
+      "original_query": "Why must beneficiary eligibility be verified before insurance calculation??",
       "decomposed": [
         {
-          "subquery_id": "cea34fa9df32a774f8ff6c9a0908ffcd99d07874fadd1f72ab13aadc31ff43f5",
-          "original_subquery": "Why are non-qualifying joint accounts reclassified rather than simply denied coverage?",
-          "enhanced_query": "What is the reasoning behind reclassifying non-qualifying joint accounts instead of denying them coverage outright?",
+          "subquery_id": "5cee95ac81940bd0091e1ea55c675278d9477f2a37160decf47b9cb90bb923bc",
+          "original_subquery": "Why must beneficiary eligibility be verified before insurance calculation?",
+          "enhanced_query": "What are the reasons for verifying beneficiary eligibility before performing insurance calculations?",
           "multi_queries": [
-            "Why are non-qualifying joint accounts being reclassified instead of denied coverage?",
-            "Is there a specific reason for reclassifying non-qualifying joint accounts rather than denying them coverage?"
+            "Why is it necessary to verify beneficiary eligibility before performing insurance calculations?"
           ]
         }
       ]
     },
     {
-      "id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
-      "original_query": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
+      "id": "e8d7f16b20a5cfbe92ed11368cf5a719c105bd99ee830768fa0ceeab87fe134e",
+      "original_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.",
       "decomposed": [
         {
-          "subquery_id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
-          "original_subquery": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
-          "enhanced_query": "What is the purpose behind the FDIC's method of aggregating balances by beneficial owner before applying insurance limits?",
-          "multi_queries": [
-            "What is the purpose behind the FDIC's method of aggregating balances before applying insurance limits?",
-            "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
-            "What is the reasoning behind the FDIC's method of aggregating balances by beneficial owner?"
-          ]
+          "subquery_id": "71c45c69780eaff6c408dad54b36ebbf3e22175a649a572bac62d9074ea8709b",
+          "original_subquery": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.?",
+          "enhanced_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.?",
+          "multi_queries": []
+        }
+      ]
+    },
+    {
+      "id": "e55de5a4e811948e8fdcb2154a22fce0acf0eab2030f00a488c9e217bf722afe",
+      "original_query": "what is fdic?",
+      "decomposed": [
+        {
+          "subquery_id": "e55de5a4e811948e8fdcb2154a22fce0acf0eab2030f00a488c9e217bf722afe",
+          "original_subquery": "what is fdic?",
+          "enhanced_query": "What is the meaning of FDIC?",
+          "multi_queries": []
         }
       ]
     }

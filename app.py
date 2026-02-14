@@ -37,22 +37,6 @@ MAX_FILE_SIZE_MB = 10
 
 
 # ==============================
-# SESSION STATE INIT
-# ==============================
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
-
-if "pipeline_ready" not in st.session_state:
-    st.session_state.pipeline_ready = False
-
-if "multi_doc_confirmed" not in st.session_state:
-    st.session_state.multi_doc_confirmed = False
-
-if "answer_engine" not in st.session_state:
-    st.session_state.answer_engine = "v3 (Grounded + Evidence)"
-
-
-# ==============================
 # STYLING
 # ==============================
 st.markdown("""
@@ -117,6 +101,26 @@ def load_existing_documents():
 def run_answer_generation():
     return generate_answer_v3() if st.session_state.answer_engine.startswith("v3") else generate_answer_v2()
 
+# ==============================
+# SESSION STATE INIT
+# ==============================
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+# if "pipeline_ready" not in st.session_state:
+#     st.session_state.pipeline_ready = False
+
+if "pipeline_ready" not in st.session_state:
+    st.session_state.pipeline_ready = len(load_existing_documents()) > 0
+
+if "multi_doc_confirmed" not in st.session_state:
+    st.session_state.multi_doc_confirmed = False
+
+if "answer_engine" not in st.session_state:
+    st.session_state.answer_engine = "v3 (Grounded + Evidence)"
+
+if "uploader_key" not in st.session_state:
+    st.session_state.uploader_key = 0
 
 # ==============================
 # METRICS RENDERERS
@@ -168,9 +172,9 @@ def render_timing(qp, retr, gen, total):
     c3.metric("Answer Generation", f"{gen:.2f}s")
     c4.metric("Total", f"{total:.2f}s")
 
-    if total < 2:
+    if total < 5:
         st.success("⚡ Fast response")
-    elif total < 5:
+    elif total < 10:
         st.info("⏳ Moderate latency")
     else:
         st.warning("🐢 Slow response")
@@ -213,7 +217,8 @@ st.sidebar.divider()
 uploaded_files = st.sidebar.file_uploader(
     "Upload PDF (max 10 MB)",
     type=["pdf"],
-    accept_multiple_files=True
+    accept_multiple_files=True,
+    key=f"uploader_{st.session_state.uploader_key}"
 )
 
 if not uploaded_files:
@@ -275,6 +280,7 @@ if uploaded_files:
                     """,
                     unsafe_allow_html=True
                 )
+                st.session_state.uploader_key += 1
                 st.rerun()
 
 

@@ -1,222 +1,248 @@
 [
   {
-    "query_id": "53113450a823f885afeda1f06c78cb2ec0895ee8db90ac9c2da807472fce307e",
-    "original_query": "Describe the full decision tree for classifying an account as Single vs Joint vs Trust.",
+    "query_id": "8300d34d2d455425a7b47023ccd2e88bb739a3441723fc9dc129d31fd3e54095",
+    "original_query": "What is CNN?",
     "used_chunk_ids": [
-      10,
+      1,
+      0,
+      2
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat is CNN\n\nANSWER:\nCNN (Cable News Network) is a 24-hour American cable news channel founded in 1980 by Ted Turner and his company, Turner Broadcasting System (TBS). [1]\n\n[1] Wikipedia: CNN (accessed 2023)",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What is CNN",
+        "answer": "CNN (Cable News Network) is a 24-hour American cable news channel founded in 1980 by Ted Turner and his company, Turner Broadcasting System (TBS). [1]\n\n[1] Wikipedia: CNN (accessed 2023)",
+        "used_chunk_ids": [
+          1,
+          0,
+          2
+        ],
+        "evidence_metrics": {
+          "sentence_count": 2,
+          "supported_sentences": 1,
+          "citation_coverage": 0.5,
+          "avg_evidence_confidence": 0.0
+        },
+        "references": []
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.5,
+      "avg_evidence_confidence": 0.0,
+      "total_supported_sentences": 1,
+      "total_sentences": 2
+    },
+    "dedup_id": "f92a8819f290419c2c45a1a9708e460d0d3fcad5e0d4a4edd526fb3fbda16766"
+  },
+  {
+    "query_id": "3e224ad7505579bef8b508e3e8f2993daa6b721f0ccfe53b06f55d247b4bea47",
+    "original_query": "What is Convulation Neural Network?",
+    "used_chunk_ids": [
+      0,
+      2,
+      1
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat is Convulation Neural Network\n\nANSWER:\nA Convolutional Neural Network (CNN) is a type of neural network architecture primarily used for image and signal processing (1). It is designed to process data with grid-like topology, such as images (2).\n\nKey characteristics of CNNs include:\n\n- Convolutional layers: These layers apply filters to small regions of the input data, scanning the entire image (3).\n- Pooling layers: These layers downsample the feature maps, reducing spatial dimensions and retaining important information (4).\n- Fully connected layers: These layers are used for classification or regression tasks, similar to traditional neural networks (5).\n\nCNNs have been widely used in various applications, including image classification (6), object detection (7), and image segmentation (8).\n\nReferences:\n1. Lecun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278-2324.\n2. Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). ImageNet classification with deep convolutional neural networks. Advances in neural information processing systems, 25, 1097-1105.\n3. LeCun, Y., & Bengio, Y. (1995). Convolutional networks for images, speech, and time series. In The handbook of brain theory and neural networks (pp. 255-258).\n4. Lin, T. Y., Dollar, P., Girshick, R., He, K., Hariharan, B., & Belongie, S. (2017). Feature pyramid networks for object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 2117-2125).\n5. LeCun, Y., Bengio, Y., & Hinton, G. E. (2015). Deep learning. Nature, 521(7553), 436-444.\n6. He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).\n7. Girshick, R., Donahue, J., Darrell, T., & Malik, J. (2014). Rich feature hierarchies for accurate object detection and semantic segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 580-587).\n8. Long, J., Shelhamer, E., & Darrell, T. (2015). Fully convolutional networks for semantic segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 3431-3440).",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What is Convulation Neural Network",
+        "answer": "A Convolutional Neural Network (CNN) is a type of neural network architecture primarily used for image and signal processing (1). It is designed to process data with grid-like topology, such as images (2).\n\nKey characteristics of CNNs include:\n\n- Convolutional layers: These layers apply filters to small regions of the input data, scanning the entire image (3).\n- Pooling layers: These layers downsample the feature maps, reducing spatial dimensions and retaining important information (4).\n- Fully connected layers: These layers are used for classification or regression tasks, similar to traditional neural networks (5).\n\nCNNs have been widely used in various applications, including image classification (6), object detection (7), and image segmentation (8).\n\nReferences:\n1. Lecun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278-2324.\n2. Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). ImageNet classification with deep convolutional neural networks. Advances in neural information processing systems, 25, 1097-1105.\n3. LeCun, Y., & Bengio, Y. (1995). Convolutional networks for images, speech, and time series. In The handbook of brain theory and neural networks (pp. 255-258).\n4. Lin, T. Y., Dollar, P., Girshick, R., He, K., Hariharan, B., & Belongie, S. (2017). Feature pyramid networks for object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 2117-2125).\n5. LeCun, Y., Bengio, Y., & Hinton, G. E. (2015). Deep learning. Nature, 521(7553), 436-444.\n6. He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).\n7. Girshick, R., Donahue, J., Darrell, T., & Malik, J. (2014). Rich feature hierarchies for accurate object detection and semantic segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 580-587).\n8. Long, J., Shelhamer, E., & Darrell, T. (2015). Fully convolutional networks for semantic segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 3431-3440).",
+        "used_chunk_ids": [
+          0,
+          2,
+          1
+        ],
+        "evidence_metrics": {
+          "sentence_count": 54,
+          "supported_sentences": 0,
+          "citation_coverage": 0.0,
+          "avg_evidence_confidence": 0
+        },
+        "references": []
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.0,
+      "avg_evidence_confidence": 0.0,
+      "total_supported_sentences": 0,
+      "total_sentences": 54
+    },
+    "dedup_id": "42479ebbf2ffd41cbdc23620ef278831fcc9ae8ad37f8e8dffd47c13d5091d6d"
+  },
+  {
+    "query_id": "3e224ad7505579bef8b508e3e8f2993daa6b721f0ccfe53b06f55d247b4bea47",
+    "original_query": "What is Convulation Neural Network?",
+    "used_chunk_ids": [
+      0,
+      2,
+      1
+    ],
+    "answer": "\n\nQUESTION 1:\nWhat is Convulation Neural Network\n\nANSWER:\nA Convolutional Neural Network (CNN) is a special type of neural network designed to work well with image and spatial data. \nIt is a parameter-efficient approach that uses small filters (kernels) to scan across the image and detect patterns. \nThis approach allows the network to automatically learn useful visual features. \nHere's how a CNN works: \n1. **Small filters (kernels)**: A filter is a small grid of weights (e.g. 3x3) that slides (convolves) across the image. \n2. **Feature map creation**: The filter slides over the image, multiplying and summing values to create a feature map. \n3. **Pattern detection**: One filter may detect horizontal edges, another vertical edges, etc. \n4. **Stacking filters**: Stacking many filters helps the network learn different features automatically. \nThe CNN feature learning hierarchy is as follows: \n1. **Layer 1**: Learns edges (horizontal, vertical, diagonal). \n2. **Layer 2**: Learns textures and corners. \n3. **Layer 3+**: Learns shapes and objects (faces, wheels, etc.). \nThe key benefits of CNNs are: \n1. **Far fewer parameters**: CNNs use convolution filters with very few weights, compared to fully connected ANNs. \n2. **Exploits local spatial structure**: CNNs preserve spatial structure by sharing small filters across the image. \n3. **Generalizes well**: CNNs are less prone to overfitting and generalize well to new images. \nIn summary, a Convolutional Neural Network is a powerful tool for image and spatial data processing that uses small filters to detect patterns and learn visual features automatically. ",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "What is Convulation Neural Network",
+        "answer": "A Convolutional Neural Network (CNN) is a special type of neural network designed to work well with image and spatial data. \nIt is a parameter-efficient approach that uses small filters (kernels) to scan across the image and detect patterns. \nThis approach allows the network to automatically learn useful visual features. \nHere's how a CNN works: \n1. **Small filters (kernels)**: A filter is a small grid of weights (e.g. 3x3) that slides (convolves) across the image. \n2. **Feature map creation**: The filter slides over the image, multiplying and summing values to create a feature map. \n3. **Pattern detection**: One filter may detect horizontal edges, another vertical edges, etc. \n4. **Stacking filters**: Stacking many filters helps the network learn different features automatically. \nThe CNN feature learning hierarchy is as follows: \n1. **Layer 1**: Learns edges (horizontal, vertical, diagonal). \n2. **Layer 2**: Learns textures and corners. \n3. **Layer 3+**: Learns shapes and objects (faces, wheels, etc.). \nThe key benefits of CNNs are: \n1. **Far fewer parameters**: CNNs use convolution filters with very few weights, compared to fully connected ANNs. \n2. **Exploits local spatial structure**: CNNs preserve spatial structure by sharing small filters across the image. \n3. **Generalizes well**: CNNs are less prone to overfitting and generalize well to new images. \nIn summary, a Convolutional Neural Network is a powerful tool for image and spatial data processing that uses small filters to detect patterns and learn visual features automatically. ",
+        "used_chunk_ids": [
+          0,
+          2,
+          1
+        ],
+        "evidence_metrics": {
+          "claim_count": 17,
+          "supported_claims": 0,
+          "citation_coverage": 0.0
+        },
+        "references": []
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.0,
+      "total_supported_claims": 0,
+      "total_claims": 17
+    },
+    "dedup_id": "fbc151ac229e6d6f4bdc1c8973326643f413f77bcca5952c27863dbf43f0b1a6"
+  },
+  {
+    "query_id": "5cee95ac81940bd0091e1ea55c675278d9477f2a37160decf47b9cb90bb923bc",
+    "original_query": "Why must beneficiary eligibility be verified before insurance calculation?",
+    "used_chunk_ids": [
+      15,
+      14
+    ],
+    "answer": "\n\nQUESTION 1:\nWhy must beneficiary eligibility be verified before insurance calculation\n\nANSWER:\nBeneficiary eligibility must be verified before insurance calculation because it directly affects the amount of insurance coverage each account co-owner is entitled to. [1]\nIn the context of joint accounts, verifying beneficiary eligibility ensures that the account meets the FDIC's requirements for a qualifying joint account. [1]\nA qualifying joint account must have all co-owners as natural persons, have equal withdrawal rights, and have signed the signature card or satisfied the signature requirement. [1]\nIf an account does not meet these requirements, it is not considered a qualifying joint account, and the insurance calculation will be different. [1]\nFor example, if an account has a co-owner who is not a natural person, the funds will be treated as jointly owned by the remaining natural person co-owners. [1]\nVerifying beneficiary eligibility also ensures that the correct insurance coverage is applied to each account co-owner. [1]\nIf an account co-owner is deceased and the six-month rule applies, the account will continue to be classified as a joint account, and the insurance calculation will be based on the remaining co-owners. [1]\nIn the case of single ownership accounts, verifying beneficiary eligibility ensures that the account holder is a natural person and has equal withdrawal rights. [1]\nThis is necessary to determine the correct insurance coverage for the account holder. [1]\nIn both cases, verifying beneficiary eligibility is crucial to ensure that the insurance calculation is accurate and that each account co-owner receives the correct amount of insurance coverage. [1]\n\nREFERENCES\n[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "Why must beneficiary eligibility be verified before insurance calculation",
+        "answer": "Beneficiary eligibility must be verified before insurance calculation because it directly affects the amount of insurance coverage each account co-owner is entitled to. [1]\nIn the context of joint accounts, verifying beneficiary eligibility ensures that the account meets the FDIC's requirements for a qualifying joint account. [1]\nA qualifying joint account must have all co-owners as natural persons, have equal withdrawal rights, and have signed the signature card or satisfied the signature requirement. [1]\nIf an account does not meet these requirements, it is not considered a qualifying joint account, and the insurance calculation will be different. [1]\nFor example, if an account has a co-owner who is not a natural person, the funds will be treated as jointly owned by the remaining natural person co-owners. [1]\nVerifying beneficiary eligibility also ensures that the correct insurance coverage is applied to each account co-owner. [1]\nIf an account co-owner is deceased and the six-month rule applies, the account will continue to be classified as a joint account, and the insurance calculation will be based on the remaining co-owners. [1]\nIn the case of single ownership accounts, verifying beneficiary eligibility ensures that the account holder is a natural person and has equal withdrawal rights. [1]\nThis is necessary to determine the correct insurance coverage for the account holder. [1]\nIn both cases, verifying beneficiary eligibility is crucial to ensure that the insurance calculation is accurate and that each account co-owner receives the correct amount of insurance coverage. [1]",
+        "used_chunk_ids": [
+          15,
+          14
+        ],
+        "evidence_metrics": {
+          "claim_count": 10,
+          "supported_claims": 10,
+          "citation_coverage": 1.0
+        },
+        "references": [
+          "[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a..."
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 1.0,
+      "total_supported_claims": 10,
+      "total_claims": 10
+    },
+    "dedup_id": "45acc20d3a80b4987355a4865165a8dc30b182bb2d6fc523b7dfdd09ae73f49f"
+  },
+  {
+    "query_id": "7ac1f60c0a3f31873f6c78021b70e323546c32e72c6ac907a09c593da2734692",
+    "original_query": "Why must beneficiary eligibility be verified before insurance calculation??",
+    "used_chunk_ids": [
+      15,
+      14
+    ],
+    "answer": "\n\nQUESTION 1:\nWhy must beneficiary eligibility be verified before insurance calculation?\n\nANSWER:\nBeneficiary eligibility must be verified before insurance calculation because it directly affects the amount of insurance coverage each account co-owner is entitled to. [1]\nIn the context of joint accounts, verifying beneficiary eligibility ensures that only natural persons with equal withdrawal rights are considered as co-owners of the account. [1]\nThis is a crucial step in determining whether an account meets the FDIC's requirements for a qualifying joint account, which is essential for calculating the insurance coverage. [1]\nIf an account does not meet the requirements for a qualifying joint account, the funds may not be fully insured, and the account co-owners may not be entitled to the full amount of SMDIA (Standard Maximum Deposit Insurance Amount). [1]\nTherefore, verifying beneficiary eligibility before insurance calculation helps to ensure that the correct amount of insurance coverage is applied to each account co-owner, preventing potential errors or disputes related to insurance coverage. [1]\n\nREFERENCES\n[1] 20260214_150144_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "Why must beneficiary eligibility be verified before insurance calculation?",
+        "answer": "Beneficiary eligibility must be verified before insurance calculation because it directly affects the amount of insurance coverage each account co-owner is entitled to. [1]\nIn the context of joint accounts, verifying beneficiary eligibility ensures that only natural persons with equal withdrawal rights are considered as co-owners of the account. [1]\nThis is a crucial step in determining whether an account meets the FDIC's requirements for a qualifying joint account, which is essential for calculating the insurance coverage. [1]\nIf an account does not meet the requirements for a qualifying joint account, the funds may not be fully insured, and the account co-owners may not be entitled to the full amount of SMDIA (Standard Maximum Deposit Insurance Amount). [1]\nTherefore, verifying beneficiary eligibility before insurance calculation helps to ensure that the correct amount of insurance coverage is applied to each account co-owner, preventing potential errors or disputes related to insurance coverage. [1]",
+        "used_chunk_ids": [
+          15,
+          14
+        ],
+        "evidence_metrics": {
+          "claim_count": 5,
+          "supported_claims": 5,
+          "citation_coverage": 1.0
+        },
+        "references": [
+          "[1] 20260214_150144_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2-3\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a..."
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 1.0,
+      "total_supported_claims": 5,
+      "total_claims": 5
+    },
+    "dedup_id": "dcd64389af27eaba3237fdb3c3e7b36ffa5856a58b648e2c8e06c53f6fb1c631"
+  },
+  {
+    "query_id": "e8d7f16b20a5cfbe92ed11368cf5a719c105bd99ee830768fa0ceeab87fe134e",
+    "original_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.",
+    "used_chunk_ids": [
+      20,
       11,
-      4
+      18
     ],
-    "answer": "\n\nQUESTION 1:\nDescribe the full decision tree for classifying an account as Single vs Joint vs Trust.\n\nANSWER:\nHere is the full decision tree for classifying an account as Single vs Joint vs Trust: [1]\n**Step 1: Determine if the account is a Single Account** [1]\n- If the account meets the definition of a Single Account (refer to Section 4.1.2 of the document), then: [1]\n- Set DP_Right_Capacity equal to SGL. [1]\n- The account is classified as a Single Account. [1]\n**Step 2: Determine if the account is a Joint Account** [1]\n- If the account meets the definition of a \"qualifying\" joint account (refer to Section 4.1.3.2 of the document), then: [1]\n- Set DP_Right_Capacity equal to JNT. [1]\n- Split the total account balance and accrued interest equally across the total number of account co-owners. [1]\n- Each co-owner of a qualifying joint account is insured up to SMDIA for their share of all qualifying joint accounts at the same Cl. [1]\n- The account is classified as a Joint Account. [1]\n**Step 3: Determine if the account is a Trust Account** [1]\n- If the account meets the definition of a revocable trust account (refer to Section 4.1.4.1 of the document), then: [1]\n- Determine the number of eligible beneficiaries by counting the number of living primary beneficiaries (identified in the trust agreement or for informal trust in bank records). [1]\n- If a beneficiary is ineligible, then: [1]\n- Ignore the beneficiary for purposes of deposit insurance calculation. [1]\n- Treat the funds associated with that ineligible beneficiary as funds in a single account (SGL_ORC) for the grantor and aggregate with other SGL accounts the grantor has at the same Cl. [1]\n- If a primary beneficiary is invalid, then: [1]\n- Allocate the funds associated with that invalid beneficiary to the remaining beneficiaries. [1]\n- If the co-owners of a revocable trust are the sole beneficiaries of the corresponding trust, then: [1]\n- Identify the account as a joint account and the account shall be insured as a joint account (refer to Section 4.1.3). [1]\n- If the account names as beneficiary a formal revocable trust owned in whole or part by someone other than the account holders, then: [1]\n- Refer to Section 4.1.2 or Section 4.1.3 of the document for Single or Joint Accounts representing the interest of the grantor(s). [1]\n- If the account has no eligible beneficiaries, then: [1]\n- Refer to Section 4.1.2 or Section 4.1.3 of the document for Single or Joint Accounts depending on the grantor(s). [1]\n- Set DP_Right_Capacity equal to REV. [1]\n- Identify information related to allocation of funds to eligible unique primary beneficiaries. [1]\n- The account is classified as a Trust Account. [1]\n**Step 4: Determine if the account co-owner is deceased** [1]\n- If the account co-owner is deceased, then: [1]\n- Determine if the six-month rule applies (refer to Section 2.3.5 of the document). [1]\n- If the six-month rule applies, then: [1]\n- Continue to classify the account as JNT (subject to other JNT requirements). [1]\n- If the six-month rule does not apply, then: [1]\n- Recognize the account co-owner's death for purposes of ORC selection and insurance calculation. [1]\n- Reclassify the account as an SGL. [1]\n**Step 5: Determine if the account meets the signature card requirement** [1]\n- If the account does not meet the signature card requirement, then: [1]\n- Place the account in the Pending File under the JNT DP_Right_Capacity code and the RAC Pending Reason code. [1]\n**Step 6: Determine if the owners have equal withdrawal rights** [1]\n- If the owners do not have equal withdrawal rights, then: [1]\n- Determine the ORC by the actual ownership interest of the named account holders. [1]\n- Refer to Section 4.1.2 of the document for Single Accounts. [1]\n\nREFERENCES\n[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 3-4\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n      - then determine the number of eligible beneficiaries by counting the number of living primary beneficiaries (identified in the trust agreement or for informal trust in bank records). For example if a POD account...",
+    "answer": "\n\nQUESTION 1:\nExplain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.\n\nANSWER:\nThe complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts involves the following steps: [1]\n**Classification:** [unverified]\n1. Identify the account holder(s) and determine if the account is a single account, joint account, or revocable trust account. [1]\n2. If the account is titled in the name of a trust, refer to Section 4.1.4 or Section 4.1.5 of the document for trust accounts. [1]\n3. If the account is titled in an individual's name and bank records indicate the account is payable on death to eligible beneficiaries, refer to Section 4.1.4 of the document for trust accounts. [1]\n4. If the account is a self-directed retirement plan account, refer to Section 4.1.6 of the document for Certain Retirement Accounts. [1]\n**Aggregation:** [1]\n1. Identify all grantor(s) and all unique primary beneficiaries. [1]\n2. If a grantor is deceased, determine if the FDIC's six-month rule applies. If it does, continue to classify the account as REV. If the six-month rule does not apply, recognize the grantor's death for purposes of ORC selection and insurance calculation. [1]\n3. If the REV is an informal revocable trust (e.g. POD account) with two grantors, after the first grantor dies and the six-month rule expires, treat the account as a REV with one grantor. [1]\n4. If the REV is a formal revocable trust with two grantors, after the first grantor dies and the six-month rule expires, treat the account as a REV with one grantor (unless the terms of the trust agreement dictate the trust be treated as an IRR). [1]\n5. Identify eligible unique primary beneficiaries. [1]\n6. If all primary beneficiaries are deceased, determine the eligibility of the successor beneficiaries and the total number of unique eligible beneficiaries (including eligible successor beneficiaries) for purposes of deposit insurance calculation. [1]\n7. If some primary beneficiaries are deceased and there is no contingency for the deceased beneficiaries, determine the number of eligible beneficiaries by counting the number of living primary beneficiaries (identified in the trust agreement or for informal trust in bank records). [1]\n**Eligibility Validation:** [1]\n1. If a beneficiary is ineligible, ignore the beneficiary for purposes of deposit insurance calculation under REV. [1]\n2. If a beneficiary is ineligible, treat the funds associated with that beneficiary as funds in a single account (SGL_ORC) for the grantor and aggregate with other SGL accounts the grantor has at the same Cl. [1]\n3. If a primary beneficiary is invalid, funds associated with that invalid beneficiary should be allocated to the remaining beneficiaries. [1]\n**Uninsured Balance Treatment:** [unverified]\n1. If the account has no eligible beneficiaries, refer to Section 4.1.2 or Section 4.1.3 of the document for Single or Joint Accounts depending on the grantor(s). [1]\n2. If the account names as beneficiary a formal revocable trust owned in whole or part by someone other than the account holders, refer to Section 4.1.2 or Section 4.1.3 of the document for Single or Joint Accounts representing the interest of the grantor(s). [1]\n3. If the account has no eligible beneficiaries, treat the account as a single account (SGL_ORC) for the grantor and aggregate with other SGL accounts the grantor has at the same Cl. [1]\n**Deposit Insurance Calculation:** [1]\n1. Determine the allocations to the eligible unique primary beneficiaries based on the information of the allocation of funds (note a life estate beneficiary is valued at the SMDIA for purpose of deposit insurance calculation). [1]\n2. For each grantor, identify the associated eligible unique primary beneficiaries. [1]\n3. For each grantor, determine the combined amount of all account interests at the same Cl. [1]\n4. For each grantor, determine the SMDIA for the combined amount of all account interests at the same Cl. [1]\n5. For each grantor, determine the SMDIA for the combined amount of all account interests at the same Cl, including the life estate beneficiary. [1]\n**Revocable Trust Account Deposit Insurance Calculation:** [1]\n1. If all trust accounts have been processed through Section 4.1.4.1 Right and Capacity and SMDIA Calculation or placed in the Pending File, complete the following steps in order: [1]\n2. Identify the grantor and unique primary beneficiaries. [1]\n3. For each grantor, identify the associated eligible unique primary beneficiaries. [1]\n4. Determine the allocations to the eligible unique primary beneficiaries based on the information of the allocation of funds (note a life estate beneficiary is valued at the SMDIA for purpose of deposit insurance calculation). [1]\n5. For each grantor, determine the combined amount of all account interests at the same Cl. [1]\n6. For each grantor, determine the SMDIA for the combined amount of all account interests at the same Cl. [1]\n7. For each grantor, determine the SMDIA for the combined amount of all account interests at the same Cl, including the life estate beneficiary. [1]\n\nREFERENCES\n[1] 20260214_150144_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 1, 4-5\n    Evidence:\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [other half ($) is treated as B’s SGL ORC. These totals are subject to aggregation with any other SGL accounts that A or B has at the same...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version Deposit Insurance Coverage Ownership Right and Capacity Codes Overview This section outlines the steps for completing the ORC SMDIA and deposit...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [)] [)] [)] [Identify all grantor(s) and all unique primary beneficiaries.] [a)] [A primary unique beneficiary is the person or entity...",
     "subquery_results": [
       {
         "index": 1,
-        "question": "Describe the full decision tree for classifying an account as Single vs Joint vs Trust.",
-        "answer": "Here is the full decision tree for classifying an account as Single vs Joint vs Trust: [1]\n**Step 1: Determine if the account is a Single Account** [1]\n- If the account meets the definition of a Single Account (refer to Section 4.1.2 of the document), then: [1]\n- Set DP_Right_Capacity equal to SGL. [1]\n- The account is classified as a Single Account. [1]\n**Step 2: Determine if the account is a Joint Account** [1]\n- If the account meets the definition of a \"qualifying\" joint account (refer to Section 4.1.3.2 of the document), then: [1]\n- Set DP_Right_Capacity equal to JNT. [1]\n- Split the total account balance and accrued interest equally across the total number of account co-owners. [1]\n- Each co-owner of a qualifying joint account is insured up to SMDIA for their share of all qualifying joint accounts at the same Cl. [1]\n- The account is classified as a Joint Account. [1]\n**Step 3: Determine if the account is a Trust Account** [1]\n- If the account meets the definition of a revocable trust account (refer to Section 4.1.4.1 of the document), then: [1]\n- Determine the number of eligible beneficiaries by counting the number of living primary beneficiaries (identified in the trust agreement or for informal trust in bank records). [1]\n- If a beneficiary is ineligible, then: [1]\n- Ignore the beneficiary for purposes of deposit insurance calculation. [1]\n- Treat the funds associated with that ineligible beneficiary as funds in a single account (SGL_ORC) for the grantor and aggregate with other SGL accounts the grantor has at the same Cl. [1]\n- If a primary beneficiary is invalid, then: [1]\n- Allocate the funds associated with that invalid beneficiary to the remaining beneficiaries. [1]\n- If the co-owners of a revocable trust are the sole beneficiaries of the corresponding trust, then: [1]\n- Identify the account as a joint account and the account shall be insured as a joint account (refer to Section 4.1.3). [1]\n- If the account names as beneficiary a formal revocable trust owned in whole or part by someone other than the account holders, then: [1]\n- Refer to Section 4.1.2 or Section 4.1.3 of the document for Single or Joint Accounts representing the interest of the grantor(s). [1]\n- If the account has no eligible beneficiaries, then: [1]\n- Refer to Section 4.1.2 or Section 4.1.3 of the document for Single or Joint Accounts depending on the grantor(s). [1]\n- Set DP_Right_Capacity equal to REV. [1]\n- Identify information related to allocation of funds to eligible unique primary beneficiaries. [1]\n- The account is classified as a Trust Account. [1]\n**Step 4: Determine if the account co-owner is deceased** [1]\n- If the account co-owner is deceased, then: [1]\n- Determine if the six-month rule applies (refer to Section 2.3.5 of the document). [1]\n- If the six-month rule applies, then: [1]\n- Continue to classify the account as JNT (subject to other JNT requirements). [1]\n- If the six-month rule does not apply, then: [1]\n- Recognize the account co-owner's death for purposes of ORC selection and insurance calculation. [1]\n- Reclassify the account as an SGL. [1]\n**Step 5: Determine if the account meets the signature card requirement** [1]\n- If the account does not meet the signature card requirement, then: [1]\n- Place the account in the Pending File under the JNT DP_Right_Capacity code and the RAC Pending Reason code. [1]\n**Step 6: Determine if the owners have equal withdrawal rights** [1]\n- If the owners do not have equal withdrawal rights, then: [1]\n- Determine the ORC by the actual ownership interest of the named account holders. [1]\n- Refer to Section 4.1.2 of the document for Single Accounts. [1]",
+        "question": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.",
+        "answer": "The complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts involves the following steps: [1]\n**Classification:** [unverified]\n1. Identify the account holder(s) and determine if the account is a single account, joint account, or revocable trust account. [1]\n2. If the account is titled in the name of a trust, refer to Section 4.1.4 or Section 4.1.5 of the document for trust accounts. [1]\n3. If the account is titled in an individual's name and bank records indicate the account is payable on death to eligible beneficiaries, refer to Section 4.1.4 of the document for trust accounts. [1]\n4. If the account is a self-directed retirement plan account, refer to Section 4.1.6 of the document for Certain Retirement Accounts. [1]\n**Aggregation:** [1]\n1. Identify all grantor(s) and all unique primary beneficiaries. [1]\n2. If a grantor is deceased, determine if the FDIC's six-month rule applies. If it does, continue to classify the account as REV. If the six-month rule does not apply, recognize the grantor's death for purposes of ORC selection and insurance calculation. [1]\n3. If the REV is an informal revocable trust (e.g. POD account) with two grantors, after the first grantor dies and the six-month rule expires, treat the account as a REV with one grantor. [1]\n4. If the REV is a formal revocable trust with two grantors, after the first grantor dies and the six-month rule expires, treat the account as a REV with one grantor (unless the terms of the trust agreement dictate the trust be treated as an IRR). [1]\n5. Identify eligible unique primary beneficiaries. [1]\n6. If all primary beneficiaries are deceased, determine the eligibility of the successor beneficiaries and the total number of unique eligible beneficiaries (including eligible successor beneficiaries) for purposes of deposit insurance calculation. [1]\n7. If some primary beneficiaries are deceased and there is no contingency for the deceased beneficiaries, determine the number of eligible beneficiaries by counting the number of living primary beneficiaries (identified in the trust agreement or for informal trust in bank records). [1]\n**Eligibility Validation:** [1]\n1. If a beneficiary is ineligible, ignore the beneficiary for purposes of deposit insurance calculation under REV. [1]\n2. If a beneficiary is ineligible, treat the funds associated with that beneficiary as funds in a single account (SGL_ORC) for the grantor and aggregate with other SGL accounts the grantor has at the same Cl. [1]\n3. If a primary beneficiary is invalid, funds associated with that invalid beneficiary should be allocated to the remaining beneficiaries. [1]\n**Uninsured Balance Treatment:** [unverified]\n1. If the account has no eligible beneficiaries, refer to Section 4.1.2 or Section 4.1.3 of the document for Single or Joint Accounts depending on the grantor(s). [1]\n2. If the account names as beneficiary a formal revocable trust owned in whole or part by someone other than the account holders, refer to Section 4.1.2 or Section 4.1.3 of the document for Single or Joint Accounts representing the interest of the grantor(s). [1]\n3. If the account has no eligible beneficiaries, treat the account as a single account (SGL_ORC) for the grantor and aggregate with other SGL accounts the grantor has at the same Cl. [1]\n**Deposit Insurance Calculation:** [1]\n1. Determine the allocations to the eligible unique primary beneficiaries based on the information of the allocation of funds (note a life estate beneficiary is valued at the SMDIA for purpose of deposit insurance calculation). [1]\n2. For each grantor, identify the associated eligible unique primary beneficiaries. [1]\n3. For each grantor, determine the combined amount of all account interests at the same Cl. [1]\n4. For each grantor, determine the SMDIA for the combined amount of all account interests at the same Cl. [1]\n5. For each grantor, determine the SMDIA for the combined amount of all account interests at the same Cl, including the life estate beneficiary. [1]\n**Revocable Trust Account Deposit Insurance Calculation:** [1]\n1. If all trust accounts have been processed through Section 4.1.4.1 Right and Capacity and SMDIA Calculation or placed in the Pending File, complete the following steps in order: [1]\n2. Identify the grantor and unique primary beneficiaries. [1]\n3. For each grantor, identify the associated eligible unique primary beneficiaries. [1]\n4. Determine the allocations to the eligible unique primary beneficiaries based on the information of the allocation of funds (note a life estate beneficiary is valued at the SMDIA for purpose of deposit insurance calculation). [1]\n5. For each grantor, determine the combined amount of all account interests at the same Cl. [1]\n6. For each grantor, determine the SMDIA for the combined amount of all account interests at the same Cl. [1]\n7. For each grantor, determine the SMDIA for the combined amount of all account interests at the same Cl, including the life estate beneficiary. [1]",
         "used_chunk_ids": [
-          10,
+          20,
           11,
-          4
+          18
         ],
         "evidence_metrics": {
-          "claim_count": 43,
-          "supported_claims": 43,
+          "claim_count": 36,
+          "supported_claims": 34,
+          "citation_coverage": 0.944
+        },
+        "references": [
+          "[1] 20260214_150144_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 1, 4-5\n    Evidence:\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [other half ($) is treated as B’s SGL ORC. These totals are subject to aggregation with any other SGL accounts that A or B has at the same...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version Deposit Insurance Coverage Ownership Right and Capacity Codes Overview This section outlines the steps for completing the ORC SMDIA and deposit...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [)] [)] [)] [Identify all grantor(s) and all unique primary beneficiaries.] [a)] [A primary unique beneficiary is the person or entity..."
+        ]
+      }
+    ],
+    "aggregate_evidence_metrics": {
+      "avg_citation_coverage": 0.944,
+      "total_supported_claims": 34,
+      "total_claims": 36
+    },
+    "dedup_id": "95997f0b9d09c5014785f81b9fdc8dcabdcaf27eaf4efa4241aef2080dd8bfaa"
+  },
+  {
+    "query_id": "e55de5a4e811948e8fdcb2154a22fce0acf0eab2030f00a488c9e217bf722afe",
+    "original_query": "what is fdic?",
+    "used_chunk_ids": [
+      11,
+      18,
+      16
+    ],
+    "answer": "\n\nQUESTION 1:\nwhat is fdic\n\nANSWER:\nThe FDIC, or Federal Deposit Insurance Corporation, is a US government agency that provides deposit insurance to protect depositors in case of bank failures. [1]\nThe FDIC is responsible for maintaining the stability of the US financial system by insuring deposits, supervising and regulating banks, and providing assistance to banks in times of financial distress. [1]\nThe FDIC's primary function is to insure deposits up to a certain amount, known as the Standard Maximum Deposit Insurance Amount (SMDIA), which is currently $250,000 per depositor, per insured bank. [1]\nThis means that if a bank fails, the FDIC will reimburse depositors for their insured deposits up to the SMDIA. [1]\nThe FDIC also provides guidance to banks on how to determine the ownership right and capacity (ORC) of deposit accounts, which is used to determine the amount of deposit insurance coverage. [1]\nThe ORC is used to categorize deposit accounts into different types, such as single accounts, joint accounts, and trust accounts, and to determine the amount of deposit insurance coverage for each type of account. [1]\nIn the context of the provided document, the FDIC's IT System Insurance Determination Rules and Ownership Rights and Capacity Category Key Words are used to guide banks in determining the ORC of deposit accounts and calculating deposit insurance coverage. [1]\nThe document outlines the steps for completing the ORC SMDIA and deposit insurance calculations on deposit accounts, including determining the correct ORC, identifying the account holder, and aggregating account balances and accrued interest for each account co-owner. [1]\nOverall, the FDIC plays a critical role in maintaining the stability of the US financial system by providing deposit insurance and supervising and regulating banks. [1]\n\nREFERENCES\n[1] 20260214_150144_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 1, 3-4\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version Deposit Insurance Coverage Ownership Right and Capacity Codes Overview This section outlines the steps for completing the ORC SMDIA and deposit...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [)] [)] [)] [Identify all grantor(s) and all unique primary beneficiaries.] [a)] [A primary unique beneficiary is the person or entity...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...",
+    "subquery_results": [
+      {
+        "index": 1,
+        "question": "what is fdic",
+        "answer": "The FDIC, or Federal Deposit Insurance Corporation, is a US government agency that provides deposit insurance to protect depositors in case of bank failures. [1]\nThe FDIC is responsible for maintaining the stability of the US financial system by insuring deposits, supervising and regulating banks, and providing assistance to banks in times of financial distress. [1]\nThe FDIC's primary function is to insure deposits up to a certain amount, known as the Standard Maximum Deposit Insurance Amount (SMDIA), which is currently $250,000 per depositor, per insured bank. [1]\nThis means that if a bank fails, the FDIC will reimburse depositors for their insured deposits up to the SMDIA. [1]\nThe FDIC also provides guidance to banks on how to determine the ownership right and capacity (ORC) of deposit accounts, which is used to determine the amount of deposit insurance coverage. [1]\nThe ORC is used to categorize deposit accounts into different types, such as single accounts, joint accounts, and trust accounts, and to determine the amount of deposit insurance coverage for each type of account. [1]\nIn the context of the provided document, the FDIC's IT System Insurance Determination Rules and Ownership Rights and Capacity Category Key Words are used to guide banks in determining the ORC of deposit accounts and calculating deposit insurance coverage. [1]\nThe document outlines the steps for completing the ORC SMDIA and deposit insurance calculations on deposit accounts, including determining the correct ORC, identifying the account holder, and aggregating account balances and accrued interest for each account co-owner. [1]\nOverall, the FDIC plays a critical role in maintaining the stability of the US financial system by providing deposit insurance and supervising and regulating banks. [1]",
+        "used_chunk_ids": [
+          11,
+          18,
+          16
+        ],
+        "evidence_metrics": {
+          "claim_count": 9,
+          "supported_claims": 9,
           "citation_coverage": 1.0
         },
         "references": [
-          "[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 3-4\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for...\n      - then determine the number of eligible beneficiaries by counting the number of living primary beneficiaries (identified in the trust agreement or for informal trust in bank records). For example if a POD account..."
+          "[1] 20260214_150144_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 1, 3-4\n    Evidence:\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version Deposit Insurance Coverage Ownership Right and Capacity Codes Overview This section outlines the steps for completing the ORC SMDIA and deposit...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [)] [)] [)] [Identify all grantor(s) and all unique primary beneficiaries.] [a)] [A primary unique beneficiary is the person or entity...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [exists the account should be reclassified as a single ownership account for deposit insurance purposes (refer to Section of this document for..."
         ]
       }
     ],
     "aggregate_evidence_metrics": {
       "avg_citation_coverage": 1.0,
-      "total_supported_claims": 43,
-      "total_claims": 43
+      "total_supported_claims": 9,
+      "total_claims": 9
     },
-    "dedup_id": "9a9ae3845a3b36f29bd785998505cdde446a7cea4c3224814fd9bbe404f556f1"
-  },
-  {
-    "query_id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
-    "original_query": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
-    "used_chunk_ids": [
-      1,
-      14,
-      8
-    ],
-    "answer": "\n\nQUESTION 1:\nWhy does the FDIC aggregate balances by beneficial owner before applying insurance limits\n\nANSWER:\nThe FDIC aggregates balances by beneficial owner before applying insurance limits because it is necessary to determine the total amount of deposits held by each individual or entity. [1]\nThis is done to ensure that the FDIC's deposit insurance coverage limits are applied correctly. [1]\nWhen an account is identified as a single ownership account, the FDIC aggregates the total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the same CI (Control Institution). [1]\nThis means that if an individual has multiple single ownership accounts at the same CI, the FDIC will combine the balances of all those accounts to determine the total amount of deposits held by that individual. [1]\nSimilarly, when an account is identified as a joint account, the FDIC will determine if it meets the requirements for a qualifying joint account. [1]\nIf it does, the FDIC will treat the account as a joint account and apply the deposit insurance coverage limits accordingly. [1]\nIf it does not qualify as a joint account, the FDIC will treat the funds as jointly owned by the remaining natural person co-owners. [1]\nBy aggregating balances by beneficial owner, the FDIC can ensure that each individual or entity is treated fairly and that the deposit insurance coverage limits are applied correctly. [1]\nThis helps to prevent over-insurance or under-insurance of deposits, which could lead to unfair outcomes for depositors. [1]\nIn the case of revocable trusts, the FDIC will identify the grantor and unique primary beneficiaries, and determine the allocations to the eligible unique primary beneficiaries based on the information of the allocation of funds. [1]\nThe FDIC will then treat each unique combination of grantor and eligible unique primary beneficiary as a separate beneficial owner, and aggregate the total account balance and accrued interest for each of these beneficial owners. [1]\nOverall, aggregating balances by beneficial owner is an important step in the FDIC's deposit insurance calculation process, as it helps to ensure that the deposit insurance coverage limits are applied correctly and that each individual or entity is treated fairly. [1]\n\nREFERENCES\n[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2, 5\n    Evidence:\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version other half ($) is treated as B’s SGL ORC. These totals are subject to aggregation with any other SGL accounts that A or B has at the same Cl. d)...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a “non-qualifying...",
-    "subquery_results": [
-      {
-        "index": 1,
-        "question": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits",
-        "answer": "The FDIC aggregates balances by beneficial owner before applying insurance limits because it is necessary to determine the total amount of deposits held by each individual or entity. [1]\nThis is done to ensure that the FDIC's deposit insurance coverage limits are applied correctly. [1]\nWhen an account is identified as a single ownership account, the FDIC aggregates the total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the same CI (Control Institution). [1]\nThis means that if an individual has multiple single ownership accounts at the same CI, the FDIC will combine the balances of all those accounts to determine the total amount of deposits held by that individual. [1]\nSimilarly, when an account is identified as a joint account, the FDIC will determine if it meets the requirements for a qualifying joint account. [1]\nIf it does, the FDIC will treat the account as a joint account and apply the deposit insurance coverage limits accordingly. [1]\nIf it does not qualify as a joint account, the FDIC will treat the funds as jointly owned by the remaining natural person co-owners. [1]\nBy aggregating balances by beneficial owner, the FDIC can ensure that each individual or entity is treated fairly and that the deposit insurance coverage limits are applied correctly. [1]\nThis helps to prevent over-insurance or under-insurance of deposits, which could lead to unfair outcomes for depositors. [1]\nIn the case of revocable trusts, the FDIC will identify the grantor and unique primary beneficiaries, and determine the allocations to the eligible unique primary beneficiaries based on the information of the allocation of funds. [1]\nThe FDIC will then treat each unique combination of grantor and eligible unique primary beneficiary as a separate beneficial owner, and aggregate the total account balance and accrued interest for each of these beneficial owners. [1]\nOverall, aggregating balances by beneficial owner is an important step in the FDIC's deposit insurance calculation process, as it helps to ensure that the deposit insurance coverage limits are applied correctly and that each individual or entity is treated fairly. [1]",
-        "used_chunk_ids": [
-          1,
-          14,
-          8
-        ],
-        "evidence_metrics": {
-          "claim_count": 12,
-          "supported_claims": 12,
-          "citation_coverage": 1.0
-        },
-        "references": [
-          "[1] 20260213_212709_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2, 5\n    Evidence:\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version other half ($) is treated as B’s SGL ORC. These totals are subject to aggregation with any other SGL accounts that A or B has at the same Cl. d)...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a “non-qualifying..."
-        ]
-      }
-    ],
-    "aggregate_evidence_metrics": {
-      "avg_citation_coverage": 1.0,
-      "total_supported_claims": 12,
-      "total_claims": 12
-    },
-    "dedup_id": "29a348b8a63a44b5cc42e8cbb09ccf22c6e096a44cb76b7ee3c3d8f968ed3f9b"
-  },
-  {
-    "query_id": "cea34fa9df32a774f8ff6c9a0908ffcd99d07874fadd1f72ab13aadc31ff43f5",
-    "original_query": "Why are non-qualifying joint accounts reclassified rather than simply denied coverage?",
-    "used_chunk_ids": [
-      1,
-      8,
-      9
-    ],
-    "answer": "\n\nQUESTION 1:\nWhy are non-qualifying joint accounts reclassified rather than simply denied coverage\n\nANSWER:\nNon-qualifying joint accounts are reclassified rather than simply denied coverage because the FDIC (Federal Deposit Insurance Corporation) aims to provide deposit insurance coverage to as many account holders as possible, while also ensuring that the insurance coverage is fair and consistent. [1]\nWhen a joint account does not meet the FDIC's requirements for a qualifying joint account, it is reclassified as a single account owned by the remaining natural person co-owners. [1]\nThis means that the account is treated as if it were a single account, and the deposit insurance calculation is performed based on the account balance and accrued interest of the remaining natural person co-owners. [1]\nBy reclassifying non-qualifying joint accounts, the FDIC is able to provide deposit insurance coverage to the account holders who would otherwise be denied coverage. [1]\nThis approach also helps to ensure that the deposit insurance coverage is consistent and fair, as the account holders who are reclassified as single account owners are treated similarly to other single account owners. [1]\nIn addition, reclassifying non-qualifying joint accounts allows the FDIC to aggregate the account balances and accrued interest of the remaining natural person co-owners, which can result in a higher insured amount for each account. [1]\nThis is because the FDIC's deposit insurance calculation takes into account the total account balance and accrued interest of each beneficial owner, rather than just the balance and accrued interest of each individual account. [1]\nOverall, reclassifying non-qualifying joint accounts rather than simply denying coverage helps to ensure that deposit insurance coverage is provided to as many account holders as possible, while also maintaining the fairness and consistency of the deposit insurance calculation. [1]\n\nREFERENCES\n[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2\n    Evidence:\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a “non-qualifying...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...",
-    "subquery_results": [
-      {
-        "index": 1,
-        "question": "Why are non-qualifying joint accounts reclassified rather than simply denied coverage",
-        "answer": "Non-qualifying joint accounts are reclassified rather than simply denied coverage because the FDIC (Federal Deposit Insurance Corporation) aims to provide deposit insurance coverage to as many account holders as possible, while also ensuring that the insurance coverage is fair and consistent. [1]\nWhen a joint account does not meet the FDIC's requirements for a qualifying joint account, it is reclassified as a single account owned by the remaining natural person co-owners. [1]\nThis means that the account is treated as if it were a single account, and the deposit insurance calculation is performed based on the account balance and accrued interest of the remaining natural person co-owners. [1]\nBy reclassifying non-qualifying joint accounts, the FDIC is able to provide deposit insurance coverage to the account holders who would otherwise be denied coverage. [1]\nThis approach also helps to ensure that the deposit insurance coverage is consistent and fair, as the account holders who are reclassified as single account owners are treated similarly to other single account owners. [1]\nIn addition, reclassifying non-qualifying joint accounts allows the FDIC to aggregate the account balances and accrued interest of the remaining natural person co-owners, which can result in a higher insured amount for each account. [1]\nThis is because the FDIC's deposit insurance calculation takes into account the total account balance and accrued interest of each beneficial owner, rather than just the balance and accrued interest of each individual account. [1]\nOverall, reclassifying non-qualifying joint accounts rather than simply denying coverage helps to ensure that deposit insurance coverage is provided to as many account holders as possible, while also maintaining the fairness and consistency of the deposit insurance calculation. [1]",
-        "used_chunk_ids": [
-          1,
-          8,
-          9
-        ],
-        "evidence_metrics": {
-          "claim_count": 8,
-          "supported_claims": 8,
-          "citation_coverage": 1.0
-        },
-        "references": [
-          "[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2\n    Evidence:\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a “non-qualifying...\n      - [FDIC — Part Recordkeeping Information Technology Functional Guide Version ] [deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a..."
-        ]
-      }
-    ],
-    "aggregate_evidence_metrics": {
-      "avg_citation_coverage": 1.0,
-      "total_supported_claims": 8,
-      "total_claims": 8
-    },
-    "dedup_id": "12a3bc149c8d01a924fd727cb5fbcc4ed94e6d9a571ca1395894a5f8c82986ad"
-  },
-  {
-    "query_id": "cea34fa9df32a774f8ff6c9a0908ffcd99d07874fadd1f72ab13aadc31ff43f5",
-    "original_query": "Why are non-qualifying joint accounts reclassified rather than simply denied coverage?",
-    "used_chunk_ids": [
-      1,
-      8,
-      9
-    ],
-    "answer": "\n\nQUESTION 1:\nWhy are non-qualifying joint accounts reclassified rather than simply denied coverage\n\nANSWER:\nBased on the provided FDIC document, non-qualifying joint accounts are reclassified rather than simply denied coverage because:\n\n1. For accounts that do not qualify as joint, funds should be treated as jointly owned by the remaining natural person co-owners (SOURCE [1]).\n2. If only one natural person owner is present, the funds should be treated as jointly owned by that owner (SOURCE [1]).\n\nThis indicates that non-qualifying joint accounts are reclassified to ensure that the remaining natural person co-owners receive deposit insurance coverage.\n\nREFERENCES\n[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2",
-    "subquery_results": [
-      {
-        "index": 1,
-        "question": "Why are non-qualifying joint accounts reclassified rather than simply denied coverage",
-        "answer": "Based on the provided FDIC document, non-qualifying joint accounts are reclassified rather than simply denied coverage because:\n\n1. For accounts that do not qualify as joint, funds should be treated as jointly owned by the remaining natural person co-owners (SOURCE [1]).\n2. If only one natural person owner is present, the funds should be treated as jointly owned by that owner (SOURCE [1]).\n\nThis indicates that non-qualifying joint accounts are reclassified to ensure that the remaining natural person co-owners receive deposit insurance coverage.",
-        "used_chunk_ids": [
-          1,
-          8,
-          9
-        ],
-        "evidence_metrics": {
-          "sentence_count": 5,
-          "supported_sentences": 2,
-          "citation_coverage": 0.4,
-          "avg_evidence_confidence": 0.975
-        },
-        "references": [
-          "[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2"
-        ]
-      }
-    ],
-    "aggregate_evidence_metrics": {
-      "avg_citation_coverage": 0.4,
-      "avg_evidence_confidence": 0.975,
-      "total_supported_sentences": 2,
-      "total_sentences": 5
-    },
-    "dedup_id": "9b6daa8eb87156aa6e6a9df79ee93065632234cc4968bce615c35bc09f4a3f28"
-  },
-  {
-    "query_id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
-    "original_query": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
-    "used_chunk_ids": [
-      1,
-      14,
-      8
-    ],
-    "answer": "\n\nQUESTION 1:\nWhy does the FDIC aggregate balances by beneficial owner before applying insurance limits\n\nANSWER:\nThe FDIC aggregates balances by beneficial owner before applying insurance limits because it is necessary to determine the total amount of deposits held by each individual or entity. [1]\nThis is done to ensure that the FDIC's deposit insurance coverage limits are applied correctly. [1]\nWhen an account is identified as a single ownership account, the FDIC aggregates the total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the same CI (Control Institution). [1]\nThis means that if an individual has multiple single ownership accounts at the same CI, the FDIC will combine the balances of all those accounts to determine the total amount of deposits held by that individual. [1]\nSimilarly, when an account is identified as a joint account, the FDIC will determine if it meets the requirements for a qualifying joint account. [1]\nIf it does, the FDIC will treat the account as a joint account and apply the deposit insurance coverage limits accordingly. [1]\nIf it does not qualify as a joint account, the FDIC will treat the funds as jointly owned by the remaining natural person co-owners. [1]\nBy aggregating balances by beneficial owner, the FDIC can ensure that each individual or entity is treated fairly and that the deposit insurance coverage limits are applied correctly. [1]\nThis helps to prevent over-insurance or under-insurance of deposits, which could lead to unfair outcomes for depositors. [1]\nIn the case of revocable trusts, the FDIC will identify the grantor and unique primary beneficiaries, and determine the allocations to the eligible unique primary beneficiaries based on the information of the allocation of funds. [1]\nThe FDIC will then treat each unique combination of grantor and eligible unique primary beneficiary as a separate beneficial owner, and aggregate the total account balance and accrued interest for each of these beneficial owners. [1]\nOverall, aggregating balances by beneficial owner is an important step in the FDIC's deposit insurance calculation process, as it helps to ensure that the deposit insurance coverage limits are applied correctly and that each individual or entity is treated fairly. [1]\n\nREFERENCES\n[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2, 5\n    Evidence:\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version other half ($) is treated as B’s SGL ORC. These totals are subject to aggregation with any other SGL accounts that A or B has at the same Cl. d)...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a “non-qualifying...",
-    "subquery_results": [
-      {
-        "index": 1,
-        "question": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits",
-        "answer": "The FDIC aggregates balances by beneficial owner before applying insurance limits because it is necessary to determine the total amount of deposits held by each individual or entity. [1]\nThis is done to ensure that the FDIC's deposit insurance coverage limits are applied correctly. [1]\nWhen an account is identified as a single ownership account, the FDIC aggregates the total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the same CI (Control Institution). [1]\nThis means that if an individual has multiple single ownership accounts at the same CI, the FDIC will combine the balances of all those accounts to determine the total amount of deposits held by that individual. [1]\nSimilarly, when an account is identified as a joint account, the FDIC will determine if it meets the requirements for a qualifying joint account. [1]\nIf it does, the FDIC will treat the account as a joint account and apply the deposit insurance coverage limits accordingly. [1]\nIf it does not qualify as a joint account, the FDIC will treat the funds as jointly owned by the remaining natural person co-owners. [1]\nBy aggregating balances by beneficial owner, the FDIC can ensure that each individual or entity is treated fairly and that the deposit insurance coverage limits are applied correctly. [1]\nThis helps to prevent over-insurance or under-insurance of deposits, which could lead to unfair outcomes for depositors. [1]\nIn the case of revocable trusts, the FDIC will identify the grantor and unique primary beneficiaries, and determine the allocations to the eligible unique primary beneficiaries based on the information of the allocation of funds. [1]\nThe FDIC will then treat each unique combination of grantor and eligible unique primary beneficiary as a separate beneficial owner, and aggregate the total account balance and accrued interest for each of these beneficial owners. [1]\nOverall, aggregating balances by beneficial owner is an important step in the FDIC's deposit insurance calculation process, as it helps to ensure that the deposit insurance coverage limits are applied correctly and that each individual or entity is treated fairly. [1]",
-        "used_chunk_ids": [
-          1,
-          14,
-          8
-        ],
-        "evidence_metrics": {
-          "claim_count": 12,
-          "supported_claims": 12,
-          "citation_coverage": 1.0
-        },
-        "references": [
-          "[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2, 5\n    Evidence:\n      - FDIC – Part Recordkeeping Information Technology Functional Guide Version Page | deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version other half ($) is treated as B’s SGL ORC. These totals are subject to aggregation with any other SGL accounts that A or B has at the same Cl. d)...\n      - FDIC — Part Recordkeeping Information Technology Functional Guide Version deposits that fail to qualify under another ORC such as (i) a joint account that is not a “qualifying” joint account; and (ii) a “non-qualifying..."
-        ]
-      }
-    ],
-    "aggregate_evidence_metrics": {
-      "avg_citation_coverage": 1.0,
-      "total_supported_claims": 12,
-      "total_claims": 12
-    },
-    "dedup_id": "29a348b8a63a44b5cc42e8cbb09ccf22c6e096a44cb76b7ee3c3d8f968ed3f9b"
-  },
-  {
-    "query_id": "34b26bc9aaf92cd1a8b4a09e31956b939890d084638a9313c88fe64a2e7422b6",
-    "original_query": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits?",
-    "used_chunk_ids": [
-      1,
-      14,
-      8
-    ],
-    "answer": "\n\nQUESTION 1:\nWhy does the FDIC aggregate balances by beneficial owner before applying insurance limits\n\nANSWER:\nThe FDIC aggregates balances by beneficial owner before applying insurance limits because it is required by the FDIC's regulations, specifically 12 CFR § 330.9(c) [1]. This regulation states that credit balances on debt accounts constitute deposit liabilities and should be insured in the JNT ORC if the obligors are jointly liable [1]. Additionally, the FDIC's Part 370 Recordkeeping Information Technology Functional Guide Version 3.0 states that the account holder of a single account for the combined amount of his or her interests in all single accounts at the same CI is entitled to SMDIA, and that the FDIC aggregates total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI [1].\n\nREFERENCES\n[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2, 5",
-    "subquery_results": [
-      {
-        "index": 1,
-        "question": "Why does the FDIC aggregate balances by beneficial owner before applying insurance limits",
-        "answer": "The FDIC aggregates balances by beneficial owner before applying insurance limits because it is required by the FDIC's regulations, specifically 12 CFR § 330.9(c) [1]. This regulation states that credit balances on debt accounts constitute deposit liabilities and should be insured in the JNT ORC if the obligors are jointly liable [1]. Additionally, the FDIC's Part 370 Recordkeeping Information Technology Functional Guide Version 3.0 states that the account holder of a single account for the combined amount of his or her interests in all single accounts at the same CI is entitled to SMDIA, and that the FDIC aggregates total account balance and accrued interest by each unique beneficial owner for all deposits held by the owner in the single account right and capacity at the CI [1].",
-        "used_chunk_ids": [
-          1,
-          14,
-          8
-        ],
-        "evidence_metrics": {
-          "sentence_count": 3,
-          "supported_sentences": 3,
-          "citation_coverage": 1.0,
-          "avg_evidence_confidence": 0.845
-        },
-        "references": [
-          "[1] 20260213_215811_New_FDIC_-_Information_Technology_Functional_Guide_for_Part_370 — pages 2, 5"
-        ]
-      }
-    ],
-    "aggregate_evidence_metrics": {
-      "avg_citation_coverage": 1.0,
-      "avg_evidence_confidence": 0.845,
-      "total_supported_sentences": 3,
-      "total_sentences": 3
-    },
-    "dedup_id": "273d67817e0d946a6f1c73afa949e21d3dd83a57da595b7455d78eb5f978e147"
+    "dedup_id": "97a5ab3368c9f0c84aedcf8844fd1df06baeebb8c81ba8a2a77ddd5ad99935e5"
   }
 ]
