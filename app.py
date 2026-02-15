@@ -329,7 +329,10 @@ else:
                     qp_time = time.perf_counter() - qp_start
 
                     retr_start = time.perf_counter()
-                    retrieve_latest_query_chunks()
+                    # retrieve_latest_query_chunks()
+                    if not retrieve_latest_query_chunks():
+                        st.error("No retrieval results found — answer generation aborted.")
+                        st.stop()
                     retr_time = time.perf_counter() - retr_start
 
                     gen_start = time.perf_counter()
