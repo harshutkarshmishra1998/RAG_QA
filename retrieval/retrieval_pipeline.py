@@ -6,7 +6,7 @@ import numpy as np
 import faiss
 from openai import OpenAI
 
-# ================= CONFIG ================= #
+#CONFIG
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 STORAGE_PATH = PROJECT_ROOT / "storage"
@@ -27,7 +27,7 @@ RRF_K = 60
 openai_client = OpenAI()
 
 
-# ================= UTILITIES ================= #
+#UTILITIES
 
 def _embed(text: str) -> np.ndarray:
     r = openai_client.embeddings.create(
@@ -70,7 +70,7 @@ def _json_safe(obj):
     return obj
 
 
-# ================= RETRIEVAL CORE ================= #
+#RETRIEVAL CORE
 
 def retrieve_latest_query_chunks():
 
@@ -116,7 +116,7 @@ def retrieve_latest_query_chunks():
 
             per_query_results[q_text] = retrieved
 
-        # ---------- RRF Fusion ---------- #
+        # RRF Fusion
 
         fusion_scores = {}
 
@@ -134,7 +134,7 @@ def retrieve_latest_query_chunks():
                 fusion_scores[chunk_id]["rrf_score"] += rrf_score
                 fusion_scores[chunk_id]["source_queries"].add(q_text)
 
-        # ---------- Sort ---------- #
+        #Sort
 
         sorted_chunks = sorted(
             fusion_scores.items(),
@@ -162,7 +162,7 @@ def retrieve_latest_query_chunks():
             "retrieved_chunks": final_chunks
         })
 
-    # ---------- Save as JSONL ---------- #
+    #Save as JSONL
 
     STORAGE_PATH.mkdir(parents=True, exist_ok=True)
 
@@ -195,7 +195,7 @@ def retrieve_latest_query_chunks():
             f.write(json.dumps(output, default=_json_safe) + "\n")
 
     else:
-        # ---------- read ONLY last entry ----------
+        #read ONLY last entry ----------
         last_entry = None
 
         with open(OUTPUT_FILE, "rb") as f:
@@ -214,7 +214,7 @@ def retrieve_latest_query_chunks():
                 except Exception:
                     last_entry = None
 
-        # # ---------- sequential dedupe ----------
+        # #sequential dedupe
         # if last_entry and last_entry.get("query_id") == output["query_id"]:
         #     # overwrite last line
         #     with open(OUTPUT_FILE, "rb+") as f:

@@ -6,9 +6,7 @@
 # from pathlib import Path
 # from typing import Union
 
-# # =============================
 # # CONFIG — FREEZE
-# # =============================
 # SHORT_TEXT_MAX_LEN = 120
 # HEADER_FOOTER_FREQ_THRESHOLD = 0.6
 # SYMBOL_RUN_MIN = 4
@@ -24,9 +22,7 @@
 # HYPHEN_LINEBREAK_REGEX = re.compile(r"(\w+)-\n(\w+)")
 # SENTENCE_PUNCTUATION_REGEX = re.compile(r"[.!?;:]")
 
-# # =============================
 # # Internal helpers
-# # =============================
 # def _drop_vision_filler(text: str) -> str:
 #     lower = text.lower()
 #     for pat in VISION_FILLER_PATTERNS:
@@ -88,9 +84,7 @@
 #         return content
 #     return str(content)
 
-# # =============================
 # # PUBLIC FUNCTION (ONLY ONE)
-# # =============================
 # def clean_content_units_file(
 #     input_path: Union[str, Path],
 #     output_suffix: str = "_cleaned",
@@ -104,11 +98,11 @@
 #         input_path.stem + output_suffix + input_path.suffix
 #     )
 
-#     # ---- Load records
+#     # Load records
 #     with input_path.open("r", encoding="utf-8") as f:
 #         records = [json.loads(line) for line in f]
 
-#     # ---- Header/footer detection (statistical)
+#     # Header/footer detection (statistical)
 #     counter = Counter()
 #     for r in records:
 #         # text = r.get("content", "").strip()
@@ -123,7 +117,7 @@
 #         if freq / len(records) >= HEADER_FOOTER_FREQ_THRESHOLD
 #     }
 
-#     # ---- Cleaning pipeline
+#     # Cleaning pipeline
 #     for r in records:
 #         # text = r.get("content", "")
 #         text = _coerce_content_to_string(r.get("content"))
@@ -164,7 +158,7 @@
 
 #         r["content"] = text
 
-#     # ---- Write output
+#     # Write output
 #     with output_path.open("w", encoding="utf-8") as f:
 #         for r in records:
 #             f.write(json.dumps(r, ensure_ascii=False) + "\n")
@@ -178,9 +172,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Union, List
 
-# =============================
 # CONFIG — FROZEN
-# =============================
 SHORT_TEXT_MAX_LEN = 120
 HEADER_FOOTER_FREQ_THRESHOLD = 0.6
 SYMBOL_RUN_MIN = 4
@@ -197,9 +189,7 @@ SYMBOL_RUN_REGEX = re.compile(rf"([^A-Za-z0-9\s])\1{{{SYMBOL_RUN_MIN - 1},}}")
 HYPHEN_LINEBREAK_REGEX = re.compile(r"(\w+)-\n(\w+)")
 SENTENCE_PUNCTUATION_REGEX = re.compile(r"[.!?;:]")
 
-# =============================
 # Structural normalization
-# =============================
 def _coerce_content_to_string(content) -> str:
     if content is None:
         return ""
@@ -209,9 +199,7 @@ def _coerce_content_to_string(content) -> str:
         return content
     return str(content)
 
-# =============================
 # Cleaning helpers
-# =============================
 def _drop_vision_filler(text: str) -> str:
     lower = text.lower()
     for pat in VISION_FILLER_PATTERNS:
@@ -277,9 +265,7 @@ def _collapse_consecutive_duplicates(texts: List[str]) -> List[str]:
 
     return result
 
-# =============================
 # PUBLIC ENTRY POINT
-# =============================
 def clean_content_units_file(
     input_path: Union[str, Path],
     output_suffix: str = "_cleaned",
@@ -289,11 +275,11 @@ def clean_content_units_file(
         input_path.stem + output_suffix + input_path.suffix
     )
 
-    # ---- Load
+    # Load
     with input_path.open("r", encoding="utf-8") as f:
         records = [json.loads(line) for line in f]
 
-    # ---- Header/footer detection
+    # Header/footer detection
     counter = Counter()
     for r in records:
         raw = _coerce_content_to_string(r.get("content"))
@@ -307,7 +293,7 @@ def clean_content_units_file(
         if freq / len(records) >= HEADER_FOOTER_FREQ_THRESHOLD
     }
 
-    # ---- Clean content (exact order)
+    # Clean content (exact order)
     cleaned_texts = []
     for r in records:
         text = _coerce_content_to_string(r.get("content"))
@@ -333,10 +319,10 @@ def clean_content_units_file(
         assert isinstance(text, str)
         cleaned_texts.append(text)
 
-    # ---- Collapse excessive consecutive duplicates
+    # Collapse excessive consecutive duplicates
     cleaned_texts = _collapse_consecutive_duplicates(cleaned_texts)
 
-    # ---- Write output
+    # Write output
     with output_path.open("w", encoding="utf-8") as f:
         for r, text in zip(records, cleaned_texts):
             r["content"] = text

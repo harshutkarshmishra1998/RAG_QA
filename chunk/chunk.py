@@ -30,9 +30,7 @@ def chunk_content_units(
         input_path.stem + "_chunked" + input_path.suffix
     )
 
-    # -------------------------
     # Helpers
-    # -------------------------
 
     def estimate_tokens(text: str) -> int:
         return max(1, len(text) // 4)
@@ -58,9 +56,7 @@ def chunk_content_units(
 
         return True
 
-    # -------------------------
     # Load + filter units
-    # -------------------------
 
     units: List[Dict] = []
     with input_path.open("r", encoding="utf-8") as f:
@@ -71,9 +67,7 @@ def chunk_content_units(
 
     units.sort(key=lambda x: x["order_index"])
 
-    # -------------------------
     # Build heading blocks
-    # -------------------------
 
     blocks = []
     current_block = []
@@ -98,9 +92,7 @@ def chunk_content_units(
             "units": current_block
         })
 
-    # -------------------------
     # Chunk blocks
-    # -------------------------
 
     chunks = []
     chunk_index = 0
@@ -178,9 +170,7 @@ def chunk_content_units(
 
     flush_chunk()
 
-    # -------------------------
     # Write output
-    # -------------------------
 
     with output_path.open("w", encoding="utf-8") as f:
         for c in chunks:

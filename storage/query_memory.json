@@ -1,78 +1,75 @@
 {
   "queries": [
     {
-      "id": "8300d34d2d455425a7b47023ccd2e88bb739a3441723fc9dc129d31fd3e54095",
-      "original_query": "What is CNN?",
+      "id": "6a5b91b43200d26b36da591a6589b56a8e9893b52387bf5a73771af6b997cf6b",
+      "original_query": "What conditions must be verified for an account to qualify as a joint account? When should a deposit account be assigned the SGL right and capacity code?",
       "decomposed": [
         {
-          "subquery_id": "8300d34d2d455425a7b47023ccd2e88bb739a3441723fc9dc129d31fd3e54095",
-          "original_subquery": "What is CNN?",
-          "enhanced_query": "What is the meaning of CNN?",
-          "multi_queries": []
-        }
-      ]
-    },
-    {
-      "id": "3e224ad7505579bef8b508e3e8f2993daa6b721f0ccfe53b06f55d247b4bea47",
-      "original_query": "What is Convulation Neural Network?",
-      "decomposed": [
-        {
-          "subquery_id": "3e224ad7505579bef8b508e3e8f2993daa6b721f0ccfe53b06f55d247b4bea47",
-          "original_subquery": "What is Convulation Neural Network?",
-          "enhanced_query": "What is Convulation Neural Network?",
-          "multi_queries": []
-        }
-      ]
-    },
-    {
-      "id": "5cee95ac81940bd0091e1ea55c675278d9477f2a37160decf47b9cb90bb923bc",
-      "original_query": "Why must beneficiary eligibility be verified before insurance calculation?",
-      "decomposed": [
-        {
-          "subquery_id": "5cee95ac81940bd0091e1ea55c675278d9477f2a37160decf47b9cb90bb923bc",
-          "original_subquery": "Why must beneficiary eligibility be verified before insurance calculation?",
-          "enhanced_query": "What are the reasons for verifying beneficiary eligibility before performing insurance calculations?",
+          "subquery_id": "dfdade2a0fb800fd62f28b55df2d66700fd0cb469cfc43b2f99ab640c7d77011",
+          "original_subquery": "What conditions must be verified for an account to qualify as a joint account?",
+          "enhanced_query": "What conditions must be met for an account to be classified as a joint account?",
           "multi_queries": [
-            "Why is it necessary to verify beneficiary eligibility before performing insurance calculations?"
+            "What requirements must be fulfilled for an account to be considered a joint account?",
+            "Under what circumstances would an account be classified as a joint account?",
+            "What criteria must be satisfied for an account to be labeled as a joint account?"
+          ]
+        },
+        {
+          "subquery_id": "1f6bf9e083f170a7f26e2f54b74dba295b4119f32121e5cb098fa43ab499f4fc",
+          "original_subquery": "When should a deposit account be assigned the SGL right and capacity code?",
+          "enhanced_query": "When should a deposit account be assigned the SGL right and capacity code?",
+          "multi_queries": [
+            "When should a deposit account be assigned the SGL right?",
+            "When should a deposit account be assigned the SGL right and capacity code?"
           ]
         }
       ]
     },
     {
-      "id": "7ac1f60c0a3f31873f6c78021b70e323546c32e72c6ac907a09c593da2734692",
-      "original_query": "Why must beneficiary eligibility be verified before insurance calculation??",
+      "id": "b32732739053651f79133bcf5d946047803b0022bf3c69c4b7ed1a0e2dc28b4e",
+      "original_query": "How are single ownership accounts aggregated for insurance calculation, and what happens if the total exceeds SMDIA?",
       "decomposed": [
         {
-          "subquery_id": "5cee95ac81940bd0091e1ea55c675278d9477f2a37160decf47b9cb90bb923bc",
-          "original_subquery": "Why must beneficiary eligibility be verified before insurance calculation?",
-          "enhanced_query": "What are the reasons for verifying beneficiary eligibility before performing insurance calculations?",
+          "subquery_id": "5ce3932a694af45a7d46943c6b07441c3cdff823c1abd88c263f770841260bc7",
+          "original_subquery": "How are single ownership accounts aggregated for insurance calculation,?",
+          "enhanced_query": "How are single ownership accounts aggregated for insurance purposes in the calculation?",
           "multi_queries": [
-            "Why is it necessary to verify beneficiary eligibility before performing insurance calculations?"
+            "How are single ownership accounts aggregated for insurance purposes in the calculation?",
+            "What is the method used to aggregate single ownership accounts for insurance purposes in the calculation?",
+            "How do single ownership accounts get calculated for insurance purposes?"
+          ]
+        },
+        {
+          "subquery_id": "3f81c6c1af7ed5473746d454c3fcb3bfaa0e3c6b9658e85cca9bda3aade942a4",
+          "original_subquery": "what happens if the total exceeds SMDIA?",
+          "enhanced_query": "what happens if the total exceeds SMDIA?",
+          "multi_queries": [
+            "What happens if the total exceeds the SMDIA?",
+            "What are the consequences of exceeding the SMDIA total?",
+            "What happens when the total exceeds the SMDIA?"
           ]
         }
       ]
     },
     {
-      "id": "e8d7f16b20a5cfbe92ed11368cf5a719c105bd99ee830768fa0ceeab87fe134e",
-      "original_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.",
+      "id": "aae9cd248f5f29c509d26f75560fb93d0262e6452f5d9c1625f86db5c69cf8cb",
+      "original_query": "What happens to a joint account if one co-owner is not a natural person, and how does that affect its insurance classification?",
       "decomposed": [
         {
-          "subquery_id": "71c45c69780eaff6c408dad54b36ebbf3e22175a649a572bac62d9074ea8709b",
-          "original_subquery": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.?",
-          "enhanced_query": "Explain the complete methodology used to determine deposit insurance for single, joint, and revocable trust accounts, including classification, aggregation, eligibility validation, and uninsured balance treatment.?",
+          "subquery_id": "e6a6ed635686343fdba68325275875f167f31eac903e2c324895be74594388e9",
+          "original_subquery": "What happens to a joint account if one co-owner is not a natural person,?",
+          "enhanced_query": "What happens to a joint account if one co-owner is not a natural person,?",
           "multi_queries": []
-        }
-      ]
-    },
-    {
-      "id": "e55de5a4e811948e8fdcb2154a22fce0acf0eab2030f00a488c9e217bf722afe",
-      "original_query": "what is fdic?",
-      "decomposed": [
+        },
         {
-          "subquery_id": "e55de5a4e811948e8fdcb2154a22fce0acf0eab2030f00a488c9e217bf722afe",
-          "original_subquery": "what is fdic?",
-          "enhanced_query": "What is the meaning of FDIC?",
-          "multi_queries": []
+          "subquery_id": "aa6a0b547357da662c9fa1e408f3acb5dbf3a1eaecbe3fa9cb1e3b2ccede3906",
+          "original_subquery": "how does that affect its insurance classification?",
+          "enhanced_query": "How does that affect its insurance classification?",
+          "multi_queries": [
+            "How does that impact its insurance classification?",
+            "What effect does that have on its insurance classification?",
+            "How does that influence its insurance classification?"
+          ]
         }
       ]
     }

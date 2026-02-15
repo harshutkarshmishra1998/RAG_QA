@@ -6,9 +6,7 @@ import time
 
 from pypdf import PdfReader
 
-# ==============================
 # PROJECT IMPORTS
-# ==============================
 from ingestion.pdf_ingestion import ingest_pdf
 from pipeline_incremental.pipeline_incremental import run_incremental_pipeline
 from query.query_pipeline_v3 import process_user_query
@@ -20,9 +18,7 @@ from answer_generation.answer_generation_v3 import generate_answer_from_last_ent
 from patch.system_startup_cleaner import clean_data_directories
 
 
-# ==============================
 # CONFIG
-# ==============================
 st.set_page_config(page_title="RAG Knowledge Assistant", page_icon="📚", layout="wide")
 
 PROJECT_ROOT_NEW = Path(__file__).resolve().parents[0]
@@ -36,9 +32,7 @@ STORAGE_DIR.mkdir(exist_ok=True)
 MAX_FILE_SIZE_MB = 10
 
 
-# ==============================
 # STYLING
-# ==============================
 st.markdown("""
 <style>
 .main-title { font-size: 32px; font-weight: 700; }
@@ -53,17 +47,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ==============================
 # HEADER
-# ==============================
 st.markdown('<div class="main-title">📚 RAG Knowledge Assistant</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtle">Upload PDF → Incremental Indexing → Chat with Knowledge</div>', unsafe_allow_html=True)
 st.divider()
 
 
-# ==============================
 # HELPERS
-# ==============================
 
 def get_pdf_page_count(path: Path) -> int:
     return len(PdfReader(str(path)).pages)
@@ -101,9 +91,7 @@ def load_existing_documents():
 def run_answer_generation():
     return generate_answer_v3() if st.session_state.answer_engine.startswith("v3") else generate_answer_v2()
 
-# ==============================
 # SESSION STATE INIT
-# ==============================
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
@@ -122,9 +110,7 @@ if "answer_engine" not in st.session_state:
 if "uploader_key" not in st.session_state:
     st.session_state.uploader_key = 0
 
-# ==============================
 # METRICS RENDERERS
-# ==============================
 
 def _safe_get(metrics, *keys):
     for k in keys:
@@ -180,9 +166,7 @@ def render_timing(qp, retr, gen, total):
         st.warning("🐢 Slow response")
 
 
-# ==============================
 # SIDEBAR
-# ==============================
 st.sidebar.header("📥 Document Ingestion")
 
 if st.sidebar.button("🧹 Clean All Data (Fresh Start)", use_container_width=True):
@@ -225,9 +209,7 @@ if not uploaded_files:
     st.session_state.multi_doc_confirmed = False
 
 
-# ==============================
 # INGESTION
-# ==============================
 if uploaded_files:
     knowledge_conflict = len(uploaded_files) > 1 or len(existing_docs) > 0
 
@@ -284,16 +266,14 @@ if uploaded_files:
                 st.rerun()
 
 
-# ==============================
 # CHAT
-# ==============================
 st.header("💬 Chat with Your Documents")
 
 if not st.session_state.pipeline_ready:
     st.info("Upload and process a document to start asking questions.")
 else:
 
-    # -------- replay full conversation --------
+    # replay full conversation
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
@@ -353,7 +333,7 @@ else:
 
             render_timing(qp_time, retr_time, gen_time, total_time)
 
-        # -------- persist full structured assistant message --------
+        # persist full structured assistant message
         st.session_state.chat_history.append({
             "role": "assistant",
             "content": answer,

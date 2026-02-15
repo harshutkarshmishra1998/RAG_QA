@@ -6,9 +6,7 @@ from PIL import Image
 from transformers import CLIPProcessor, CLIPModel
 
 
-# ============================================================
 # CLIP setup
-# ============================================================
 
 MODEL_NAME = "./clip-vit-base-patch32"
 _device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -20,9 +18,7 @@ _model.to(_device) #type: ignore
 _model.eval() #type: ignore
 
 
-# ============================================================
 # Controlled semantic labels (NO hallucination)
-# ============================================================
 
 CANDIDATE_LABELS: List[str] = [
     "a graph showing trends over time",
@@ -37,9 +33,7 @@ CANDIDATE_LABELS: List[str] = [
 ]
 
 
-# ============================================================
 # Public API
-# ============================================================
 
 def interpret_image(image_path: Path) -> Dict[str, Any]:
     """

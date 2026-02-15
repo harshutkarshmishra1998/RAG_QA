@@ -20,9 +20,7 @@ from ingestion.reload import (
 from schema.ingestion_schema import IngestionResult, UnitType
 
 
-# ============================================================
 # PDF Export
-# ============================================================
 
 def export_ingestion_result_to_pdf(
     result: IngestionResult,
@@ -31,15 +29,11 @@ def export_ingestion_result_to_pdf(
     styles = getSampleStyleSheet()
     elements: list[Any] = []
 
-    # --------------------------------------------------------
     # Title
-    # --------------------------------------------------------
     elements.append(Paragraph("<b>RAG Ingestion Verification Report</b>", styles["Title"]))
     elements.append(Spacer(1, 12))
 
-    # --------------------------------------------------------
     # Source
-    # --------------------------------------------------------
     elements.append(Paragraph("<b>Source</b>", styles["Heading2"]))
     elements.append(Paragraph(f"Source ID: {result.source.source_id}", styles["Normal"]))
     elements.append(Paragraph(f"Source Type: {result.source.source_type}", styles["Normal"]))
@@ -48,9 +42,7 @@ def export_ingestion_result_to_pdf(
     elements.append(Paragraph(f"Ingested At: {result.source.ingested_at}", styles["Normal"]))
     elements.append(Spacer(1, 12))
 
-    # --------------------------------------------------------
     # Document
-    # --------------------------------------------------------
     elements.append(Paragraph("<b>Document</b>", styles["Heading2"]))
     elements.append(Paragraph(f"Document ID: {result.document.doc_id}", styles["Normal"]))
     elements.append(Paragraph(f"Source ID: {result.document.source_id}", styles["Normal"]))
@@ -59,9 +51,7 @@ def export_ingestion_result_to_pdf(
     elements.append(Paragraph(f"Created At: {result.document.created_at}", styles["Normal"]))
     elements.append(PageBreak())
 
-    # --------------------------------------------------------
     # Content Units
-    # --------------------------------------------------------
     elements.append(Paragraph("<b>Content Units</b>", styles["Heading2"]))
     elements.append(Spacer(1, 12))
 
@@ -107,17 +97,13 @@ def export_ingestion_result_to_pdf(
 
         elements.append(Spacer(1, 16))
 
-    # --------------------------------------------------------
     # Build PDF
-    # --------------------------------------------------------
     output_path.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(str(output_path), pagesize=A4)
     doc.build(elements)
 
 
-# ============================================================
 # Runner
-# ============================================================
 
 if __name__ == "__main__":
     sources = load_sources()

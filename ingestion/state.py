@@ -13,9 +13,7 @@ from pydantic import TypeAdapter
 # DOCUMENTS.touch(exist_ok=True)
 # UNITS.touch(exist_ok=True)
 
-# ============================================================
 # Paths
-# ============================================================
 
 BASE_DIR_NEW = Path(__file__).resolve().parents[1]  # stable path (very important)
 
@@ -27,9 +25,7 @@ SOURCES = STORAGE / "sources.jsonl"
 DOCUMENTS = STORAGE / "documents.jsonl"
 UNITS = STORAGE / "content_units.jsonl"
 
-# ============================================================
 # Initialization (idempotent, safe to call anytime)
-# ============================================================
 
 def ensure_storage():
     IMAGE_DIR.mkdir(parents=True, exist_ok=True)

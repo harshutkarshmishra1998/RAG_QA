@@ -9,9 +9,7 @@ from typing import Dict, Any, List
 from groq import Groq
 
 
-# =====================================================
 # CONFIG
-# =====================================================
 
 GROQ_MODEL = "llama-3.1-8b-instant"
 
@@ -32,9 +30,7 @@ MAX_CHUNKS_INITIAL = 3
 MAX_CHUNKS_EXPANDED = 6
 
 
-# =====================================================
 # FILE HELPERS
-# =====================================================
 
 def load_jsonl(path: Path):
     rows = []
@@ -73,9 +69,7 @@ def stable_hash(*parts: str) -> str:
     return hashlib.sha256("||".join(parts).encode()).hexdigest()
 
 
-# =====================================================
 # LOAD CONTENT UNITS
-# =====================================================
 
 def load_content_unit_index(path: Path):
     index = {}
@@ -88,9 +82,7 @@ def load_content_unit_index(path: Path):
 CONTENT_UNIT_INDEX = load_content_unit_index(CONTENT_UNIT_FILE)
 
 
-# =====================================================
 # LOAD CHUNK → UNIT MAP
-# =====================================================
 
 def load_chunk_unit_map(path: Path):
     mapping = {}
@@ -103,9 +95,7 @@ def load_chunk_unit_map(path: Path):
 CHUNK_UNIT_MAP = load_chunk_unit_map(CHUNK_MAP_FILE)
 
 
-# =====================================================
 # LOAD DOCUMENT REGISTRY
-# =====================================================
 
 def load_document_registry(path: Path):
     registry = {}
@@ -124,9 +114,7 @@ def load_document_registry(path: Path):
 DOCUMENT_REGISTRY = load_document_registry(DOCUMENTS_FILE)
 
 
-# =====================================================
 # LOAD SOURCE REGISTRY
-# =====================================================
 
 def load_source_registry(path: Path):
     registry = {}
@@ -144,9 +132,7 @@ def load_source_registry(path: Path):
 SOURCE_REGISTRY = load_source_registry(SOURCES_FILE)
 
 
-# =====================================================
 # RESOLVE DOCUMENT NAME
-# =====================================================
 
 def resolve_document_name(doc_id: str) -> str:
     source_id = DOCUMENT_REGISTRY.get(doc_id)
@@ -156,9 +142,7 @@ def resolve_document_name(doc_id: str) -> str:
     return filename or doc_id
 
 
-# =====================================================
 # TEXT NORMALIZATION
-# =====================================================
 
 def repair_chunk_text(text):
     if text is None:
@@ -190,9 +174,7 @@ def chunk_is_usable(text: str) -> bool:
     return alpha_ratio > 0.5
 
 
-# =====================================================
 # FUZZY MATCH SCORE
-# =====================================================
 
 def text_overlap_score(a: str, b: str) -> float:
     a_tokens = set(a.split())
@@ -202,9 +184,7 @@ def text_overlap_score(a: str, b: str) -> float:
     return len(a_tokens & b_tokens) / len(a_tokens)
 
 
-# =====================================================
 # PROVENANCE RECONSTRUCTION
-# =====================================================
 
 def get_chunk_provenance(chunk):
     prov = {}
@@ -291,9 +271,7 @@ def build_reference_list(bundle):
     return refs
 
 
-# =====================================================
 # RETRIEVAL SORTING
-# =====================================================
 
 def get_all_chunks_sorted(record):
     all_chunks = []
@@ -307,9 +285,7 @@ def get_all_chunks_sorted(record):
     return all_chunks
 
 
-# =====================================================
 # SUBQUERY EXTRACTION
-# =====================================================
 
 # def extract_subqueries(record):
 #     subs = []
@@ -385,9 +361,7 @@ def extract_subqueries(record):
     return result
 
 
-# =====================================================
 # CONTEXT BUILD (PER SUBQUERY)
-# =====================================================
 
 # def build_context(chunks):
 #     blocks = []
@@ -426,9 +400,7 @@ def build_context(chunks):
 
 
 
-# =====================================================
 # STRUCTURED LLM ANSWER (PER QUESTION)
-# =====================================================
 
 # def llm_answer_single(question, context):
 
@@ -496,9 +468,7 @@ CONTEXT:
     return resp.choices[0].message.content.strip() #type: ignore
 
 
-# =====================================================
 # SELF HEALING PER SUBQUERY
-# =====================================================
 
 # def answer_subquery_with_self_healing(question, chunks):
 
@@ -551,9 +521,7 @@ def answer_subquery_with_self_healing(question, chunks, record):
     answer = llm_answer_single(question, context)
     return answer, bundle
 
-# =====================================================
 # MAIN PIPELINE
-# =====================================================
 
 def generate_answer_from_last_entry():
 

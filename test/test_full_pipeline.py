@@ -32,7 +32,7 @@ def main():
         print("ERROR: File not found.")
         sys.exit(1)
 
-    print("\n=== INCREMENTAL PIPELINE TEST START ===\n")
+    print("\nINCREMENTAL PIPELINE TEST START\n")
 
     # 1️⃣ Ingest
     print("1️⃣ Running ingestion...")

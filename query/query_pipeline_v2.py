@@ -13,7 +13,7 @@ from openai import OpenAI
 from groq import Groq
 
 
-# ================= CONFIG ================= #
+#  CONFIG
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 STORAGE_PATH = PROJECT_ROOT / "storage"
@@ -30,10 +30,8 @@ GROQ_MODEL = "llama-3.1-8b-instant"
 openai_client = OpenAI()
 groq_client = Groq()
 
-# =========================================== #
 
-
-# ================= UTILITIES ================= #
+#  UTILITIES
 
 def _hash_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
@@ -69,7 +67,7 @@ def _validate_semantic_drift(original: str, candidate: str, threshold: float = 0
     return similarity >= threshold
 
 
-# ================= LLM WRAPPER ================= #
+#  LLM WRAPPER
 
 def _groq_json_call(prompt: str) -> Dict:
 
@@ -101,7 +99,7 @@ If you include anything else, it is an error.
     return parsed
 
 
-# ================= DECOMPOSITION ================= #
+#  DECOMPOSITION
 
 def _should_attempt_decomposition(query: str) -> bool:
     lowered = query.lower()
@@ -175,7 +173,7 @@ Query:
         return [query]
 
 
-# ================= ENHANCEMENT ================= #
+#  ENHANCEMENT
 
 def _enhance_query(query: str) -> str:
 
@@ -209,7 +207,7 @@ Query:
         return query
 
 
-# ================= EMBEDDING ================= #
+#  EMBEDDING
 
 def _embed(text: str) -> np.ndarray:
     r = openai_client.embeddings.create(
@@ -225,7 +223,7 @@ def _embed(text: str) -> np.ndarray:
     return vec
 
 
-# ================= LIGHT RETRIEVAL ================= #
+#  LIGHT RETRIEVAL
 
 def _light_retrieve(query: str, top_k: int = 3) -> List[str]:
 
@@ -252,7 +250,7 @@ def _light_retrieve(query: str, top_k: int = 3) -> List[str]:
     return results
 
 
-# ================= MULTI QUERY ================= #
+#  MULTI QUERY
 
 def _generate_multi_queries(enhanced_query: str, context_chunks: List[str]) -> List[str]:
 
@@ -297,7 +295,7 @@ Context:
         return []
 
 
-# ================= MEMORY ================= #
+#  MEMORY
 
 def _load_memory() -> Dict:
     if not MEMORY_FILE.exists():
@@ -317,7 +315,7 @@ def _save_memory(data: Dict):
     os.replace(temp, MEMORY_FILE)
 
 
-# ================= MAIN PIPELINE ================= #
+#  MAIN PIPELINE
 
 def process_user_query(user_query: str) -> Dict:
 

@@ -26,9 +26,7 @@ def chunk_content_units(
         input_path.stem + "_chunked" + input_path.suffix
     )
 
-    # -------------------------------------------------
     # Helpers
-    # -------------------------------------------------
 
     def estimate_tokens(text: str) -> int:
         return max(1, len(text) // 4)
@@ -77,9 +75,7 @@ def chunk_content_units(
             return unit.get("clip_confidence", 0.0) >= clip_conf_threshold
         return True
 
-    # -------------------------------------------------
     # Load units
-    # -------------------------------------------------
 
     units: List[Dict] = []
     with input_path.open("r", encoding="utf-8") as f:
@@ -90,9 +86,7 @@ def chunk_content_units(
 
     units.sort(key=lambda x: x["order_index"])
 
-    # -------------------------------------------------
     # Build semantic blocks
-    # -------------------------------------------------
 
     blocks = []
     current_units = []
@@ -118,9 +112,7 @@ def chunk_content_units(
             "units": current_units
         })
 
-    # -------------------------------------------------
     # Chunk with semantic closure
-    # -------------------------------------------------
 
     chunks = []
     chunk_index = 0
@@ -202,9 +194,7 @@ def chunk_content_units(
 
     flush_chunk("end_of_document")
 
-    # -------------------------------------------------
     # Write output
-    # -------------------------------------------------
 
     with output_path.open("w", encoding="utf-8") as f:
         for c in chunks:

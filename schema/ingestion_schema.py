@@ -8,9 +8,7 @@ from datetime import datetime, timezone
 from pydantic import BaseModel, Field, ConfigDict
 
 
-# ============================================================
 # Enums
-# ============================================================
 
 class SourceType(str, Enum):
     PDF = "pdf"
@@ -37,9 +35,7 @@ class ExtractionMethod(str, Enum):
     VISION = "vision"    # diagrams & charts
 
 
-# ============================================================
 # Source (Ingestion Gate)
-# ============================================================
 
 class Source(BaseModel):
     """
@@ -76,9 +72,7 @@ class Source(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
-# ============================================================
 # Document (Logical, Versioned)
-# ============================================================
 
 class Document(BaseModel):
     """
@@ -113,9 +107,7 @@ class Document(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
-# ============================================================
 # Content Unit (Atomic RAG Primitive)
-# ============================================================
 
 class ContentUnit(BaseModel):
     """
@@ -182,9 +174,7 @@ class ContentUnit(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
-# ============================================================
 # Optional Convenience Wrapper
-# ============================================================
 
 class IngestionResult(BaseModel):
     """

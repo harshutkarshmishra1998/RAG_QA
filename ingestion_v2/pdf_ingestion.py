@@ -112,9 +112,7 @@ from ingestion.state import (
 from ingestion_v2.hashing import sha256_bytes, sha256_text, content_hash
 from ingestion_v2.base import assign_order
 
-# -----------------------------
 # Reusable extractors
-# -----------------------------
 from ingestion_v2.extractors.native_text import extract_native_text
 from ingestion_v2.extractors.native_tables import extract_native_tables
 from ingestion_v2.extractors.images import extract_images
@@ -126,9 +124,7 @@ from ingestion_v2.extractors.ocr_text import extract_ocr_text_from_image
 from ingestion_v2.extractors.ocr_tables import extract_ocr_table_from_image
 
 
-# ============================================================
 # PDF INGESTION (CLIP-routed, schema-safe)
-# ============================================================
 
 def ingest_pdf(pdf_path: str) -> IngestionResult:
     pdf_path = Path(pdf_path).resolve() #type: ignore
@@ -136,9 +132,7 @@ def ingest_pdf(pdf_path: str) -> IngestionResult:
     if not pdf_path.exists(): #type: ignore
         raise FileNotFoundError(pdf_path)
 
-    # --------------------------------------------------------
     # 1. Source de-duplication (reload safe)
-    # --------------------------------------------------------
     file_hash = sha256_bytes(pdf_path.read_bytes()) #type: ignore
     source_index = load_source_index()
 
@@ -152,44 +146,36 @@ def ingest_pdf(pdf_path: str) -> IngestionResult:
     )
     append_jsonl(SOURCES, source.model_dump())
 
-    # --------------------------------------------------------
     # 2. Open PDF
-    # --------------------------------------------------------
     doc = fitz.open(pdf_path)
 
     units: list[ContentUnit] = []
     order_index = 0
 
-    # --------------------------------------------------------
     # 3. Native text extraction
-    # --------------------------------------------------------
     native_text_units = extract_native_text(doc)
     order_index = assign_order(native_text_units, order_index)
     units.extend(native_text_units)
 
-    # --------------------------------------------------------
     # 4. Image extraction (artifacts only)
-    # --------------------------------------------------------
     image_dir = Path("storage/artifacts/images")
     image_units = extract_images(doc, image_dir)
     order_index = assign_order(image_units, order_index)
     units.extend(image_units)
 
-    # --------------------------------------------------------
     # 5. CLIP routing + OCR fallback
-    # --------------------------------------------------------
     for img_unit in image_units:
 
-        # ---- 5.1 CLIP semantic caption (always)
+        # 5.1 CLIP semantic caption (always)
         caption_unit, interp = extract_vision_caption(img_unit)
         order_index += 1
         caption_unit.order_index = order_index
         units.append(caption_unit)
 
-        # ---- 5.2 Routing decision
+        # 5.2 Routing decision
         route = route_from_clip(interp)
 
-        # ---- 5.3 Confident routes
+        # 5.3 Confident routes
         if route == "text_ocr":
             text = extract_ocr_text_from_image(img_unit.content)
             if text:
@@ -228,7 +214,7 @@ def ingest_pdf(pdf_path: str) -> IngestionResult:
                     order_index=order_index,
                 ))
 
-        # ---- 5.4 CLIP unsure → OCR fallback (MAX RECALL)
+        # 5.4 CLIP unsure → OCR fallback (MAX RECALL)
         elif route == "fallback_ocr":
 
             # OCR text
@@ -269,20 +255,16 @@ def ingest_pdf(pdf_path: str) -> IngestionResult:
                     order_index=order_index,
                 ))
 
-        # ---- 5.5 ignore → nothing else
+        # 5.5 ignore → nothing else
         else:
             pass
 
-    # --------------------------------------------------------
     # 6. Native table extraction (PDF structure)
-    # --------------------------------------------------------
     native_table_units = extract_native_tables(str(pdf_path))
     order_index = assign_order(native_table_units, order_index)
     units.extend(native_table_units)
 
-    # --------------------------------------------------------
     # 7. Create Document
-    # --------------------------------------------------------
     text_for_hash = " ".join(
         u.content for u in units if isinstance(u.content, str)
     )
@@ -293,9 +275,7 @@ def ingest_pdf(pdf_path: str) -> IngestionResult:
     )
     append_jsonl(DOCUMENTS, document.model_dump())
 
-    # --------------------------------------------------------
     # 8. Persist content units
-    # --------------------------------------------------------
     final_units: list[ContentUnit] = []
 
     for u in units:
@@ -303,9 +283,7 @@ def ingest_pdf(pdf_path: str) -> IngestionResult:
         append_jsonl(UNITS, fu.model_dump())
         final_units.append(fu)
 
-    # --------------------------------------------------------
     # 9. Return ingestion result
-    # --------------------------------------------------------
     return IngestionResult(
         source=source,
         document=document,

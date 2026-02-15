@@ -20,9 +20,7 @@ from schema.ingestion_schema import UnitType, ExtractionMethod
 
 
 def main() -> None:
-    # --------------------------------------------------------
     # Input validation
-    # --------------------------------------------------------
     if len(sys.argv) != 2:
         print("Usage: python test/test_pdf_ingestion.py <pdf_path>")
         sys.exit(1)
@@ -37,9 +35,7 @@ def main() -> None:
         print("ERROR: Input file must be a PDF")
         sys.exit(1)
 
-    # --------------------------------------------------------
     # Run ingestion
-    # --------------------------------------------------------
     print(f"\n📄 Ingesting PDF: {pdf_path}\n")
 
     try:
@@ -48,16 +44,12 @@ def main() -> None:
         print("❌ Ingestion failed:")
         raise
 
-    # --------------------------------------------------------
     # Basic assertions (sanity checks)
-    # --------------------------------------------------------
     assert result.source.source_id.startswith("src_")
     assert result.document.doc_id.startswith("doc_")
     assert len(result.units) > 0, "No content units were extracted"
 
-    # --------------------------------------------------------
     # Summarize results
-    # --------------------------------------------------------
     type_counter = Counter()
     method_counter = Counter()
 
@@ -84,9 +76,7 @@ def main() -> None:
     for k, v in sorted(method_counter.items()):
         print(f"  {k:>10}: {v}")
 
-    # --------------------------------------------------------
     # Show a few samples (safe, non-verbose)
-    # --------------------------------------------------------
     print("\nSample Units:")
     for unit in result.units:
         print(

@@ -17,17 +17,13 @@ from ingestion.state import load_source_index, append_jsonl, SOURCES, DOCUMENTS,
 from ingestion.vision_interpretation import interpret_image
 
 
-# ============================================================
 # Artifacts
-# ============================================================
 
 # ARTIFACT_DIR = Path("storage/artifacts")
 # IMAGE_DIR = ARTIFACT_DIR / "images"
 # IMAGE_DIR.mkdir(parents=True, exist_ok=True)
 
-# ============================================================
 # Paths
-# ============================================================
 
 BASE_DIR_NEW = Path(__file__).resolve().parents[1]  # stable path (very important)
 
@@ -39,9 +35,7 @@ SOURCES = STORAGE / "sources.jsonl"
 DOCUMENTS = STORAGE / "documents.jsonl"
 UNITS = STORAGE / "content_units.jsonl"
 
-# ============================================================
 # Initialization (idempotent, safe to call anytime)
-# ============================================================
 
 def ensure_storage():
     IMAGE_DIR.mkdir(parents=True, exist_ok=True)
@@ -52,9 +46,7 @@ def ensure_storage():
 
 ensure_storage()
 
-# ============================================================
 # Runtime checks
-# ============================================================
 
 def _require_binary(name: str):
     if shutil.which(name) is None:
@@ -64,17 +56,13 @@ def _require_binary(name: str):
 _require_binary("tesseract")
 
 
-# ============================================================
 # Helpers
-# ============================================================
 
 def normalize_text(text: str) -> str:
     return " ".join(text.split()).lower()
 
 
-# ============================================================
 # Main
-# ============================================================
 
 def ingest_pdf(pdf_path: str) -> IngestionResult:
     pdf_path = Path(pdf_path).resolve() #type: ignore

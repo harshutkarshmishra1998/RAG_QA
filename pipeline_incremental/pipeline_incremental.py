@@ -7,9 +7,7 @@ from clean_normalize.clean_normalize import clean_content_units_file
 from chunk.chunk import chunk_content_units
 from embedding.faiss_embedder import _embed_texts
 
-# --------------------------------------------------
 # CONFIG
-# --------------------------------------------------
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 STORAGE = PROJECT_ROOT / "storage"
@@ -23,9 +21,7 @@ STATE_FILE = STORAGE / "pipeline_state.json"
 EMBEDDING_DIM = 3072
 
 
-# --------------------------------------------------
 # STATE MANAGEMENT
-# --------------------------------------------------
 
 def load_state():
     if not STATE_FILE.exists():
@@ -48,9 +44,7 @@ def save_state(state):
     STATE_FILE.write_text(json.dumps(state, indent=2))
 
 
-# --------------------------------------------------
 # INCREMENTAL CLEAN
-# --------------------------------------------------
 
 def clean_new_docs():
 
@@ -85,9 +79,7 @@ def clean_new_docs():
     return list({u["doc_id"] for u in new_units})
 
 
-# --------------------------------------------------
 # INCREMENTAL CHUNK
-# --------------------------------------------------
 
 def chunk_new_docs(new_doc_ids):
 
@@ -121,9 +113,7 @@ def chunk_new_docs(new_doc_ids):
         return [json.loads(line)["chunk_id"] for line in f]
 
 
-# --------------------------------------------------
 # INCREMENTAL EMBED
-# --------------------------------------------------
 
 def embed_new_chunks(new_chunk_ids):
 
@@ -152,9 +142,7 @@ def embed_new_chunks(new_chunk_ids):
     index.add(vectors)  # type: ignore
     faiss.write_index(index, str(FAISS_FILE))
 
-# --------------------------------------------------
 # TEMP FILE CLEANUP
-# --------------------------------------------------
 
 def cleanup_temp_files():
 
@@ -169,9 +157,7 @@ def cleanup_temp_files():
 
     return deleted_files
 
-# --------------------------------------------------
 # MASTER PIPELINE
-# --------------------------------------------------
 
 def run_incremental_pipeline():
 

@@ -9,9 +9,7 @@ from typing import List, Dict, Any
 from groq import Groq
 
 
-# =====================================================
 # CONFIG
-# =====================================================
 
 GROQ_MODEL = "llama-3.1-8b-instant"
 
@@ -32,9 +30,7 @@ MAX_CHUNKS_INITIAL = 3
 MAX_EVIDENCE_SNIPPETS = 3
 
 
-# =====================================================
 # SAFE FILE IO
-# =====================================================
 
 def load_jsonl(path: Path):
     if not path.exists():
@@ -66,9 +62,7 @@ def stable_hash(*parts):
     return hashlib.sha256("||".join(parts).encode()).hexdigest()
 
 
-# =====================================================
 # LOAD INDICES
-# =====================================================
 
 CONTENT_UNIT_INDEX = {str(r["unit_id"]): r for r in load_jsonl(CONTENT_UNIT_FILE)}
 CHUNK_UNIT_MAP = {str(r["chunk_id"]): r.get("unit_ids", []) for r in load_jsonl(CHUNK_MAP_FILE)}
@@ -83,9 +77,7 @@ def resolve_document_name(doc_id):
     return SOURCE_REGISTRY.get(DOCUMENT_REGISTRY.get(doc_id), doc_id)
 
 
-# =====================================================
 # TEXT NORMALIZATION
-# =====================================================
 
 def flatten_tokens(x):
     if x is None:
@@ -146,9 +138,7 @@ def overlap(a, b):
     return len(A & B) / len(A)
 
 
-# =====================================================
 # DISPLAY TEXT EXTRACTION
-# =====================================================
 
 def get_chunk_display_text(chunk: Dict[str, Any]):
     candidates = [
@@ -171,9 +161,7 @@ def get_chunk_display_text(chunk: Dict[str, Any]):
     return normalize_chunk_for_display(chunk)
 
 
-# =====================================================
 # PROVENANCE
-# =====================================================
 
 def fuzzy_unit_match(chunk_text):
     best = None
@@ -205,9 +193,7 @@ def get_chunk_provenance(chunk):
     return prov
 
 
-# =====================================================
 # REFERENCES + EVIDENCE SNIPPETS
-# =====================================================
 
 def page_ranges(pages):
     pages = sorted(p for p in pages if p is not None)
@@ -265,9 +251,7 @@ def build_reference_list(bundle):
     return refs, doc_to_ref
 
 
-# =====================================================
 # CLAIM SEGMENTATION + ATTRIBUTION
-# =====================================================
 
 def segment_claims(answer):
     lines = answer.split("\n")
@@ -311,9 +295,7 @@ def inject_citations(attributed_claims):
     return "\n".join(f"{claim} {''.join(refs)}" for claim, refs in attributed_claims)
 
 
-# =====================================================
 # LLM
-# =====================================================
 
 def llm_generate_answer(query, context):
 
@@ -335,9 +317,7 @@ Do not include citations.
     return resp.choices[0].message.content.strip() #type: ignore
 
 
-# =====================================================
 # METRICS
-# =====================================================
 
 def compute_evidence_metrics(answer):
     lines = [l.strip() for l in answer.split("\n") if l.strip()]
@@ -357,9 +337,7 @@ def compute_evidence_metrics(answer):
     }
 
 
-# =====================================================
 # SUBQUERY EXTRACTION
-# =====================================================
 
 def extract_subqueries(record):
 
@@ -393,9 +371,7 @@ def extract_subqueries(record):
     ]
 
 
-# =====================================================
 # MAIN PIPELINE
-# =====================================================
 
 def generate_answer_from_last_entry():
 

@@ -9,9 +9,7 @@ from typing import Dict, List
 from groq import Groq
 
 
-# =====================================================
 # CONFIG
-# =====================================================
 
 GROQ_MODEL = "llama-3.1-8b-instant"
 
@@ -32,9 +30,7 @@ MAX_CHUNKS_INITIAL = 3
 MAX_CHUNKS_EXPANDED = 6
 
 
-# =====================================================
 # FILE IO
-# =====================================================
 
 def load_jsonl(path: Path):
     rows = []
@@ -65,9 +61,7 @@ def stable_hash(*parts):
     return hashlib.sha256("||".join(parts).encode()).hexdigest()
 
 
-# =====================================================
 # LOAD INDICES
-# =====================================================
 
 CONTENT_UNIT_INDEX = {str(r["unit_id"]): r for r in load_jsonl(CONTENT_UNIT_FILE)}
 
@@ -96,9 +90,7 @@ def resolve_document_name(doc_id):
     return SOURCE_REGISTRY.get(source_id, doc_id)
 
 
-# =====================================================
 # TEXT NORMALIZATION
-# =====================================================
 
 def repair_text(text):
     if text is None:
@@ -143,9 +135,7 @@ def chunk_is_usable(text):
     return alpha_ratio > 0.5
 
 
-# =====================================================
 # PROVENANCE
-# =====================================================
 
 def get_chunk_units(chunk):
     unit_ids = chunk.get("unit_ids")
@@ -235,9 +225,7 @@ def build_reference_list(bundle):
     return refs, doc_to_ref
 
 
-# =====================================================
 # RETRIEVAL
-# =====================================================
 
 def get_all_chunks_sorted(record):
     all_chunks = []
@@ -251,9 +239,7 @@ def get_all_chunks_sorted(record):
     return all_chunks
 
 
-# =====================================================
 # CONTEXT BUILD
-# =====================================================
 
 def build_context(bundle, doc_to_ref):
     blocks = []
@@ -274,9 +260,7 @@ def build_context(bundle, doc_to_ref):
     return "\n\n".join(blocks)
 
 
-# =====================================================
 # LLM
-# =====================================================
 
 def llm_answer(query, context):
 
@@ -305,9 +289,7 @@ Never invent citations.
     return resp.choices[0].message.content.strip() #type: ignore
 
 
-# =====================================================
 # EVIDENCE METRICS
-# =====================================================
 
 def split_sentences(text):
     return re.split(r'(?<=[.!?])\s+', text)
@@ -343,18 +325,14 @@ def enforce_evidence_grounding(answer, metrics):
     return answer
 
 
-# =====================================================
 # SELF HEALING RETRIEVAL
-# =====================================================
 
 def self_healing_answer(query, record):
     ranked = get_all_chunks_sorted(record)
     return ranked[:MAX_CHUNKS_INITIAL]
 
 
-# =====================================================
 # SUBQUERY EXTRACTION (FIX)
-# =====================================================
 
 def extract_subqueries(record):
 
@@ -399,9 +377,7 @@ def extract_subqueries(record):
     return result
 
 
-# =====================================================
 # SUBQUERY SELF HEALING (FIX)
-# =====================================================
 
 def self_healing_subquery_bundle(question, chunks, record):
 
@@ -422,9 +398,7 @@ def self_healing_subquery_bundle(question, chunks, record):
     return bundle
 
 
-# =====================================================
 # MAIN PIPELINE (FIXED)
-# =====================================================
 
 # def generate_answer_from_last_entry():
 

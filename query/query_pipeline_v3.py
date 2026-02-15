@@ -13,7 +13,7 @@ from openai import OpenAI
 from groq import Groq
 
 
-# ================= CONFIG ================= #
+# CONFIG
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 STORAGE_PATH = PROJECT_ROOT / "storage"
@@ -33,10 +33,8 @@ MAX_MULTI_QUERIES = 3
 openai_client = OpenAI()
 groq_client = Groq()
 
-# ===========================================
 
-
-# ================= UTILITIES ================= #
+# UTILITIES
 
 def _hash_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
@@ -65,7 +63,7 @@ def _cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
     return float(np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2)))
 
 
-# ================= EMBEDDING ================= #
+# EMBEDDING
 
 def _embed(text: str) -> np.ndarray:
     r = openai_client.embeddings.create(
@@ -88,7 +86,7 @@ def _validate_semantic_drift(original: str, candidate: str, threshold: float = D
     return similarity >= threshold
 
 
-# ================= LLM JSON WRAPPER ================= #
+# LLM JSON WRAPPER
 
 def _groq_json_call(prompt: str) -> Dict:
 
@@ -120,7 +118,7 @@ If you include anything else, it is an error.
     return parsed
 
 
-# ================= STRUCTURAL HELPERS ================= #
+# STRUCTURAL HELPERS
 
 def _is_question(text: str) -> bool:
     return text.strip().endswith("?")
@@ -130,7 +128,7 @@ def _preserve_question_shape(original: str, candidate: str) -> bool:
     return _is_question(original) == _is_question(candidate)
 
 
-# ================= DECOMPOSITION (V3) ================= #
+# DECOMPOSITION (V3)
 
 def _deterministic_split(query: str) -> List[str]:
     parts = re.split(r"\?\s*", query)
@@ -247,7 +245,7 @@ def _decompose_query_v3(query: str) -> List[str]:
     return final
 
 
-# ================= ENHANCEMENT (V3) ================= #
+# ENHANCEMENT (V3)
 
 def _enhance_query_v3(query: str) -> str:
 
@@ -285,7 +283,7 @@ Query:
         return query
 
 
-# ================= RETRIEVAL ================= #
+# RETRIEVAL
 
 def _light_retrieve(query: str, top_k: int = 3) -> List[str]:
 
@@ -312,7 +310,7 @@ def _light_retrieve(query: str, top_k: int = 3) -> List[str]:
     return results
 
 
-# ================= MULTI QUERY (V3) ================= #
+# MULTI QUERY (V3)
 
 def _generate_multi_queries_v3(enhanced_query: str, context_chunks: List[str]) -> List[str]:
 
@@ -362,7 +360,7 @@ Context:
         return []
 
 
-# ================= MEMORY ================= #
+# MEMORY #
 
 def _load_memory() -> Dict:
     if not MEMORY_FILE.exists():
@@ -382,7 +380,7 @@ def _save_memory(data: Dict):
     os.replace(temp, MEMORY_FILE)
 
 
-# ================= MAIN PIPELINE ================= #
+# MAIN PIPELINE #
 
 def process_user_query(user_query: str) -> Dict:
 
