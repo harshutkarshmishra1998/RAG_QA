@@ -12,4 +12,6 @@ RAG_QA is a production-grade document intelligence system that performs:
 The system is storage-centric and pipeline-driven. Every stage produces structured persistent artifacts that serve as input for downstream stages.
 
 v1.0 Documentation - https://drive.google.com/file/d/1lE3cUtiHbs9KO5UxOISWRgsy6KGceqGO/view
+
 v2.0 Additions - https://drive.google.com/file/d/1icvjTkae0qtfnzDYl0m_0pV1AU1AY3ZS/view
+
